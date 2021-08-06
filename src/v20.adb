@@ -22,6 +22,7 @@
 
 with Ada.Directories;
 with Ada.Strings.Fixed;
+with GNAT.Source_Info;
 
 with v20.Prg;
 with v20.Sys;
@@ -46,15 +47,16 @@ package body v20 is
 
       Tio.Put_Line (Line_Max_Length * "-");
       Tio.Line;
-      Tio.Put_Line ("Exception time        : " & Prg.Time_Stamp);
-      Tio.Put_Line ("Program uptime        : " &
+      Tio.Put_Line ("Exception time         : " & Prg.Time_Stamp);
+      Tio.Put_Line ("Program uptime         : " &
                      Prg.Duration_Stamp (Prg.Start_Time));
-      Tio.Put_Line ("Program name & version: " & Prg.Get_Version);
-      Tio.Put_Line ("Library name & version: " & v20.Get_Version);
-      Tio.Put_Line ("Start directory       : " & Prg.Start_Dir);
-      Tio.Put_Line ("Home directory        : " & Sys.Get_Home);
-      Tio.Put_Line ("Ada memory allocations: " & Sys.Get_Alloc_Ada);
-      Tio.Put_Line ("All memory allocations: " & Sys.Get_Alloc_All);
+      Tio.Put_Line ("Program build DT stamp : " & v20.Get_Build);
+      Tio.Put_Line ("Program name & version : " & Prg.Get_Version);
+      Tio.Put_Line ("Library name & version : " & v20.Get_Version);
+      Tio.Put_Line ("Start directory        : " & Prg.Start_Dir);
+      Tio.Put_Line ("Home directory         : " & Sys.Get_Home);
+      Tio.Put_Line ("Ada mem. alloc. (bytes): " & Sys.Get_Alloc_Ada);
+      Tio.Put_Line ("All mem. alloc. (bytes): " & Sys.Get_Alloc_All);
 
       Tio.Line;
       Tio.Put_Line (Ada.Exceptions.Exception_Information (Exception_Hook));
@@ -107,6 +109,13 @@ package body v20 is
               Ada.Strings.Fixed.Trim (Natural'Image (Version_Minor),
             Ada.Strings.Left)));
    end Get_Version;
+
+   function Get_Build return ASU.Unbounded_String is
+   begin
+      return (ASU.To_Unbounded_String ("build " &
+              GNAT.Source_Info.Compilation_ISO_Date & " " &
+              GNAT.Source_Info.Compilation_Time));
+   end Get_Build;
 
 -------------------------------------------------------------------------------
 end v20;

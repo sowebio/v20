@@ -287,14 +287,16 @@ package body v20.Vst is
       Source_Length : constant Natural := Length (Source);
       Pattern_Length : constant Natural := Length (Pattern);
    begin
-      for I in reverse 1 .. Source_Length loop
-         if I <= Source_Length - Pattern_Length then
-            if Slice (Source, I, I + Pattern_Length - 1) = Pattern then
-               Result := Slice (Source, I + Pattern_Length, Source_Length);
-               exit;
+      if (Source_Length > 0) and (Pattern_Length > 0) then
+         for I in reverse 1 .. Source_Length loop
+            if I <= Source_Length - Pattern_Length then
+               if Slice (Source, I, I + Pattern_Length - 1) = Pattern then
+                  Result := Slice (Source, I + Pattern_Length, Source_Length);
+                  exit;
+               end if;
             end if;
-         end if;
-      end loop;
+         end loop;
+      end if;
       return Result;
    end Tail_After_Match;
 

@@ -24,6 +24,8 @@
 --  20210731 - 0.5 - sr - API consistency: All strings constants and function 
 --                        only returns VString typed. All strings parameters 
 --                        accept both String and VString types.
+--  20210804 - 0.6 - sr - Fix a RTE when a program is launched through a 
+--                        symbolic link. Add Get_Build function.
 -------------------------------------------------------------------------------
 
 with Ada.Exceptions;
@@ -35,7 +37,12 @@ package v20 is
    package ASU renames Ada.Strings.Unbounded;
 
    function Get_Version return ASU.Unbounded_String;
-   --  Returns the Library name and formatted version : “<space>v.minor.major”.
+   --  Returns the Library name and formatted version like:
+   --  “v20 v.minor.major”.
+   
+   function Get_Build return ASU.Unbounded_String;
+   --  Returns the formatted build date stamp like:
+   --  “build YYYY-mm-dd hh:mm:ss”.
 
    procedure Raise_Exception;
    --  Raise an exception for reporting test and <program_Name.err> file
@@ -57,7 +64,7 @@ private
    Version_Major : constant Natural := 0;
    --  Library major version number
 
-   Version_Minor : constant Natural := 3;
+   Version_Minor : constant Natural := 6;
    --  Library minor version number
 
    --  135 cols width is the max full screen standard console on a rather old,
