@@ -27,6 +27,7 @@ with GNAT.Source_Info;
 with v20.Prg;
 with v20.Sys;
 with v20.Tio;
+
 with v20.Vst; use v20.Vst;
 
 package body v20 is
@@ -45,6 +46,7 @@ package body v20 is
                                                Prg.Name & ".err";
    begin
 
+      Tio.Line;
       Tio.Put_Line (Line_Max_Length * "-");
       Tio.Line;
       Tio.Put_Line ("Exception time         : " & Prg.Time_Stamp);
@@ -97,6 +99,7 @@ package body v20 is
          Tio.Close (Exception_Handle);
       end if;
 
+      Tio.Cursor_On;
       Prg.Set_Exit_Status (128);
 
    end Exception_Handling;

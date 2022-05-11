@@ -18,26 +18,26 @@
 --  Stéphane Rivière - sr - sriviere@soweb.io (integration and additions)
 --
 --  @versions
---  20210322 - 0.1 - sr - v20 lib integration
---  20210322 - 0.2 - sr - v20 lib refactoring - standardize renames, help for
---                       GNATdoc, reorder and add many functions, delete all
---                       Real related type, put generic and function private
+--  see v20.ads
 -------------------------------------------------------------------------------
 
 with Ada.Characters.Handling;
 with Ada.Strings.Unbounded;
+with Interfaces;
 
 package v20.Vst is
 
-   package ASU renames Ada.Strings.Unbounded;
    package ACH renames Ada.Characters.Handling;
+   package ASU renames Ada.Strings.Unbounded;
 
    subtype VString is ASU.Unbounded_String;
+   subtype Unsigned8 is Interfaces.Unsigned_8;
 
    Null_VString : VString renames ASU.Null_Unbounded_String;
 
    --  Types conversion
 
+   function To_VString (B : Boolean) return VString;
    function To_VString (I : Integer) return VString;
    function To_VString (C : Character) return VString;
    function To_VString (S : String) return VString
@@ -51,10 +51,30 @@ package v20.Vst is
    function To_String (V : VString) return String;
    --  Convert a VString to a String.
 
+   function To_Hex (Byte : Interfaces.Unsigned_8) return String;
+   --  Convert a Byte to a String hexadecimal output.
+
+   function To_Hex (String_To_Convert : VString) return VString;
+   -- Convert a VString to a VString hexadecimal formatted output.
+
+   function To_Val (S_In : VString) return VString;
+   -- Convert a VString to VString ASCII decimal formatted output.
+
+   --  Types tests
+
+   function Is_Numeric (Item : in String) return Boolean;
+   function Is_Numeric (Item : in VString) return Boolean;
+   --  Return True if Item string is numeric
+
    --  Basics
 
+   function Empty (Source : String) return Boolean;
+   function Empty (Source : VString) return Boolean;
+   --  Return True if VString is empty.
+
+   function Length (Source : String) return Natural;
    function Length (Source : VString) return Natural renames ASU.Length;
-   --  Returns the length of the VString represented by Source.
+   --  Returns the length of the String or VString represented by Source.
 
    function Element (Source : VString; Index : Positive) return Character
                                                           renames ASU.Element;
@@ -100,6 +120,12 @@ package v20.Vst is
    function Ends_With (Item : VString; Pattern : String) return Boolean;
    function Ends_With (Item : VString; Pattern : VString) return Boolean;
    --  Check if VString Item ends with another VString or String Pattern.
+
+   --  Counting
+
+   function Char_Count (String_To_Process : VString ; Char_Set_Pattern : VString) return Integer;
+   function Char_Count (String_To_Process : VString ; Char_Set_Pattern : String) return Integer;
+   --  Count each char in String_To_Process relative to Char_Set_Pattern.
 
    --  Returning a pattern position
 
@@ -161,12 +187,13 @@ package v20.Vst is
 
    function Slice (Source : String;
                    Low : Positive;
-                   High : Natural) return VString;
+                   High : Natural := 0) return VString;
    function Slice (Source : VString;
                    Low : Positive;
-                   High : Natural) return VString;
+                   High : Natural := 0) return VString;
    --  Returns a Vstring portion of the Vstring represented by Source
-   --  delimited by From and To. From and To start at one.
+   --  delimited Low and High. Low and High start at one. Omitting High stands
+   --  for High equal to length of source
 
    --  Extracting substring form pattern
 
@@ -190,10 +217,56 @@ package v20.Vst is
    --    "/etc/genesix/gnx-startup")) returns empty string
    --    "/etc/genesix/gnx-startupp")) returns empty string
 
+   --  Stript and replace -----------------------------------------------------
+
+   function Stript_Accents (String_To_Process : VString ) return VString;
+   --  Replace common accented characters with their lower ASCII equivalent.
+   --  Encoding processed are Latin_1, UTF-8 and character handled are
+   --  à â é è ê ë î ï ô ù ç.
+
+   function Stript_Chars (String_To_Process : VString ; Char_List : VString) return VString;
+   --  Stript each char in String_To_Process relative to Char_List
+
+   function Replace_Char (String_To_Process : VString ; Char_In : Character ; Char_Out : Character) return VString;
+   --  Replace all Char_In by Char_Out in String_To_Process
+
+   function Replace_Pattern (String_To_Process : VString ;
+                Pattern_In : VString ; Pattern_Out : VString) return VString;
+   -- Replace Pattern_In by Pattern_Out in String_To_Process. Returns a
+   -- VString with Pattern_In replaced by Pattern_Out
+
+   --  Fields processing ------------------------------------------------------
+
+   --  /!\ Use only Field_Delimiter characters between 0dec and 127dec, due to
+   --  /!\ some keyboard available characters encoding with 2 chars. Some
+   --  /!\ recommended keyboards Field_Delimiter characters are [:], [^], [|]
+   --  /!\ (AltGr+6), [`] (AltGr+7)
+
+   function Field_By_Index (String_Input : VString ; Index_Field : Integer ; Field_Delimiter : String) return VString;
+   --  Return a field indexed by Index_Field and delimited by Field_Delimiter
+   --  from String_To_Process.
+
+   function Field_By_Name (String_Input : VString ; Field_To_Search : VString ; Field_Delimiter : String) return VString;
+   --  Return a field from a search string and delimited by Field_Delimiter.
+
+   function Field_Search (String_To_Process : VString ; Field_To_Search : VString ; Field_Delimiter : String) return Boolean;
+   --  Search Field_To_Search in String_To_Process and return True if found.
+
+   function Field_Count (String_To_Process : VString ; Field_Delimiter : String) return Integer;
+   --  Count fields in String_To_Process and return fields number.
+
+   procedure Field_Display (String_To_Process : VString; Column_Delimiter : String; Row_Delimiter : String; Custom_Header : String := "");
+   --  Formatted display of a string fields structured in rows and columns
+
    --  Operators --------------------------------------------------------------
 
    function "+" (C : Character) return VString renames To_VString;
    function "+" (S : String) return VString renames To_VString;
+
+   --   function "+"(input : in String) return Unbounded_String renames To_Unbounded_String;
+   --function "+"(input : in Unbounded_String) return String renames To_String;
+
+   function "+" (S : VString) return String renames To_String;
 
    function "*" (Num : Natural;
                  Pattern : Character) return VString renames ASU."*";

@@ -17,7 +17,7 @@
 --  Stéphane Rivière - sr - sriviere@soweb.io
 --
 --  @versions
---  20210329 - 0.1 - sr - v20 lib integration
+--  see v20.ads
 -------------------------------------------------------------------------------
 
 with v20.Vst; use v20.Vst;

@@ -1,0 +1,2659 @@
+head	1.94;
+access;
+symbols;
+locks; strict;
+comment	@-- @;
+
+
+1.94
+date	2022.01.29.15.11.03;	author sr;	state Exp;
+branches;
+next	1.93;
+
+1.93
+date	2022.01.29.14.46.03;	author sr;	state Exp;
+branches;
+next	1.92;
+
+1.92
+date	2022.01.29.14.45.53;	author sr;	state Exp;
+branches;
+next	1.91;
+
+1.91
+date	2022.01.29.14.28.17;	author sr;	state Exp;
+branches;
+next	1.90;
+
+1.90
+date	2022.01.29.13.28.19;	author sr;	state Exp;
+branches;
+next	1.89;
+
+1.89
+date	2022.01.29.13.14.09;	author sr;	state Exp;
+branches;
+next	1.88;
+
+1.88
+date	2022.01.29.09.41.11;	author sr;	state Exp;
+branches;
+next	1.87;
+
+1.87
+date	2022.01.29.09.29.10;	author sr;	state Exp;
+branches;
+next	1.86;
+
+1.86
+date	2022.01.28.15.57.48;	author sr;	state Exp;
+branches;
+next	1.85;
+
+1.85
+date	2022.01.28.15.57.06;	author sr;	state Exp;
+branches;
+next	1.84;
+
+1.84
+date	2022.01.28.15.33.54;	author sr;	state Exp;
+branches;
+next	1.83;
+
+1.83
+date	2022.01.28.15.32.06;	author sr;	state Exp;
+branches;
+next	1.82;
+
+1.82
+date	2022.01.28.15.29.04;	author sr;	state Exp;
+branches;
+next	1.81;
+
+1.81
+date	2022.01.28.15.27.46;	author sr;	state Exp;
+branches;
+next	1.80;
+
+1.80
+date	2022.01.28.15.27.05;	author sr;	state Exp;
+branches;
+next	1.79;
+
+1.79
+date	2022.01.28.15.25.19;	author sr;	state Exp;
+branches;
+next	1.78;
+
+1.78
+date	2022.01.28.15.25.03;	author sr;	state Exp;
+branches;
+next	1.77;
+
+1.77
+date	2022.01.28.15.21.05;	author sr;	state Exp;
+branches;
+next	1.76;
+
+1.76
+date	2022.01.28.15.20.10;	author sr;	state Exp;
+branches;
+next	1.75;
+
+1.75
+date	2022.01.28.15.17.35;	author sr;	state Exp;
+branches;
+next	1.74;
+
+1.74
+date	2022.01.28.15.10.25;	author sr;	state Exp;
+branches;
+next	1.73;
+
+1.73
+date	2022.01.28.14.44.44;	author sr;	state Exp;
+branches;
+next	1.72;
+
+1.72
+date	2022.01.28.14.33.02;	author sr;	state Exp;
+branches;
+next	1.71;
+
+1.71
+date	2022.01.28.14.17.16;	author sr;	state Exp;
+branches;
+next	1.70;
+
+1.70
+date	2022.01.28.14.16.44;	author sr;	state Exp;
+branches;
+next	1.69;
+
+1.69
+date	2022.01.28.14.16.30;	author sr;	state Exp;
+branches;
+next	1.68;
+
+1.68
+date	2022.01.28.14.16.01;	author sr;	state Exp;
+branches;
+next	1.67;
+
+1.67
+date	2022.01.28.14.14.59;	author sr;	state Exp;
+branches;
+next	1.66;
+
+1.66
+date	2022.01.28.14.14.20;	author sr;	state Exp;
+branches;
+next	1.65;
+
+1.65
+date	2022.01.28.13.50.11;	author sr;	state Exp;
+branches;
+next	1.64;
+
+1.64
+date	2022.01.28.13.48.20;	author sr;	state Exp;
+branches;
+next	1.63;
+
+1.63
+date	2022.01.28.12.17.15;	author sr;	state Exp;
+branches;
+next	1.62;
+
+1.62
+date	2022.01.28.12.00.51;	author sr;	state Exp;
+branches;
+next	1.61;
+
+1.61
+date	2022.01.28.10.38.12;	author sr;	state Exp;
+branches;
+next	1.60;
+
+1.60
+date	2022.01.28.10.37.05;	author sr;	state Exp;
+branches;
+next	1.59;
+
+1.59
+date	2022.01.28.10.15.32;	author sr;	state Exp;
+branches;
+next	1.58;
+
+1.58
+date	2022.01.28.10.11.15;	author sr;	state Exp;
+branches;
+next	1.57;
+
+1.57
+date	2022.01.28.10.10.50;	author sr;	state Exp;
+branches;
+next	1.56;
+
+1.56
+date	2022.01.28.10.05.21;	author sr;	state Exp;
+branches;
+next	1.55;
+
+1.55
+date	2022.01.28.10.02.57;	author sr;	state Exp;
+branches;
+next	1.54;
+
+1.54
+date	2022.01.28.10.02.36;	author sr;	state Exp;
+branches;
+next	1.53;
+
+1.53
+date	2022.01.28.09.26.44;	author sr;	state Exp;
+branches;
+next	1.52;
+
+1.52
+date	2022.01.28.09.15.10;	author sr;	state Exp;
+branches;
+next	1.51;
+
+1.51
+date	2022.01.28.09.12.49;	author sr;	state Exp;
+branches;
+next	1.50;
+
+1.50
+date	2022.01.27.18.18.14;	author sr;	state Exp;
+branches;
+next	1.49;
+
+1.49
+date	2022.01.27.18.17.28;	author sr;	state Exp;
+branches;
+next	1.48;
+
+1.48
+date	2022.01.27.18.02.48;	author sr;	state Exp;
+branches;
+next	1.47;
+
+1.47
+date	2022.01.27.17.57.08;	author sr;	state Exp;
+branches;
+next	1.46;
+
+1.46
+date	2022.01.27.17.54.30;	author sr;	state Exp;
+branches;
+next	1.45;
+
+1.45
+date	2022.01.27.17.51.22;	author sr;	state Exp;
+branches;
+next	1.44;
+
+1.44
+date	2022.01.27.17.47.44;	author sr;	state Exp;
+branches;
+next	1.43;
+
+1.43
+date	2022.01.27.17.45.26;	author sr;	state Exp;
+branches;
+next	1.42;
+
+1.42
+date	2022.01.27.17.43.00;	author sr;	state Exp;
+branches;
+next	1.41;
+
+1.41
+date	2022.01.27.17.39.48;	author sr;	state Exp;
+branches;
+next	1.40;
+
+1.40
+date	2022.01.27.17.37.38;	author sr;	state Exp;
+branches;
+next	1.39;
+
+1.39
+date	2022.01.27.17.34.23;	author sr;	state Exp;
+branches;
+next	1.38;
+
+1.38
+date	2022.01.27.17.32.52;	author sr;	state Exp;
+branches;
+next	1.37;
+
+1.37
+date	2022.01.27.17.32.25;	author sr;	state Exp;
+branches;
+next	1.36;
+
+1.36
+date	2022.01.27.17.29.12;	author sr;	state Exp;
+branches;
+next	1.35;
+
+1.35
+date	2022.01.27.17.28.48;	author sr;	state Exp;
+branches;
+next	1.34;
+
+1.34
+date	2022.01.27.17.27.52;	author sr;	state Exp;
+branches;
+next	1.33;
+
+1.33
+date	2022.01.27.17.27.23;	author sr;	state Exp;
+branches;
+next	1.32;
+
+1.32
+date	2022.01.27.17.25.52;	author sr;	state Exp;
+branches;
+next	1.31;
+
+1.31
+date	2022.01.27.17.25.26;	author sr;	state Exp;
+branches;
+next	1.30;
+
+1.30
+date	2022.01.27.17.24.01;	author sr;	state Exp;
+branches;
+next	1.29;
+
+1.29
+date	2022.01.27.17.23.50;	author sr;	state Exp;
+branches;
+next	1.28;
+
+1.28
+date	2022.01.27.17.23.33;	author sr;	state Exp;
+branches;
+next	1.27;
+
+1.27
+date	2022.01.27.17.22.43;	author sr;	state Exp;
+branches;
+next	1.26;
+
+1.26
+date	2022.01.27.17.22.28;	author sr;	state Exp;
+branches;
+next	1.25;
+
+1.25
+date	2022.01.27.17.10.46;	author sr;	state Exp;
+branches;
+next	1.24;
+
+1.24
+date	2022.01.27.17.09.15;	author sr;	state Exp;
+branches;
+next	1.23;
+
+1.23
+date	2022.01.27.17.07.00;	author sr;	state Exp;
+branches;
+next	1.22;
+
+1.22
+date	2022.01.27.17.06.47;	author sr;	state Exp;
+branches;
+next	1.21;
+
+1.21
+date	2022.01.27.17.06.03;	author sr;	state Exp;
+branches;
+next	1.20;
+
+1.20
+date	2022.01.27.17.02.47;	author sr;	state Exp;
+branches;
+next	1.19;
+
+1.19
+date	2022.01.27.17.02.11;	author sr;	state Exp;
+branches;
+next	1.18;
+
+1.18
+date	2022.01.27.16.55.04;	author sr;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2022.01.27.16.54.33;	author sr;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2022.01.27.16.54.02;	author sr;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2022.01.27.16.51.14;	author sr;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2022.01.27.16.46.21;	author sr;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2022.01.27.16.45.49;	author sr;	state Exp;
+branches;
+next	;
+
+
+desc
+@@
+
+
+1.94
+log
+@*** empty log message ***
+@
+text
+@-------------------------------------------------------------------------------
+--  ▖▖▄▖▄▖
+--  ▌▌▄▌▛▌
+--  ▚▘▙▖█▌
+--
+--  @@file      v20-Sql.adb
+--  @@copyright See authors list below and v20.copyrights file
+--  @@licence   GPL v3
+--  @@encoding  UTF-8
+-------------------------------------------------------------------------------
+--  @@summary
+--  V20 library SQLite binding
+--
+--  @@description
+--  Highlevel SQLite binding
+--
+--  @@authors
+--  Stéphane Rivière - sr - sriviere@@soweb.io (high level SQLite binding, some low level binding hacks)
+--  Dmitry Kazakov - dk - http://www.dmitry-kazakov.de (low level SQLite binding in sql directory)
+--
+--  @@versions
+--  see .ads
+-------------------------------------------------------------------------------
+
+-- Some usefull SQLite tricks
+
+-- How to do UPSERT
+--  * First pass (record does not exists)
+--
+--  Update on a non existent record
+--  UPDATE System SET Value='0.0' WHERE Parameter='Shema_Version';
+--  Success : 0 record(s) affected
+--
+--  Create ok because Changes() = 0 (no change from the last operation)
+--  INSERT INTO System (Parameter, Value) SELECT 'Shema_Version', '0.0' WHERE (Select Changes() = 0);
+--  Success : 1 record(s) affected
+--
+--  * Second pass (record already exists)
+--
+--  Update an existent record successfull
+--  UPDATE System SET Value='0.1' WHERE Parameter='Shema_Version';
+--  Success : 1 record(s) affected
+--
+--  No create since Changes() = 1 (last operation has change something)
+--  INSERT INTO System (Parameter, Value) SELECT 'Shema_Version', '0.1' WHERE (Select Changes() = 0);
+--  Success : 0 record(s) affected
+
+
+with Ada.IO_Exceptions;
+
+with v20.Log;
+with v20.Tio;
+
+package body v20.Sql is
+
+   --
+   procedure Bind (Parameter : Positive; Value : Integer) is
+   begin
+      SQLite.Bind (Handle_Statement, Parameter, Integer_64 (Value));
+   end Bind;
+
+   procedure Bind (Local_Handle_Statement : Statement; Parameter : Positive; Value : Integer) is
+   begin
+      SQLite.Bind (Local_Handle_Statement, Parameter, Integer_64 (Value));
+   end Bind;
+
+   procedure Bind (Parameter : Positive; Value : VString) is
+   begin
+      SQLite.Bind (Handle_Statement, Parameter, To_String (Value));
+   end Bind;
+
+   procedure Bind (Local_Handle_Statement : Statement;  Parameter : Positive; Value : VString) is
+   begin
+      SQLite.Bind (Local_Handle_Statement, Parameter, To_String (Value));
+   end Bind;
+
+   --
+   function Column_Integer (Position : Positive) return Integer is
+   begin
+      -- Very dirty hack to avoid "error: ambiguous operand in conversion"
+      return Integer'Value (Interfaces.C.int'Image (SQLite.Column (Handle_Statement, Position)));
+   end Column_Integer;
+
+   function Column_Integer (Local_Handle_Statement : Statement; Position : Positive) return Integer is
+   begin
+      -- Very dirty hack to avoid "error: ambiguous operand in conversion"
+      return Integer'Value (Interfaces.C.int'Image (SQLite.Column (Local_Handle_Statement, Position)));
+   end Column_Integer;
+
+   function Column_Text (Position : Positive) return VString is
+   begin
+      return To_VString (SQLite.Column (Handle_Statement, Position));
+   end Column_Text;
+
+   function Column_Text (Local_Handle_Statement : Statement; Position : Positive) return VString is
+   begin
+      return To_VString (SQLite.Column (Local_Handle_Statement, Position));
+   end Column_Text;
+
+   --
+   function Column_Count return Natural is
+   begin
+      return SQLite.Column_Count (Handle_Statement);
+   end Column_Count;
+
+   function Column_Count (Local_Handle_Statement : Statement) return Natural is
+   begin
+      return SQLite.Column_Count (Local_Handle_Statement);
+   end Column_Count;
+
+   --
+   function Column_Exists (Table_Name : VString; Column_Name : VString) return Boolean is
+      Result : Natural := 0;
+      Local_Statement : Statement :=  Sql.Prepare (
+                   "SELECT COUNT(*) AS cntrec FROM pragma_table_info('" &
+                   Table_Name & "') WHERE name='" & Column_Name & "'");
+   begin
+
+      Sql.Exec ("BEGIN TRANSACTION;");
+      Sql.Step (Local_Statement);
+      Result := Sql.Column_Integer (Local_Statement, 1);
+      Sql.Reset (Local_Statement);
+      Sql.Exec ("COMMIT;");
+
+      return (Result = 1);
+
+   end Column_Exists;
+
+   function Column_Exists (Table_Name : String; Column_Name : String) return Boolean is
+   begin
+      return Column_Exists (To_VString (Table_Name), To_VString (Column_Name));
+   end Column_Exists;
+
+   --
+   function Column_Type (Position : Positive) return Natural is
+   begin
+      return To_Integer (Sql.Datatype'Image (SQLite.Column_Type (Handle_Statement, Position)));
+   end Column_Type;
+
+   function Column_Type (Local_Handle_Statement : Statement; Position : Positive) return Natural is
+   begin
+      return To_Integer (Sql.Datatype'Image (SQLite.Column_Type (Local_Handle_Statement, Position)));
+   end Column_Type;
+
+   --
+   procedure Delete (Table_Name : VString ; Where_Condition : VString) is
+      SQL_Request : VString;
+   begin
+      SQL_Request := "DELETE FROM " & Table_Name & " WHERE " & Where_Condition & ";";
+      Log.Dbg ("Delete_From: " & SQL_Request);
+      Sql.Exec (SQL_Request);
+   end Delete;
+
+   --
+   procedure Exec (Command : String) is
+   begin
+      SQLite.Exec (Handle_Database, Command);
+   end Exec;
+   procedure Exec (Command : VString) is
+   begin
+      SQLite.Exec (Handle_Database, To_String (Command));
+   end Exec;
+
+   --
+   function Get_Config (Parameter : VString) return VString is
+      Local_Statement : Statement;
+      Result_Statement : VString := +"";
+   begin
+
+      -- If Database opened, read if table and column exist
+      if not Empty (Database_Full_Name) then
+         if Table_Exists ("Config") then
+            if Column_Exists ("Config", "Parameter") and
+               Column_Exists ("Config", "Value") then
+
+               Local_Statement := Sql.Prepare ("SELECT Value FROM Config WHERE Parameter='" & Parameter & "'");
+               Exec ("BEGIN TRANSACTION;");
+               Step (Local_Statement);
+               Result_Statement := Sql.Column_Text (Local_Statement, 1);
+               Reset (Local_Statement);
+               Exec ("COMMIT;");
+
+            end if;
+         end if;
+      end if;
+
+      return Result_Statement;
+
+   end Get_Config;
+
+   function Get_Config (Parameter : String) return VString is
+   begin
+      return Get_Config (To_VString (Parameter));
+   end Get_Config;
+
+   --
+   function Index_Exists (Table_Name : VString; Index_Name : VString) return Boolean is
+
+      Result : Natural := 0;
+      Local_Statement : Statement :=  Sql.Prepare (
+                   "SELECT COUNT(*) FROM sqlite_master WHERE type='index'" &
+                   " and name='" & Index_Name & "';");
+   begin
+
+      Exec ("BEGIN TRANSACTION;");
+      Step (Local_Statement);
+      Result := Sql.Column_Integer (Local_Statement, 1);
+      Reset (Local_Statement);
+      Exec ("COMMIT;");
+
+      return (Result = 1);
+
+   end Index_Exists;
+
+   procedure Insert (Table_Name : VString; Columns_Values : VString) is
+      Current_Column, Current_Value, Insert_Columns_Names, Insert_Columns_Values,
+      Sql_Request : VString := +"";
+      Counter_Columns : Natural := Field_Count (Columns_Values, CD);
+      Local_Statement : Statement;
+   begin
+
+      -- Read table schema
+      Sql.Exec (+"BEGIN TRANSACTION;");
+      Local_Statement := Sql.Prepare (+"PRAGMA table_info (" & Table_Name & ")");
+      Counter_Columns := Sql.Column_Count (Local_Statement);
+
+      --  Iterate through each column
+      while Sql.Step (Local_Statement) loop
+         -- Check each field in parameter against the current table's column
+         for Index in 1 .. Counter_Columns loop
+            Current_Column := Field_By_Index (Field_By_Index (Columns_Values, Index, CD), 1, ND);
+            -- If field name and column name match
+            if Current_Column = Sql.Column_Text (Local_Statement, 2) then
+               -- Fill Name and Value, according to field type
+               Current_Value := Field_By_Index (Field_By_Index (Columns_Values, Index, CD), 2, ND);
+               Insert_Columns_Names := Insert_Columns_Names & Current_Column & ",";
+               if (Sql.Column_Text (Local_Statement, 3) = "INTEGER") then
+                  Insert_Columns_Values := Insert_Columns_Values & Current_Value & ",";
+               elsif (Sql.Column_Text (Local_Statement, 3) = "TEXT") then
+                  -- Single quotes outside string and, inside string, escape single quote with pair of single quotes
+                  Insert_Columns_Values := Insert_Columns_Values & "'" & Replace_Pattern (Current_Value, +"'", +"''") & "',";
+               end if;
+            end if;
+         end loop;
+      end loop;
+
+      Sql.Reset;
+      Sql.Exec (+"COMMIT;");
+
+      Log.Dbg ("Insert_Columns_Names: " & Insert_Columns_Names);
+      Log.Dbg ("Insert_Columns_Values: " & Insert_Columns_Values);
+
+      -- If at least one Field/Value pair has been processed
+      if (Index (Insert_Columns_Names, ",") > 0) and
+         (Index (Insert_Columns_Values, ",") > 0) then
+
+         -- Trailing comma deletion
+         Insert_Columns_Names := Slice (Insert_Columns_Names, 1, Length (Insert_Columns_Names) - 1);
+         Insert_Columns_Values := Slice (Insert_Columns_Values, 1, Length (Insert_Columns_Values) - 1);
+
+         Sql_Request := "INSERT INTO " & Table_Name & " (" & Insert_Columns_Names & ") VALUES (" & Insert_Columns_Values & ");";
+         Log.Dbg ("Insert_Into: " & Sql_Request);
+
+         Sql.Exec (Sql_Request);
+
+      end if;
+
+   end Insert;
+
+   function Last_Insert_RowID return Integer_64 is
+   begin
+      return SQLite.Last_Insert_Row (Handle_Database);
+   end Last_Insert_RowID ;
+
+   --
+   procedure Open (Database_File_Name : VString) is
+   begin
+      Handle_Database := SQLite.Open (To_String (Database_File_Name));
+   end Open;
+
+   --
+   procedure Prepare (Statement_To_Prepare : VString) is
+   begin
+      Handle_Statement := SQLite.Prepare (Handle_Database, To_String (Statement_To_Prepare));
+   end Prepare;
+
+   function Prepare (Statement_To_Prepare : VString) return SQLite.Statement is
+   begin
+      return SQLite.Prepare (Handle_Database, To_String (Statement_To_Prepare));
+   end Prepare;
+
+   --
+   function Read (Table_Name : VString; Columns : VString; Condition : VString := +"") return VString is
+      Sql_Request, Sql_Result : VString := +"";
+      Counter_Columns : Natural:= Field_Count (Columns, ",");
+      Local_Statement : Statement;
+   begin
+
+      -- Read table schema
+      Sql.Exec (+"BEGIN TRANSACTION;");
+      Sql_Request := +"SELECT " & Columns & " FROM " & Table_Name & " " & Condition & ";";
+      --Log.Dbg ("Sql_Request: " & Sql_Request);
+      Local_Statement := Sql.Prepare (Sql_Request);
+
+      --Log.Dbg ("Sql_Column_Count: " & Integer'Image (Sql.Column_Count (Local_Statement)));
+      --Log.Dbg ("Counter_Columns: " & To_VString (Integer'Image(Counter_Columns)));
+
+      -- Iterate result(s) line(s)
+      while Sql.Step (Local_Statement) loop
+         -- Iterate choosen columns
+         for Index in 1..Counter_Columns loop
+            --Log.Dbg ("Current_Column_Text: " & Sql.Column_Text (Local_Statement, Index));
+            Sql_Result := Sql_Result & Sql.Column_Text (Local_Statement, Index) & CD;
+         end loop;
+         if (Index (Sql_Result, CD) > 0) then
+            -- Delete trailing column delimiter and add row delimiter
+            Sql_Result := Slice (Sql_Result, 1, Length (Sql_Result) - 1) & RD;
+         end if;
+      end loop;
+
+      Sql.Reset;
+      Sql.Exec (+"COMMIT;");
+
+      --Log.Dbg ("Read: " & Sql_Result);
+
+      -- If at least one row has been processed
+      if (Index (Sql_Result, RD) > 0) then
+         -- Delete trailing column delimiter and add row delimiter
+         Sql_Result := Slice (Sql_Result, 1, Length (Sql_Result) - 1);
+      end if;
+
+      return Sql_Result;
+
+   end Read;
+
+   --
+   function Search (Table_Name : VString; Condition : VString) return Boolean is
+   begin
+      return (Length (Read (Table_Name, +"*", Condition)) > 0);
+   end Search;
+
+   --
+   procedure Reset is
+   begin
+     SQLite.Reset (Handle_Statement);
+   end Reset;
+
+   procedure Reset (Local_Handle_Statement : Statement) is
+   begin
+      SQLite.Reset (Local_Handle_Statement);
+   end Reset;
+
+   function Schema_Need_Update (Database_FullName : VString ; Major : Natural; Minor : Natural) return Boolean is
+      Result : Boolean := True;
+      Database_Version : VString := +"";
+      Database_Version_Major, Database_Version_Minor : Natural := 0;
+   begin
+
+      Sql.Schema_Load (Sql.Database_Name, To_String (Database_FullName));
+      Sql.Schema_Load (Sql.Database_Pragma,"journal_mode","WAL");
+      Sql.Schema_Load (Sql.Database_Pragma,"synchronous","FULL");
+      Sql.Schema_Load (Sql.Database_Pragma,"foreign_keys","ON");
+
+      -- Open DB and eventually apply pragmas
+      for I of Sql.Schema loop
+         if I.Command = Database_Name then
+            Database_Full_Name := To_Lower (I.Name) & ".db";
+            Log.Dbg ("Open Database_Name: " &  Database_Full_Name);
+            Open (Database_Full_Name);
+         elsif I.Command = Database_Pragma then
+            Log.Dbg ("Load Database_Pragma: " & I.Name & "=" & I.Attribute);
+            Exec ("PRAGMA " & I.Name & "=" & I.Attribute);
+         else
+            exit;
+         end if;
+      end loop;
+
+      Database_Version := Get_Config ("Schema_Version");
+
+      if not Empty (Database_Version) then
+
+         Database_Version_Major := To_Integer (Field_By_Index (Database_Version, 1, "."));
+         Database_Version_Minor := To_Integer (Field_By_Index (Database_Version, 2, "."));
+
+         -- Database schema validation
+         if Minor >= Database_Version_Minor then
+            if Major >= Database_Version_Major then
+               -- Update schema version in private memory for later
+               -- writing of the current version in Shema_Update
+               Version_Major := Major;
+               Version_Minor := Minor;
+            else
+               Result := False;
+            end if;
+         end if;
+
+      end if;
+
+      -- Preload table 'Config'
+      Sql.Schema_Load (Sql.Table_Name,"Config");
+      Sql.Schema_Load (Sql.Column_Name,"Parameter","TEXT");
+      Sql.Schema_Load (Sql.Column_Name,"Value","TEXT");
+
+      return Result;
+
+   end Schema_Need_Update;
+
+   function Schema_Need_Update (Database_FullName : String ; Major : Natural; Minor : Natural) return Boolean is
+   begin
+      return Schema_Need_Update (To_VString (Database_FullName), Major, Minor);
+   end Schema_Need_Update;
+
+   procedure Schema_Update is
+
+      Current_Table_Name, Current_Table_Constraint,
+      Current_Column_Name, Current_Column_Type, Current_Column_Constraint,
+      Current_Index_Name, Current_Index_Key, Current_Index_Constraint : VString := +"";
+
+      Current_Table_Not_Exists : Boolean := False;
+      Columns_Counter : Natural := 0;
+      Index_Counter : Natural := 0;
+
+      procedure Clear_Column is
+      begin
+         Current_Column_Name := +"";
+         Current_Column_Type := +"";
+         Current_Column_Constraint := +"";
+      end Clear_Column;
+
+      procedure Create_Column is
+      begin
+         -- Test if non empty column name to handle table break
+         -- when previous table column already exists
+         if not Empty (Current_Column_Name) then
+            if Column_Exists (Current_Table_Name, Current_Column_Name) then
+               Log.Dbg ("Existing Table: " & Current_Table_Name &
+                          " - Existing Column: " & Current_Column_Name &
+                          " " & Current_Column_Type &
+                          " " & Current_Column_Constraint);
+            else
+               Log.Dbg ("Existing Table: " & Current_Table_Name &
+                          " - Create Column: " & Current_Column_Name &
+                          " " & Current_Column_Type &
+                          " " & Current_Column_Constraint);
+               Exec ("ALTER TABLE " & Current_Table_Name  &
+                       " ADD COLUMN " & Current_Column_Name &
+                       " " & Current_Column_Type &
+                       " " & Current_Column_Constraint & ";");
+            end if;
+            Clear_Column;
+         end if;
+      end Create_Column;
+
+      procedure Clear_Index is
+      begin
+         Current_Index_Name := +"";
+         Current_Index_Key := +"";
+         Current_Index_Constraint := +"";
+      end Clear_Index;
+
+      procedure Create_Index is
+      begin
+         -- Test if non empty column name to handle table break
+         -- when previous table index already exists
+         if not Empty (Current_Index_Name) then
+            if Index_Exists (Current_Table_Name, Current_Index_Name) then
+               Log.Dbg ("Existing Table: " & Current_Table_Name &
+                          " - Existing Index: " & Current_Index_Name &
+                          " " & Current_Index_Key &
+                          " " & Current_Index_Constraint);
+            else
+               Log.Dbg ("Existing Table: " & Current_Table_Name &
+                          " - Creating Index: " & Current_Index_Name &
+                          " " & Current_Index_Key &
+                          " " & Current_Index_Constraint);
+
+               Exec ("CREATE " & Current_Index_Constraint &
+                     " INDEX " & Current_Index_Name  &
+                        " ON " & Current_Table_Name &
+                          " (" & Current_Index_Key & ");");
+            end if;
+            Clear_Index;
+         end if;
+      end Create_Index;
+
+      procedure Create_Table is
+      begin
+         -- Wait first column read if table has to be created as creating a
+         -- table without on column is not supported in SQLite nor SQL standard
+         if Columns_Counter = 1 then
+            if Current_Table_Not_Exists then
+               Log.Dbg ("Create Table: " & Current_Table_Name &
+                        " - Create Column: " & Current_Column_Name &
+                                         " " & Current_Column_Type &
+                                         " " & Current_Column_Constraint &
+                                         " " & Current_Table_Constraint);
+
+               Exec (+"CREATE TABLE " & Current_Table_Name &
+                                 " (" & Current_Column_Name &
+                                  " " & Current_Column_Type &
+                                  " " & Current_Column_Constraint &
+                                  " " & Current_Table_Constraint & ")");
+
+               Current_Table_Not_Exists := False;
+               Current_Table_Constraint := +"";
+               Clear_Column;
+            else
+               Create_Column;
+            end if;
+         end if;
+      end Create_Table;
+
+      procedure Finalize_Loop is
+      begin
+         Create_Table;
+         if Columns_Counter >= 2 then
+            Create_Column;
+         end if;
+         Create_Index;
+      end Finalize_Loop;
+
+   begin
+
+      for I of Sql.Schema loop
+         --Schema_Command_List.Put (I.Command);
+         --Tio.Put_Line (" - " & I.Name & " - " & I.Attribute);
+
+         if    I.Command = Null_Command then
+            null;
+
+         --  elsif I.Command = Database_Name then
+         --     Database_Full_Name := To_Lower (I.Name) & ".db";
+         --     Log.Dbg ("Open Database_Name: " &  Database_Full_Name);
+         --     Open (Database_Full_Name);
+         --
+         --  elsif I.Command = Database_Pragma then
+         --     Log.Dbg ("Load Database_Pragma: " & I.Name & "=" & I.Attribute);
+         --     Exec ("PRAGMA " & I.Name & "=" & I.Attribute);
+
+         elsif I.Command = Table_Name then
+
+            -- First column must have been read to eventually create the table
+            Create_Table;
+
+            -- Process eventually a remaining column
+            if Columns_Counter >= 2 then
+               Create_Column;
+            end if;
+
+            -- Last table command must have been read to eventually create the last index
+            Create_Index;
+
+            Current_Table_Name := I.Name;
+            Log.Dbg ("Load Table_Name: " & Current_Table_Name);
+
+            Current_Table_Not_Exists := not Table_Exists (I.Name);
+            Log.Dbg ("Table_Name exists: " & To_VString (not Current_Table_Not_Exists));
+
+            Columns_Counter := 0;
+
+         elsif I.Command = Table_Constraint then
+
+            Current_Table_Constraint := I.Attribute;
+            Log.Dbg ("Load Table_Constraint: " & Current_Table_Constraint);
+
+         elsif I.Command = Column_Name then
+
+            -- First column must have been read to eventually create the table
+            Create_Table;
+
+            Current_Column_Name := I.Name;
+            Current_Column_Type := I.Attribute;
+            Log.Dbg ("Load Column_Name: " & Current_Column_Name & " " & Current_Column_Type) ;
+
+            Columns_Counter := Columns_Counter + 1;
+
+            -- Create additional column only if table is already created with
+            -- at least one existing column
+            if Columns_Counter >= 2 then
+               Create_Column;
+            end if;
+
+         elsif I.Command = Column_Constraint then
+
+            Current_Column_Constraint := I.Attribute;
+            Log.Dbg ("Load Column_Constraint: " & Current_Column_Constraint);
+
+         elsif I.Command = Index_Name then
+
+            -- Previous table command could be an index creation
+            Create_Index;
+
+            Current_Index_Name := I.Name;
+            Current_Index_Key := I.Attribute;
+            Log.Dbg ("Load Index_Name: " & Current_Index_Name & " " & Current_Index_Key);
+
+            Index_Counter := Index_Counter + 1;
+
+         elsif I.Command = Index_Constraint then
+
+            Current_Index_Constraint := I.Attribute;
+            Log.Dbg ("Load Index_Constraint: " & Current_Index_Constraint);
+
+         end if;
+
+         -- Finalize
+         if I = Schema.Last_Element then
+            Finalize_Loop;
+
+            Set_Config (+"Schema_Version", To_VString (Version_Major) & "." & To_VString (Version_Minor));
+
+         end if;
+
+      end loop;
+
+      -- Display Schema list for tests
+      --  for I of Sql.Schema loop
+      --     Schema_Command_List.Put (I.Command);
+      --     Tio.Put_Line (" - " & I.Name & " - " & I.Attribute);
+      --  end loop;
+
+   end Schema_Update;
+
+   procedure Set_Config (Parameter : VString ; Value : VString) is
+   begin
+
+      -- If Database opened, read if table and column exist
+      if not Empty (Database_Full_Name) then
+         if Table_Exists ("Config") then
+            if Column_Exists ("Config", "Parameter") and
+               Column_Exists ("Config", "Value") then
+
+               Exec ("UPDATE Config SET Value='" &
+                       Value & "' WHERE Parameter='" & Parameter & "'");
+               Exec ("INSERT INTO Config (Parameter, Value) SELECT '" &
+                       Parameter & "', '" & Value & "' WHERE (Select Changes() = 0)");
+            end if;
+         end if;
+      end if;
+
+   end Set_Config;
+
+   procedure Set_Config (Parameter : String ; Value : String) is
+   begin
+      Set_Config (To_VString (Parameter), To_VString (Value));
+   end Set_Config;
+
+   procedure Schema_Load (Command: in Schema_Command  := Null_Command ; Name : in String := "" ; Attribute : in String := "") is
+   begin
+      Schema.Append ((Command, To_VString (Name), To_VString (Attribute)));
+   end Schema_Load;
+
+   --
+   procedure Step is
+   begin
+     SQLite.Step (Handle_Statement);
+   end Step;
+
+   procedure Step (Local_Handle_Statement : Statement) is
+   begin
+      SQLite.Step (Local_Handle_Statement);
+   end Step;
+
+   function Step return Boolean is
+   begin
+     return SQLite.Step (Handle_Statement);
+   end Step;
+
+   function Step (Local_Handle_Statement : Statement) return Boolean is
+   begin
+      return SQLite.Step (Local_Handle_Statement);
+   end Step;
+
+   --
+   function Table_Exists (Table_Name : String) return Boolean is
+   begin
+      return SQLite.Table_Exists (Handle_Database, Table_Name);
+   end Table_Exists;
+
+   function Table_Exists (Table_Name : VString) return Boolean is
+   begin
+      return SQLite.Table_Exists (Handle_Database, To_String(Table_Name));
+   end Table_Exists;
+
+   procedure Update (Table_Name : VString; Columns_Values : VString; Where_Condition : VString) is
+      Current_Column, Current_Value, Update_Columns_Values,
+      Sql_Request : VString := +"";
+      Counter_Columns : Natural := Field_Count (Columns_Values, CD);
+      Local_Statement : Statement;
+   begin
+
+      -- Read table schema
+      Sql.Exec (+"BEGIN TRANSACTION;");
+      Local_Statement := Sql.Prepare (+"PRAGMA table_info (" & Table_Name & ")");
+      Counter_Columns := Sql.Column_Count (Local_Statement);
+
+      --  Iterate through each column
+      while Sql.Step (Local_Statement) loop
+         -- Check each field in parameter against the current table's column
+         for Index in 1 .. Counter_Columns loop
+            Current_Column := Field_By_Index (Field_By_Index (Columns_Values, Index, CD), 1, ND);
+            -- If field name and column name match
+            if Current_Column = Sql.Column_Text (Local_Statement, 2) then
+               -- Fill Name and Value, according to field type
+               Current_Value := Field_By_Index (Field_By_Index (Columns_Values, Index, CD), 2, ND);
+               Update_Columns_Values := Update_Columns_Values & Current_Column & " = ";
+
+               if (Sql.Column_Text (Local_Statement, 3) = "INTEGER") then
+                  Update_Columns_Values := Update_Columns_Values & Current_Value & ",";
+               elsif (Sql.Column_Text (Local_Statement, 3) = "TEXT") then
+                  -- Single quotes outside string and, inside string, escape single quote with pair of single quotes
+                  Update_Columns_Values := Update_Columns_Values & "'" & Replace_Pattern (Current_Value, +"'", +"''") & "',";
+               end if;
+            end if;
+         end loop;
+      end loop;
+
+      Sql.Reset;
+      Sql.Exec (+"COMMIT;");
+
+      Log.Dbg ("Update_Columns_Values: " & Update_Columns_Values);
+
+      -- If at least one Field/Value pair has been processed
+      if (Index (Update_Columns_Values, ",") > 0) then
+
+         -- Trailing comma deletion
+         Update_Columns_Values := Slice (Update_Columns_Values, 1, Length (Update_Columns_Values) - 1);
+
+         Sql_Request := "UPDATE " & Table_Name & " SET " & Update_Columns_Values & " WHERE " & Where_Condition & ";";
+         Log.Dbg ("Update: " & Sql_Request);
+
+         Sql.Exec (Sql_Request);
+
+      end if;
+
+   end Update;
+
+   --
+   function Version return VString is
+   begin
+      return To_VString (SQLite.Version);
+   end Version;
+
+------------------------------------------------------------------------------
+end v20.Sql;
+------------------------------------------------------------------------------
+@
+
+
+1.93
+log
+@*** empty log message ***
+@
+text
+@d337 1
+a337 1
+   function Search (Table_Name : VString; Columns : VString; Condition : VString := +"") return Boolean is
+d339 1
+a339 1
+      return (Length (Read (Table_Name, Columns, Condition)) > 0);
+@
+
+
+1.92
+log
+@*** empty log message ***
+@
+text
+@d339 1
+a339 1
+      return (Length (Read (Table_Name, Columns, Condition)) > 0)
+@
+
+
+1.91
+log
+@*** empty log message ***
+@
+text
+@d339 1
+a339 1
+      return (Length (Read (Table_Name, Columns, Condition) > 0))
+@
+
+
+1.90
+log
+@*** empty log message ***
+@
+text
+@d337 6
+@
+
+
+1.89
+log
+@*** empty log message ***
+@
+text
+@d302 1
+a302 1
+      Log.Dbg ("Sql_Request: " & Sql_Request);
+@
+
+
+1.88
+log
+@*** empty log message ***
+@
+text
+@a293 4
+
+     -- Current_Column, Current_Value, Update_Columns_Values,
+     -- Sql_Request : VString := +"";
+
+a294 1
+
+a295 1
+
+a296 1
+
+a314 1
+
+a318 1
+
+@
+
+
+1.87
+log
+@*** empty log message ***
+@
+text
+@d319 1
+a319 1
+            Log.Dbg ("Current_Column_Text: " & Sql.Column_Text (Local_Statement, Index));
+@
+
+
+1.86
+log
+@*** empty log message ***
+@
+text
+@d300 1
+a300 1
+      Counter_Columns : Natural:= Field_Count (Columns, +",");
+d385 2
+a386 2
+         Database_Version_Major := To_Integer (Field_By_Index (Database_Version, 1, +"."));
+         Database_Version_Minor := To_Integer (Field_By_Index (Database_Version, 2, +"."));
+@
+
+
+1.85
+log
+@*** empty log message ***
+@
+text
+@a415 29
+   procedure Set_Config (Parameter : VString ; Value : VString) is
+   begin
+
+      -- If Database opened, read if table and column exist
+      if not Empty (Database_Full_Name) then
+         if Table_Exists ("Config") then
+            if Column_Exists ("Config", "Parameter") and
+               Column_Exists ("Config", "Value") then
+
+               Exec ("UPDATE Config SET Value='" &
+                       Value & "' WHERE Parameter='" & Parameter & "'");
+               Exec ("INSERT INTO Config (Parameter, Value) SELECT '" &
+                       Parameter & "', '" & Value & "' WHERE (Select Changes() = 0)");
+            end if;
+         end if;
+      end if;
+
+   end Set_Config;
+
+   procedure Set_Config (Parameter : String ; Value : String) is
+   begin
+      Set_Config (To_VString (Parameter), To_VString (Value));
+   end Set_Config;
+
+   procedure Schema_Load (Command: in Schema_Command  := Null_Command ; Name : in String := "" ; Attribute : in String := "") is
+   begin
+      Schema.Append ((Command, To_VString (Name), To_VString (Attribute)));
+   end Schema_Load;
+
+d626 29
+@
+
+
+1.84
+log
+@*** empty log message ***
+@
+text
+@a355 24
+   procedure Set_Config (Parameter : VString ; Value : VString) is
+   begin
+
+      -- If Database opened, read if table and column exist
+      if not Empty (Database_Full_Name) then
+         if Table_Exists ("Config") then
+            if Column_Exists ("Config", "Parameter") and
+               Column_Exists ("Config", "Value") then
+
+               Exec ("UPDATE Config SET Value='" &
+                       Value & "' WHERE Parameter='" & Parameter & "'");
+               Exec ("INSERT INTO Config (Parameter, Value) SELECT '" &
+                       Parameter & "', '" & Value & "' WHERE (Select Changes() = 0)");
+            end if;
+         end if;
+      end if;
+
+   end Set_Config;
+
+   procedure Set_Config (Parameter : String ; Value : String) is
+   begin
+      Set_Config (To_VString (Parameter), To_VString (Value));
+   end Set_Config;
+
+d415 24
+@
+
+
+1.83
+log
+@*** empty log message ***
+@
+text
+@d312 2
+a313 2
+      Log.Dbg ("Sql_Column_Count: " & Integer'Image (Sql.Column_Count (Local_Statement)));
+      Log.Dbg ("Counter_Columns: " & To_VString (Integer'Image(Counter_Columns)));
+d333 1
+a333 1
+      Log.Dbg ("Read: " & Sql_Result);
+@
+
+
+1.82
+log
+@*** empty log message ***
+@
+text
+@a318 6
+            --Current_Column := Field_By_Index (Columns, Index_Read, +",");
+            -- Iterate all table columns
+            --for Index_Sql_Column in 1..Sql_Counter_Columns loop
+               -- If field name and column name match
+              -- if Current_Column = Sql.Column_Text (Local_Statement, 2) then
+
+a320 3
+
+            -- Tio.Put (Sql.Column_Text (Index) & " (T" & Trim_Left (To_VString (Sql.Datatype'Image (Sql.Column_Type (Index)))) & ") ");
+            -- Tio.Put (Sql.Column_Text (Index) & " (T" & Trim_Left (To_VString (Sql.Column_Type (Index))) & ") ");
+d336 4
+a339 4
+      -- if (Index (Sql_Result, RD) > 0) then
+      --    -- Delete trailing column delimiter and add row delimiter
+      --    Sql_Result := Slice (Sql_Result, 1, Length (Sql_Result) - 1);
+      -- end if;
+@
+
+
+1.81
+log
+@*** empty log message ***
+@
+text
+@d311 1
+a311 1
+      --Sql_Counter_Columns := Sql.Column_Count (Local_Statement);
+a312 1
+      --Columns := Sql.Column_Count;
+d316 1
+a316 1
+      while Sql.Step loop
+@
+
+
+1.80
+log
+@*** empty log message ***
+@
+text
+@d312 1
+a312 1
+      Log.Dbg ("Sql_Column_Count: " & Sql.Column_Count (Local_Statement));
+@
+
+
+1.79
+log
+@*** empty log message ***
+@
+text
+@d312 1
+a312 1
+
+@
+
+
+1.78
+log
+@*** empty log message ***
+@
+text
+@d326 1
+a326 1
+            Log.Dbg ("Current_Column_Text: " & Sql.Column_Text (Local_Statement, Index);
+@
+
+
+1.77
+log
+@*** empty log message ***
+@
+text
+@d298 1
+a298 1
+      Sql_Result : VString := +"";
+d308 3
+a310 1
+      Local_Statement := Sql.Prepare (+"SELECT " & Columns & " FROM " & Table_Name & " " & Condition & ";");
+d314 1
+a314 1
+      Tio.Put_Line ("Counter_Columns: " & To_VString (Integer'Image(Counter_Columns)));
+d326 1
+@
+
+
+1.76
+log
+@*** empty log message ***
+@
+text
+@d317 1
+a317 1
+         for Index_Read in 1..Counter_Columns loop
+@
+
+
+1.75
+log
+@*** empty log message ***
+@
+text
+@d318 1
+a318 1
+            Current_Column := Field_By_Index (Columns, Index_Read, +",");
+d324 1
+a324 1
+            Sql_Result := Sql_Result & Sql.Column_Text (Index) & CD;
+@
+
+
+1.74
+log
+@*** empty log message ***
+@
+text
+@a305 5
+      -- Add a trailing comma if one column only
+      if (Index (Columns, +",") = 0) then
+         Columns := Columns & ",");
+      end if;
+
+@
+
+
+1.73
+log
+@*** empty log message ***
+@
+text
+@d155 8
+a162 1
+   function Read (Table_Name : VString; Columns : VString; Condition : VString := +"") return VString is
+d164 2
+a165 6
+     -- Current_Column, Current_Value, Update_Columns_Values,
+     -- Sql_Request : VString := +"";
+
+      Sql_Result : VString := +"";
+
+      Counter_Columns : Natural; -- := Field_Count (Columns_Values, CD);
+d167 1
+a167 1
+
+d170 5
+a174 4
+      -- Read table schema
+      Sql.Exec (+"BEGIN TRANSACTION;");
+      Local_Statement := Sql.Prepare (+"SELECT " & Columns & " FROM " & Table_Name & " " & Condition & ";");
+      Counter_Columns := Sql.Column_Count (Local_Statement);
+d176 6
+a181 2
+      --Columns := Sql.Column_Count;
+      --Tio.Put_Line ("Column count: " & To_VString (Integer'Image(Columns)));
+d183 1
+a183 14
+      -- Iterate result(s) line(s)
+      while Sql.Step loop
+         --Counter := Counter + 1;
+         --Tio.Put ("Row " & To_VString (Integer'Image(Counter)) & " : " );
+         for Index in 1..Counter_Columns loop
+            Sql_Result := Sql_Result & Sql.Column_Text (Index) & CD;
+
+            -- Tio.Put (Sql.Column_Text (Index) & " (T" & Trim_Left (To_VString (Sql.Datatype'Image (Sql.Column_Type (Index)))) & ") ");
+            -- Tio.Put (Sql.Column_Text (Index) & " (T" & Trim_Left (To_VString (Sql.Column_Type (Index))) & ") ");
+         end loop;
+
+         if (Index (Sql_Result, CD) > 0) then
+            -- Delete trailing column delimiter and add row delimiter
+            Sql_Result := Slice (Sql_Result, 1, Length (Sql_Result) - 1) & RD;
+d185 1
+d187 1
+a187 1
+      end loop;
+d189 1
+a189 2
+      Sql.Reset;
+      Sql.Exec (+"COMMIT;");
+d191 1
+a191 14
+      Log.Dbg ("Read: " & Sql_Result);
+
+      -- If at least one row has been processed
+      -- if (Index (Sql_Result, RD) > 0) then
+      --    -- Delete trailing column delimiter and add row delimiter
+      --    Sql_Result := Slice (Sql_Result, 1, Length (Sql_Result) - 1);
+      -- end if;
+
+      return Sql_Result;
+
+   end Read;
+
+   --
+   procedure Exec (Command : String) is
+d193 2
+a194 6
+      SQLite.Exec (Handle_Database, Command);
+   end Exec;
+   procedure Exec (Command : VString) is
+   begin
+      SQLite.Exec (Handle_Database, To_String (Command));
+   end Exec;
+d293 6
+a298 4
+   procedure Reset is
+   begin
+     SQLite.Reset (Handle_Statement);
+   end Reset;
+d300 1
+a300 4
+   procedure Reset (Local_Handle_Statement : Statement) is
+   begin
+      SQLite.Reset (Local_Handle_Statement);
+   end Reset;
+a301 2
+   --
+   function Get_Config (Parameter : VString) return VString is
+d303 1
+a303 1
+      Result_Statement : VString := +"";
+d306 24
+a329 5
+      -- If Database opened, read if table and column exist
+      if not Empty (Database_Full_Name) then
+         if Table_Exists ("Config") then
+            if Column_Exists ("Config", "Parameter") and
+               Column_Exists ("Config", "Value") then
+d331 3
+a333 6
+               Local_Statement := Sql.Prepare ("SELECT Value FROM Config WHERE Parameter='" & Parameter & "'");
+               Exec ("BEGIN TRANSACTION;");
+               Step (Local_Statement);
+               Result_Statement := Sql.Column_Text (Local_Statement, 1);
+               Reset (Local_Statement);
+               Exec ("COMMIT;");
+d335 3
+a337 1
+            end if;
+a338 1
+      end if;
+d340 16
+a355 1
+      return Result_Statement;
+d357 5
+a361 1
+   end Get_Config;
+d363 1
+a363 1
+   function Get_Config (Parameter : String) return VString is
+d365 2
+a366 2
+      return Get_Config (To_VString (Parameter));
+   end Get_Config;
+@
+
+
+1.72
+log
+@*** empty log message ***
+@
+text
+@d157 2
+a158 2
+      Current_Column, Current_Value, Update_Columns_Values,
+      Sql_Request : VString := +"";
+d196 1
+a196 1
+      Log.Dbg ("Update_Columns_Values: " & Update_Columns_Values);
+@
+
+
+1.71
+log
+@*** empty log message ***
+@
+text
+@d155 1
+a155 1
+   function Select (Table_Name : VString; Columns : VString; Condition : VString := +"") return VString is
+d164 1
+d167 3
+a169 3
+         -- Read table schema
+         Sql.Exec (+"BEGIN TRANSACTION;");
+         Local_Statement := Sql.Prepare (+"SELECT " & Columns & " FROM " & Table_Name & " " & Condition & ";");
+d176 1
+a176 1
+         while Sql.Step loop
+d180 1
+a180 1
+               Sql_Result := Sql_Result & Sql.Column_Text (Index) & "~";
+d186 4
+a189 2
+      end loop;
+
+a190 20
+
+      --  Iterate through each row results
+      while Sql.Step (Local_Statement) loop
+         -- Check each field in parameter against the current table's column
+         for Index in 1 .. Counter_Columns loop
+            Current_Column := Field_By_Index (Field_By_Index (Columns_Values, Index, CD), 1, ND);
+            -- If field name and column name match
+            if Current_Column = Sql.Column_Text (Local_Statement, 2) then
+               -- Fill Name and Value, according to field type
+               Current_Value := Field_By_Index (Field_By_Index (Columns_Values, Index, CD), 2, ND);
+               Update_Columns_Values := Update_Columns_Values & Current_Column & " = ";
+
+               if (Sql.Column_Text (Local_Statement, 3) = "INTEGER") then
+                  Update_Columns_Values := Update_Columns_Values & Current_Value & ",";
+               elsif (Sql.Column_Text (Local_Statement, 3) = "TEXT") then
+                  -- Single quotes outside string and, inside string, escape single quote with pair of single quotes
+                  Update_Columns_Values := Update_Columns_Values & "'" & Replace_Pattern (Current_Value, +"'", +"''") & "',";
+               end if;
+            end if;
+         end loop;
+d198 5
+a202 12
+      -- If at least one Field/Value pair has been processed
+      if (Index (Update_Columns_Values, ",") > 0) then
+
+         -- Trailing comma deletion
+         Update_Columns_Values := Slice (Update_Columns_Values, 1, Length (Update_Columns_Values) - 1);
+
+         Sql_Request := "UPDATE " & Table_Name & " SET " & Update_Columns_Values & " WHERE " & Where_Condition & ";";
+         Log.Dbg ("Update: " & Sql_Request);
+
+         Sql.Exec (Sql_Request);
+
+      end if;
+d204 1
+a204 1
+      return +"";
+d206 1
+a206 1
+   end Select;
+@
+
+
+1.70
+log
+@*** empty log message ***
+@
+text
+@d168 1
+a168 1
+      Local_Statement := Sql.Prepare (+"SELECT " & Columns & " FROM " & Table_Name & " " & Condition & ";");
+d230 1
+a230 1
+   end Update;
+@
+
+
+1.69
+log
+@*** empty log message ***
+@
+text
+@d169 1
+a169 1
+      Columns := Sql.Column_Count (Local_Statement);
+@
+
+
+1.68
+log
+@*** empty log message ***
+@
+text
+@d162 1
+a162 1
+      Columns : Natural; -- := Field_Count (Columns_Values, CD);
+d178 1
+a178 1
+         for Index in 1..Columns loop
+@
+
+
+1.67
+log
+@*** empty log message ***
+@
+text
+@d162 1
+a162 1
+      Counter_Columns : Natural := Field_Count (Columns_Values, CD);
+d169 1
+a169 1
+      Counter_Columns := Sql.Column_Count (Local_Statement);
+@
+
+
+1.66
+log
+@*** empty log message ***
+@
+text
+@d228 2
+@
+
+
+1.65
+log
+@*** empty log message ***
+@
+text
+@d155 76
+@
+
+
+1.64
+log
+@*** empty log message ***
+@
+text
+@d152 1
+a152 1
+   End Delete;
+@
+
+
+1.63
+log
+@*** empty log message ***
+@
+text
+@a193 1
+      Log.Dbg ("Column count: " & To_VString (Integer'Image(Counter_Columns)));
+a645 1
+      Log.Dbg ("Column count: " & To_VString (Integer'Image(Counter_Columns)));
+@
+
+
+1.62
+log
+@*** empty log message ***
+@
+text
+@a117 9
+   --     --  Sql.Exec (+"BEGIN TRANSACTION;");
+   --     --  Sql.Prepare ("SELECT " &  Column_Name & " FROM " & Table_Name);
+   --     --  Sql.Reset;
+   --     --  Sql.Exec (+"COMMIT;");
+   --     Sql.Exec ("SELECT " & Column_Name & " FROM " & Table_Name);
+   --     return True;
+   --  exception
+   --     when Error : Ada.IO_Exceptions.End_Error =>
+   --        return False;
+a134 1
+   --function Column_Type (Position : Positive) return Datatype is
+a137 1
+      --return SQLite.Column_Type (Handle_Statement, Position);
+a139 1
+   --function Column_Type (Local_Handle_Statement : Statement; Position : Positive) return Datatype is
+a142 1
+      --return SQLite.Column_Type (Local_Handle_Statement, Position);
+d144 9
+@
+
+
+1.61
+log
+@*** empty log message ***
+@
+text
+@d189 1
+a189 1
+      Insert_Request : VString := +"";
+d234 2
+a235 2
+         Insert_Request := "INSERT INTO " & Table_Name & " (" & Insert_Columns_Names & ") VALUES (" & Insert_Columns_Values & ");";
+         Log.Dbg ("Insert_Into: " & Insert_Request);
+d237 1
+a237 1
+         Sql.Exec (Insert_Request);
+d639 54
+@
+
+
+1.60
+log
+@*** empty log message ***
+@
+text
+@d187 1
+a187 1
+   function Insert (Table_Name : VString; Columns_Values : VString) return Natural is
+@
+
+
+1.59
+log
+@*** empty log message ***
+@
+text
+@a186 3
+
+
+
+a187 8
+
+      --  ND : constant VString := +"~"; -- Name/value delimiter
+      --  CD : constant VString := +"^"; -- Column delimiter
+
+      --  Result := Sql.Insert (+"Cluster", +"Number~1234" & "^" &
+      --                                     "Domain~genesix.org" & "^" &
+      --                                     "Email~postmaster@@genesix.org");
+
+a189 3
+
+      Insert_RowID : Natural := 0;
+
+a191 18
+
+      -- If existent, retrieve the column's value to store
+      --  function Column_Value (Column_Name : VString) return VString is
+      --     Value : VString := +"";
+      --  begin
+      --     if Fied_Search (Column_Name & ND) then
+      --        for Index in 1 .. Counter_Values loop
+      --           Current_Column_Value := Field_By_Name (Columns_Values, Index, FD)
+      --           if Column_Name = Field_By_Name (Current_Column_Value, 1, ND) then
+      --              Value := Field_By_Name (Current_Column_Value, 2, ND)
+      --              exit;
+      --           end if;
+      --        end loop;
+      --     end if;
+      --     return Value;
+      --  end Column_Value;
+      --
+
+a195 1
+
+d200 1
+a201 1
+
+d205 1
+a205 1
+            -- If field name and column name matchs
+a217 1
+
+a237 1
+         Insert_RowID := Integer (Last_Insert_RowID);
+a240 4
+      Log.Dbg ("Insert_RowID: " & Trim_Left (To_VString (Insert_RowID)));
+
+      return Insert_RowID;
+
+a241 3
+
+
+
+@
+
+
+1.58
+log
+@*** empty log message ***
+@
+text
+@d202 1
+a202 1
+      Insert_RowID : Integer_64 := 0;
+d272 1
+a272 1
+         Insert_RowID := Last_Insert_RowID;
+@
+
+
+1.57
+log
+@*** empty log message ***
+@
+text
+@d202 1
+a202 1
+      Insert_RowID : Natural := 0;
+@
+
+
+1.56
+log
+@*** empty log message ***
+@
+text
+@d202 2
+d271 2
+d274 1
+d276 1
+d278 1
+a278 5
+
+
+      end if;
+
+      return 0;
+@
+
+
+1.55
+log
+@*** empty log message ***
+@
+text
+@d259 2
+a260 2
+      if (Index (Insert_Columns_Names, +",") > 0) and
+         (Index (Insert_Columns_Values, +",") > 0) then
+@
+
+
+1.54
+log
+@*** empty log message ***
+@
+text
+@d245 1
+a245 1
+                  Insert_Columns_Values := Insert_Columns_Values & "'" & Replace_Pattern (Current_Value), +"'", +"''") & "',";
+@
+
+
+1.53
+log
+@*** empty log message ***
+@
+text
+@d199 3
+a201 1
+      Current_Column, Current_Value, Insert_Field, Insert_Value : VString := +"";
+d240 1
+a240 1
+               Insert_Field := Insert_Field & Current_Column & ",";
+d242 1
+a242 1
+                  Insert_Value := Insert_Value & Current_Value & ",";
+d244 2
+a245 1
+                  Insert_Value := Insert_Value & "'" & Current_Value & "',";
+d255 20
+a274 2
+      Log.Dbg ("Insert_Field: " & Insert_Field);
+      Log.Dbg ("Insert_Value: " & Insert_Value);
+@
+
+
+1.52
+log
+@*** empty log message ***
+@
+text
+@d199 2
+a201 9
+
+      Field_Name, Field_Default, Current_Row_Value, Field_Type, Insert_Request : VString;
+
+      Insert_Field, Insert_Value : VString := +"";
+
+
+      Counter_Columns : Natural := Field_Count (Columns_Values, CD);
+      Current_Column, Current_Value : VString;
+
+@
+
+
+1.51
+log
+@*** empty log message ***
+@
+text
+@d193 1
+a193 1
+      --  FD : constant VString := +"^"; -- Field delimiter
+d203 1
+a203 1
+      Insert_Field, Insert_Value, Current_Type : VString := +"";
+@
+
+
+1.50
+log
+@*** empty log message ***
+@
+text
+@d192 2
+a193 1
+   use v20.Sql;
+d195 3
+a197 2
+      ND : constant VString := +"~"; -- Name/value delimiter
+      FD : constant VString := +"^"; -- Field delimiter
+a206 1
+
+a208 1
+      Value_Found : Boolean;
+a228 28
+      --     -- Read table schema
+      --  Tio.Line;
+      --  Tio.Put_Line ("Read test_table schema:");
+      --
+      --  Sql.Exec (+"BEGIN TRANSACTION;");
+      --
+      --  Sql.Prepare (+"PRAGMA table_info (test_table)");
+      --  Columns := Sql.Column_Count;
+      --  Tio.Put_Line ("Column count: " & To_VString (Integer'Image(Columns)));
+      --
+      --  -- Iterate result(s) line(s)
+      --  Tio.Put_Line ("         cid    name    type  notnull dfltval  pkey ");
+      --
+      --  while Sql.Step loop
+      --     Counter := Counter + 1;
+      --     Tio.Put ("Row " & To_VString (Integer'Image(Counter)) & " : " );
+      --     for Index in 1..Columns loop
+      --        Tio.Put (Sql.Column_Text (Index));
+      --        Tio.Put (TAB);
+      --     end loop;
+      --     Tio.Line;
+      --  end loop;
+      --
+
+
+
+
+
+d238 1
+a238 11
+         --Counter_Columns := Counter_Columns + 1;
+         --Current_Type := +"";
+
+
+   --  ND : constant VString := +"~"; -- Name/value delimiter
+   --  CD : constant VString := +"^"; -- Column delimiter
+
+   --  Result := Sql.Insert (+"Cluster", +"Number~1234" & "^" &
+   --                                     "Domain~genesix.org" & "^" &
+   --                                     "Email~postmaster@@genesix.org");
+
+a239 1
+
+d241 1
+a241 4
+            --Log.Dbg ("Current_Column: " & Current_Column);
+            --Log.Dbg ("Current_Column in Row: " & Sql.Column_Text (Local_Statement, 2));
+
+            -- If Column name matchs
+d243 1
+a243 1
+
+a244 3
+               --if Sql.Column_Text (Local_Statement, 3) = +"TEXT" then
+               --Current_Type := Trim_Left (To_VString (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, Index))));
+
+a245 4
+
+Tio.Put_Line (Sql.Column_Text (Local_Statement, 3));
+
+
+a250 1
+
+a251 7
+
+
+
+
+            --Tio.Put (Sql.Column_Text (Index) & " (T" & Trim_Left (To_VString (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, Index)))) & ") ");
+            --Tio.Put (Sql.Column_Text (Local_Statement, Index));
+            --Tio.Put (TAB);
+a253 3
+
+
+         Tio.Line;
+a260 1
+
+@
+
+
+1.49
+log
+@*** empty log message ***
+@
+text
+@d279 1
+a279 1
+            --Current_Column := Field_By_Index (Field_By_Index (Columns_Values, Index, CD), 1, ND);
+d284 1
+a284 1
+            if Field_By_Index (Field_By_Index (Columns_Values, Index, CD), 1, ND) = Sql.Column_Text (Local_Statement, 2) then
+@
+
+
+1.48
+log
+@*** empty log message ***
+@
+text
+@d292 1
+a292 1
+Tio.Put_Line (Sql.Column_Type (Local_Statement, 3));
+d295 1
+a295 1
+               if (Sql.Column_Type (Local_Statement, 3) = 1) then
+d297 1
+a297 1
+               elsif (Sql.Column_Type (Local_Statement, 3) = 3) then
+@
+
+
+1.47
+log
+@*** empty log message ***
+@
+text
+@d279 3
+a281 3
+            Current_Column := Field_By_Index (Field_By_Index (Columns_Values, Index, CD), 1, ND);
+            Log.Dbg ("Current_Column: " & Current_Column);
+            Log.Dbg ("Current_Column in Row: " & Sql.Column_Text (Local_Statement, 2));
+d283 2
+a284 1
+            if Current_Column = Sql.Column_Text (Local_Statement, 2) then
+d291 3
+@
+
+
+1.46
+log
+@*** empty log message ***
+@
+text
+@d204 1
+a204 2
+      Counter_Columns : Natural := 0;         --Row_Values
+      Counter_Values : Natural := Field_Count (Columns_Values, FD);
+d277 1
+a277 1
+         for Index in 1..Counter_Columns loop
+d279 1
+a279 1
+            Current_Column := Field_By_Index (Field_By_Index (Columns_Values, Counter_Columns, CD), 1, ND);
+d285 1
+a285 1
+               Current_Value := Field_By_Index (Field_By_Index (Columns_Values, Counter_Columns, CD), 2, ND);
+@
+
+
+1.45
+log
+@*** empty log message ***
+@
+text
+@d271 6
+d280 1
+a280 1
+            Current_Column := Field_By_Index (Field_By_Index (Columns_Values, Counter_Columns, FD), 1, ND);
+d286 1
+a286 1
+               Current_Value := Field_By_Index (Field_By_Index (Columns_Values, Counter_Columns, FD), 2, ND);
+@
+
+
+1.44
+log
+@*** empty log message ***
+@
+text
+@d267 2
+a268 2
+         Counter_Columns := Counter_Columns + 1;
+         Current_Column := Field_By_Index (Field_By_Index (Columns_Values, Counter_Columns, FD), 1, ND);
+a269 1
+         Current_Type := +"";
+a270 1
+         Log.Dbg ("Current_Colum: " & Current_Column);
+d274 3
+a276 1
+            Log.Dbg ("Current_Colum in Row: " & Sql.Column_Text (Local_Statement, 2));
+@
+
+
+1.43
+log
+@*** empty log message ***
+@
+text
+@a264 2
+   Tio.Put_Line ("A");
+
+a273 1
+      Tio.Put_Line ("B");
+d302 1
+a302 2
+            Log.Dbg ("Insert_Field: " & Insert_Field);
+         Log.Dbg ("Insert_Value: " & Insert_Value);
+d310 2
+a311 1
+
+@
+
+
+1.42
+log
+@*** empty log message ***
+@
+text
+@d265 2
+d276 1
+d301 1
+a301 1
+            Tio.Put (Sql.Column_Text (Local_Statement, Index));
+@
+
+
+1.41
+log
+@*** empty log message ***
+@
+text
+@d284 2
+a286 1
+
+a287 1
+
+a288 1
+
+d301 4
+d310 3
+@
+
+
+1.40
+log
+@*** empty log message ***
+@
+text
+@d284 1
+a284 1
+               if (To_Integer (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, Index))) = 1) then
+d288 1
+a288 1
+               elsif (Sql.Column_Type (Local_Statement, 3) = Sql.Datatype_Text) then
+d298 1
+a298 1
+            Tio.Put (Sql.Column_Text (Index) & " (T" & Trim_Left (To_VString (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, Index)))) & ") ");
+d300 1
+a300 1
+            Tio.Put (TAB);
+@
+
+
+1.39
+log
+@*** empty log message ***
+@
+text
+@d144 2
+a145 1
+   function Column_Type (Position : Positive) return Datatype is
+d147 2
+a148 1
+      return SQLite.Column_Type (Handle_Statement, Position);
+d151 2
+a152 1
+   function Column_Type (Local_Handle_Statement : Statement; Position : Positive) return Datatype is
+d154 2
+a155 1
+      return SQLite.Column_Type (Local_Handle_Statement, Position);
+@
+
+
+1.38
+log
+@*** empty log message ***
+@
+text
+@d280 1
+a280 1
+               if (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, Index)) = "1") then
+@
+
+
+1.37
+log
+@*** empty log message ***
+@
+text
+@d284 1
+a284 1
+               elsif (Sql.Column_Type (Local_Statement, 3) = Datatype_Text) then
+@
+
+
+1.36
+log
+@*** empty log message ***
+@
+text
+@a55 6
+   Datatype_Integer : constant Sql.Datatype := 1;
+   Datatype_Float   : constant Sql.Datatype := 2;
+   Datatype_Text    : constant Sql.Datatype := 3;
+   Datatype_Blob    : constant Sql.Datatype := 4;
+   Datatype_Null    : constant Sql.Datatype := 5;
+
+d284 1
+a284 1
+               elsif (Sql.Column_Type (Local_Statement, 3) = V20.Sql.Datatype_Text) then
+@
+
+
+1.35
+log
+@*** empty log message ***
+@
+text
+@d290 1
+a290 1
+               elsif (Sql.Column_Type (Local_Statement, 3) = Datatype_Text) then
+@
+
+
+1.34
+log
+@*** empty log message ***
+@
+text
+@d194 2
+d290 1
+a290 1
+               elsif (Sql.Column_Type (Local_Statement, 3) Sql.= Sql.Datatype_Text) then
+@
+
+
+1.33
+log
+@*** empty log message ***
+@
+text
+@d288 1
+a288 1
+               elsif (Sql.Column_Type (Local_Statement, 3) = Sql.Datatype_Text) then
+@
+
+
+1.32
+log
+@*** empty log message ***
+@
+text
+@d284 1
+a284 1
+               if (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, Index)) = Datatype_Integer) then
+d288 1
+a288 1
+               elsif (Column_Type (Local_Statement, 3) = Datatype_Text) then
+@
+
+
+1.31
+log
+@*** empty log message ***
+@
+text
+@d284 1
+a284 1
+               if (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, Index)) = 1) then
+@
+
+
+1.30
+log
+@*** empty log message ***
+@
+text
+@a52 1
+with v20.Sql; use v20.Sql;
+d288 1
+a288 1
+               elsif (Column_Type (Local_Statement, 3) = Sql.Datatype_Text) then
+@
+
+
+1.29
+log
+@*** empty log message ***
+@
+text
+@d289 1
+a289 1
+               elsif (Column_Type (Local_Statement, 3) = Sql.Datatype.Datatype_Text) then
+@
+
+
+1.28
+log
+@*** empty log message ***
+@
+text
+@d289 1
+a289 1
+               elsif (Column_Type (Local_Statement, 3) = Datatype.Datatype_Text) then
+@
+
+
+1.27
+log
+@*** empty log message ***
+@
+text
+@d289 1
+a289 1
+               elsif (Column_Type (Local_Statement, 3) = Datatype_Text) then
+@
+
+
+1.26
+log
+@*** empty log message ***
+@
+text
+@d53 1
+a53 1
+with v20.Sql; use v20.Sql
+@
+
+
+1.25
+log
+@*** empty log message ***
+@
+text
+@d53 1
+@
+
+
+1.24
+log
+@*** empty log message ***
+@
+text
+@d56 5
+a60 5
+   Datatype_Integer : constant Datatype := 1;
+   Datatype_Float   : constant Datatype := 2;
+   Datatype_Text    : constant Datatype := 3;
+   Datatype_Blob    : constant Datatype := 4;
+   Datatype_Null    : constant Datatype := 5;
+@
+
+
+1.23
+log
+@*** empty log message ***
+@
+text
+@d56 6
+a61 1
+use Sql.Datatype;
+@
+
+
+1.22
+log
+@*** empty log message ***
+@
+text
+@d56 1
+a56 1
+use Datatype;
+@
+
+
+1.21
+log
+@*** empty log message ***
+@
+text
+@d56 1
+@
+
+
+1.20
+log
+@*** empty log message ***
+@
+text
+@d282 1
+a282 1
+               elsif (Sql.Column_Type (Local_Statement, 3) = Sql.Datatype_Text) then
+@
+
+
+1.19
+log
+@*** empty log message ***
+@
+text
+@d282 1
+a282 1
+               elsif (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, 3)) = 3) then
+@
+
+
+1.18
+log
+@*** empty log message ***
+@
+text
+@d278 1
+a278 1
+               if (Sql.Column_Type (Local_Statement, 3) = Datatype.Datatype_Integer) then
+d282 1
+a282 1
+               elsif (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, 3)) = Sql.Datatype_Text) then
+d293 1
+a293 1
+            Tio.Put (Sql.Column_Text (Local_Statement, Index)));
+@
+
+
+1.17
+log
+@*** empty log message ***
+@
+text
+@d278 1
+a278 1
+               if (Sql.Column_Type (Local_Statement, 3) = Datatype_Integer) then
+d282 1
+a282 1
+               elsif (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, 3)) = Datatype_Text) then
+@
+
+
+1.16
+log
+@*** empty log message ***
+@
+text
+@d278 1
+a278 1
+               if (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, 3)) = Datatype_Integer) then
+@
+
+
+1.15
+log
+@*** empty log message ***
+@
+text
+@d278 1
+a278 1
+               if (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, 3)) = Column_Integer) then
+d282 1
+a282 1
+               elsif (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, 3)) = Column_Text) then
+@
+
+
+1.14
+log
+@*** empty log message ***
+@
+text
+@d278 1
+a278 1
+               if (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, 3)) = Sql.Datatype.SQLITE_INTEGER) then
+d282 1
+a282 1
+               elsif (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, 3)) = Sql.Datatype.SQLITE_TEXT) then
+@
+
+
+1.13
+log
+@*** empty log message ***
+@
+text
+@d278 1
+a278 1
+               if (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, 3)) = SQLITE_INTEGER) then
+d282 1
+a282 1
+               elsif (Sql.Datatype'Image (Sql.Column_Type (Local_Statement, 3)) = SQLITE_TEXT) then
+@

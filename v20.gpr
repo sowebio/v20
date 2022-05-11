@@ -64,7 +64,7 @@ project v20 is
     "-gnatq",            --  Don't quit, try semantics, even if parse errors
     "-gnatQ",            --  Don't quit, write ali/tree file even if compile errors
     "-gnatVaep",         --  Enable selected validity checking mode (2)   
-    "-gnatw.eDH.Y",      --  Enable selected warning modes (3)
+    "-gnatwDH.Y",      --  Enable selected warning modes (3)
     -- "-Wall",          --  Enable most warning messages
     -- Style
     "-gnatyaefhkM160npr" --  Enable selected style checks (4)
@@ -154,13 +154,12 @@ project v20 is
       end case;
    end Binder;
    
+   -- RTS statically linked   
    Common_Linker_Options := ("-static");
-   
+     
    --  ld options
    package Linker is
-      -- Static link with external C libs
       -- for Switches ("ada") use ("-L/home/sr/Seafile/Sowebio/informatique/dev/ada/lib/zlib-1211", "-lz");
-      
       case v20_Build is
       when "Style" => 
          for Default_Switches ("ada") use Common_Linker_Options & ("-g");

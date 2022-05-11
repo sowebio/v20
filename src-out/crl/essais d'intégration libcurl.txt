@@ -1,0 +1,281 @@
+
+* LIBCURL
+
+sudo apt install libcurl4 libcurl4-openssl-dev
+
+/usr/lib/x86_64-linux-gnu/
+
+libcurl.a
+
+sudo apt install libc-ares-dev
+git clone https://github.com/curl/curl
+cd ~/opt/gnat-2021-downloads/curl
+
+autoreconf -fi
+./configure --with-openssl --disable-shared --enable-static --enable-ares
+-----------------------------
+  Host setup:       x86_64-pc-linux-gnu
+  Install prefix:   /usr/local
+  Compiler:         gcc
+   CFLAGS:          -Werror-implicit-function-declaration -O2 -Wno-system-headers -Wenum-conversion
+   CPPFLAGS:        
+   LDFLAGS:         
+   LIBS:            -lcares -lssl -lcrypto -lssl -lcrypto -lz
+
+  curl version:     7.80.0-DEV
+  SSL:              enabled (OpenSSL)
+  SSH:              no      (--with-{libssh,libssh2})
+  zlib:             enabled
+  brotli:           no      (--with-brotli)
+  zstd:             no      (--with-zstd)
+  GSS-API:          no      (--with-gssapi)
+  GSASL:            no      (libgsasl not found)
+  TLS-SRP:          enabled
+  resolver:         c-ares
+  IPv6:             enabled
+  Unix sockets:     enabled
+  IDN:              no      (--with-{libidn2,winidn})
+  Build libcurl:    Shared=no, Static=yes
+  Built-in manual:  enabled
+  --libcurl option: enabled (--disable-libcurl-option)
+  Verbose errors:   enabled (--disable-verbose)
+  Code coverage:    disabled
+  SSPI:             no      (--enable-sspi)
+  ca cert bundle:   /etc/ssl/certs/ca-certificates.crt
+  ca cert path:     no
+  ca fallback:      no
+  LDAP:             no      (--enable-ldap / --with-ldap-lib / --with-lber-lib)
+  LDAPS:            no      (--enable-ldaps)
+  RTSP:             enabled
+  RTMP:             no      (--with-librtmp)
+  PSL:              no      (libpsl not found)
+  Alt-svc:          enabled (--disable-alt-svc)m
+  HSTS:             enabled (--disable-hsts)
+  HTTP1:            enabled (internal)
+  HTTP2:            no      (--with-nghttp2, --with-hyper)
+  HTTP3:            no      (--with-ngtcp2, --with-quiche)
+  ECH:              no      (--enable-ech)
+  Protocols:        DICT FILE FTP FTPS GOPHER GOPHERS HTTP HTTPS IMAP IMAPS MQTT POP3 POP3S RTSP SMB SMBS SMTP SMTPS TELNET TFTP
+  Features:         AsynchDNS HSTS HTTPS-proxy IPv6 Largefile NTLM NTLM_WB SSL TLS-SRP UnixSockets alt-svc libz
+-----------------------------
+
+make clean
+./configure --with-openssl --without-nghttp2 --enable-ares --enable-static --disable-shared --disable-ldap --disable-telnet --disable-ftp --disable-ldaps --disable-rtsp --disable-tftp --disable-pop3 --disable-imap --disable-smb --disable-gopher --disable-mqtt --disable-manual --disable-ipv6 --disable-pthreads --disable-ntlm   
+
+
+./configure --prefix=$HOME/devel/libcurl --disable-dict --disable-ftp --disable-imap --disable-ldap --disable-ldaps --disable-pop3 --disable-proxy --disable-rtsp --disable-shared --disable-smtp --disable-telnet --disable-tftp --disable-zlib --without-ca-bundle --without-gnutls --without-libidn --without-librtmp --without-libssh2 --without-nss --without-ssl --without-zlib
+
+-----------------------------
+  Host setup:       x86_64-pc-linux-gnu
+  Install prefix:   /usr/local
+  Compiler:         gcc
+   CFLAGS:          -Werror-implicit-function-declaration -O2 -Wno-system-headers -Wenum-conversion
+   CPPFLAGS:        
+   LDFLAGS:         
+   LIBS:            -lcares -lssl -lcrypto -lssl -lcrypto -lz
+
+  curl version:     7.80.0-DEV
+  SSL:              enabled (OpenSSL)
+  SSH:              no      (--with-{libssh,libssh2})
+  zlib:             enabled
+  brotli:           no      (--with-brotli)
+  zstd:             no      (--with-zstd)
+  GSS-API:          no      (--with-gssapi)
+  GSASL:            no      (libgsasl not found)
+  TLS-SRP:          enabled
+  resolver:         c-ares
+  IPv6:             no      (--enable-ipv6)
+  Unix sockets:     enabled
+  IDN:              no      (--with-{libidn2,winidn})
+  Build libcurl:    Shared=no, Static=yes
+  Built-in manual:  no      (--enable-manual)
+  --libcurl option: enabled (--disable-libcurl-option)
+  Verbose errors:   enabled (--disable-verbose)
+  Code coverage:    disabled
+  SSPI:             no      (--enable-sspi)
+  ca cert bundle:   /etc/ssl/certs/ca-certificates.crt
+  ca cert path:     no
+  ca fallback:      no
+  LDAP:             no      (--enable-ldap / --with-ldap-lib / --with-lber-lib)
+  LDAPS:            no      (--enable-ldaps)
+  RTSP:             no      (--enable-rtsp)
+  RTMP:             no      (--with-librtmp)
+  PSL:              no      (libpsl not found)
+  Alt-svc:          enabled (--disable-alt-svc)
+  HSTS:             enabled (--disable-hsts)
+  HTTP1:            enabled (internal)
+  HTTP2:            no      (--with-nghttp2, --with-hyper)
+  HTTP3:            no      (--with-ngtcp2, --with-quiche)
+  ECH:              no      (--enable-ech)
+  Protocols:        DICT FILE HTTP HTTPS SMTP SMTPS
+  Features:         AsynchDNS HSTS HTTPS-proxy Largefile SSL TLS-SRP UnixSockets alt-svc libz
+-----------------------------
+
+make
+cp ./lib/.libs/libcurl.a ~/Seafile/Sowebio/informatique/github/v20/src/lib
+cd ~/opt/gnat-2021-download
+
+* LIBCURL Ada
+
+git clone https://github.com/python36/libcurl-ada
+cd ~/opt/gnat-2021-downloads/libcurl-ada
+cp libcurl* ~/Seafile/Sowebio/informatique/github/v20/src/lib
+
+
+En C
+gcc test.c curl-7.44.0/lib/.libs/libcurl.a -lssl -lcrypto -ldl -lm -lz -DCURL_STATICLIB -o test
+
+En Ada
+gcc -c libcurlconstants.c -lcurl
+gnatmake test.adb -largs -lcurl -largs libcurlconstants.o
+
+
+
+...
+cd ~/opt/gnat-2021-download
+
+
+
+procedure test is
+  use type libcurl.curl_code;
+
+  c : libcurl.curl;
+  r : libcurl.curl_code;
+
+  f : libcurl.file_io.file_type;
+begin
+  c := libcurl.curl_easy_init;
+  r := libcurl.curl_easy_setopt_long(c, libcurl.curlopt_verbose, 0);
+  r := libcurl.curl_easy_setopt_long(c, libcurl.curlopt_timeout, 5);
+  r := libcurl.curl_easy_setopt_string(c, libcurl.curlopt_useragent, "ada_libcurl");
+  r := libcurl.curl_easy_setopt_write_callback( c, libcurl.curlopt_writefunction, libcurl.writer'Access);
+  r := libcurl.curl_easy_setopt_string(c, libcurl.curlopt_url,
+    "https://upload.wikimedia.org/wikipedia/commons/a/a4/Ada_Lovelace_portrait.jpg");
+  libcurl.file_io.create(file => f, mode => libcurl.file_io.out_file, name => "ada.jpg");
+  r := libcurl.curl_easy_setopt_write_data(c, libcurl.curlopt_writedata, f);
+  if libcurl.curl_easy_perform(c) /= 0 then
+    ada.text_io.put_line("error perform:" & r'img);
+    libcurl.file_io.close(f);
+    return;
+  end if;
+  libcurl.file_io.close(f);
+  ada.text_io.put_line("return code:" & natural'image(libcurl.curl_easy_getinfo_natural(c, libcurl.curlinfo_response_code)));
+  libcurl.curl_easy_cleanup(c);
+
+
+
+[2021-10-28 19:28:51] Cannot open file '/it/sbx/a2c2/x86_64-linux/gcc-c/build/x86_64-pc-linux-gnu/libgcc/gthr-default.h'
+
+
+libcurl4 libcurl4-openssl-dev
+
+
+
+libCurl est une bibliothèque extrèmement complexe à builder en statique. Il a été décidé de ne pas l'intégrer à bas niveau
+
+
+sr@ro8 🎱 (1) ~/Seafile/Sowebio/informatique/github/v20/bin >ldd test
+
+Un binaire Ada, compilé dynamiquement, possède ces dépendances et pèse 1,9 Mo
+
+  linux-vdso.so.1 (0x00007ffddfeba000)
+  libdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fb2f30b0000)
+  libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fb2f2cbf000)
+  /lib64/ld-linux-x86-64.so.2 (0x00007fb2f32b4000)
+
+Le même binaire Ada, compilé statiquement pèse 2,9 Mo
+
+Le même binaire, compilé dynamiquement, avec en plus la librairie curl standard, donc aux fonctionnalités assez riches, possède, hors les 4 libs ci-dessus et la libcurl, 38 dépendances, en relation avec les capacités spécifiées par le ./configure lors du build...
+
+  libcurl.so.4 => /usr/lib/x86_64-linux-gnu/libcurl.so.4 (0x00007f772aec2000)
+
+  38 dépendances :
+  libnghttp2.so.14 => /usr/lib/x86_64-linux-gnu/libnghttp2.so.14 (0x00007f772a6a8000)
+  libidn2.so.0 => /usr/lib/x86_64-linux-gnu/libidn2.so.0 (0x00007f772a48b000)
+  librtmp.so.1 => /usr/lib/x86_64-linux-gnu/librtmp.so.1 (0x00007f772a26f000)
+  libpsl.so.5 => /usr/lib/x86_64-linux-gnu/libpsl.so.5 (0x00007f772a061000)
+  libssl.so.1.1 => /usr/lib/x86_64-linux-gnu/libssl.so.1.1 (0x00007f7729dd4000)
+  libcrypto.so.1.1 => /usr/lib/x86_64-linux-gnu/libcrypto.so.1.1 (0x00007f7729909000)
+  libgssapi_krb5.so.2 => /usr/lib/x86_64-linux-gnu/libgssapi_krb5.so.2 (0x00007f77296be000)
+  libldap_r-2.4.so.2 => /usr/lib/x86_64-linux-gnu/libldap_r-2.4.so.2 (0x00007f772946c000)
+  liblber-2.4.so.2 => /usr/lib/x86_64-linux-gnu/liblber-2.4.so.2 (0x00007f772925e000)
+  libz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007f7729041000)
+  libpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x00007f7728e22000)
+  libunistring.so.2 => /usr/lib/x86_64-linux-gnu/libunistring.so.2 (0x00007f7728aa4000)
+  libgnutls.so.30 => /usr/lib/x86_64-linux-gnu/libgnutls.so.30 (0x00007f772873e000)
+  libhogweed.so.4 => /usr/lib/x86_64-linux-gnu/libhogweed.so.4 (0x00007f7728508000)
+  libnettle.so.6 => /usr/lib/x86_64-linux-gnu/libnettle.so.6 (0x00007f77282d2000)
+  libgmp.so.10 => /usr/lib/x86_64-linux-gnu/libgmp.so.10 (0x00007f7728051000)
+  libkrb5.so.3 => /usr/lib/x86_64-linux-gnu/libkrb5.so.3 (0x00007f7727d7b000)
+  libk5crypto.so.3 => /usr/lib/x86_64-linux-gnu/libk5crypto.so.3 (0x00007f7727b49000)
+  libcom_err.so.2 => /lib/x86_64-linux-gnu/libcom_err.so.2 (0x00007f7727945000)
+  libkrb5support.so.0 => /usr/lib/x86_64-linux-gnu/libkrb5support.so.0 (0x00007f772773a000)
+  libresolv.so.2 => /lib/x86_64-linux-gnu/libresolv.so.2 (0x00007f7727520000)
+  libsasl2.so.2 => /usr/lib/x86_64-linux-gnu/libsasl2.so.2 (0x00007f7727305000)
+  libgssapi.so.3 => /usr/lib/x86_64-linux-gnu/libgssapi.so.3 (0x00007f77270c4000)
+  libp11-kit.so.0 => /usr/lib/x86_64-linux-gnu/libp11-kit.so.0 (0x00007f7726d95000)
+  libtasn1.so.6 => /usr/lib/x86_64-linux-gnu/libtasn1.so.6 (0x00007f7726b82000)
+  libkeyutils.so.1 => /lib/x86_64-linux-gnu/libkeyutils.so.1 (0x00007f772697e000)
+  libheimntlm.so.0 => /usr/lib/x86_64-linux-gnu/libheimntlm.so.0 (0x00007f7726775000)
+  libkrb5.so.26 => /usr/lib/x86_64-linux-gnu/libkrb5.so.26 (0x00007f77264e8000)
+  libasn1.so.8 => /usr/lib/x86_64-linux-gnu/libasn1.so.8 (0x00007f7726246000)
+  libhcrypto.so.4 => /usr/lib/x86_64-linux-gnu/libhcrypto.so.4 (0x00007f7726010000)
+  libroken.so.18 => /usr/lib/x86_64-linux-gnu/libroken.so.18 (0x00007f7725dfa000)
+  libffi.so.6 => /usr/lib/x86_64-linux-gnu/libffi.so.6 (0x00007f7725bf2000)
+  libwind.so.0 => /usr/lib/x86_64-linux-gnu/libwind.so.0 (0x00007f77259c9000)
+  libheimbase.so.1 => /usr/lib/x86_64-linux-gnu/libheimbase.so.1 (0x00007f77257ba000)
+  libhx509.so.5 => /usr/lib/x86_64-linux-gnu/libhx509.so.5 (0x00007f7725570000)
+  libsqlite3.so.0 => /usr/lib/x86_64-linux-gnu/libsqlite3.so.0 (0x00007f7725267000)
+  libcrypt.so.1 => /lib/x86_64-linux-gnu/libcrypt.so.1 (0x00007f772502f000)
+  libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007f7724c91000)
+
+
+En d'autres termes, en prenant la libcurl standard (non recompilée) 
+# pkg-config --libs --static libcurl
+
+On obtient cette liste d'options pour la gestion des dépendances
+
+-L/usr/lib/x86_64-linux-gnu/mit-krb5 -lcurl -lnghttp2 -lidn2 -lrtmp -lpsl -lssl -lcrypto -lssl -lcrypto -Wl,-Bsymbolic-functions -Wl,-z,relro -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err -llber -lldap -llber -lz
+  /usr/lib/x86_64-linux-gnu/
+  
+-L/usr/lib/x86_64-linux-gnu/mit-krb5 -lcurl -lpsl -lssl -lcrypto -lssl -lcrypto -lgssapi_krb5 -lkrb5 -lk5crypto -lcom_err -llber -lldap -llber -lz
+
+
+
+sudo apt install libnghttp2-dev libidn2-0 librtmp-dev libidn2-0-dev libidn2-dev libpsl-dev libkrb5-dev libkrb5-3 libgssapi-krb5-2 libldap2-dev 
+
+mais libkrb5-dev.a libkrb5.a et libgssapi-krb5.a
+
+  libgmp-dev libgmpxx4ldbl libgnutls-dane0 libgnutls-openssl27 libgnutls28-dev libgnutlsxx28  libp11-kit-dev  libtasn1-6-dev
+  libtasn1-doc libunbound2 nettle-dev
+
+
+
+
+/home/sr/opt/gnat-2021/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.3.1/ld: warning: -z ,relro ignored
+/home/sr/opt/gnat-2021/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.3.1/ld: cannot find -lnghttp2
+/home/sr/opt/gnat-2021/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.3.1/ld: cannot find -lidn2
+/home/sr/opt/gnat-2021/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.3.1/ld: cannot find -lrtmp
+/home/sr/opt/gnat-2021/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.3.1/ld: cannot find -lpsl
+
+/home/sr/opt/gnat-2021/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.3.1/ld: cannot find -lgssapi_krb5
+/home/sr/opt/gnat-2021/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.3.1/ld: cannot find -lkrb5
+/home/sr/opt/gnat-2021/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.3.1/ld: cannot find -lk5crypto
+
+/home/sr/opt/gnat-2021/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.3.1/ld: cannot find -lcom_err
+/home/sr/opt/gnat-2021/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.3.1/ld: cannot find -llber
+/home/sr/opt/gnat-2021/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.3.1/ld: cannot find -lldap
+/home/sr/opt/gnat-2021/bin/../libexec/gcc/x86_64-pc-linux-gnu/10.3.1/ld: cannot find -llber
+
+
+"-lgssapi_krb5", "-lkrb5", "-lk5crypto", 
+
+
+
+wget http://web.mit.edu/kerberos/dist/krb5/1.19/krb5-1.19.2.tar.gz
+
+cd src
+./configure CFLAGS=-m32 LDFLAGS=-m32 --prefix=/usr2/krb5testing/krb5-1.11.1/binary --build=i686-redhat-linux --enable-static --disable-shared 
+
+
+sudo cd ../lib ; sudo cp libgssapi_krb5.a /usr/lib/x86_64-linux-gnu/ ; sudo cp libkrb5.a /usr/lib/x86_64-linux-gnu/ ; sudo cp libk5crypto.a /usr/lib/x86_64-linux-gnu/

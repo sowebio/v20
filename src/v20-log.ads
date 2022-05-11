@@ -18,10 +18,7 @@
 --  Stéphane Rivière - sr - sriviere@soweb.io
 --
 --  @versions
---  20210317 - 0.1 - sr - initial release
---  20210409 - 0.2 - sr - fix a bunch of small bugs and refactory Put
---  20210409 - 0.3 - sr - reduces to 1 the number of * indicating a length 
---                        overrun
+--  see v20.ads
 ------------------------------------------------------------------------------
 
 with v20.Vst; use v20.Vst;
@@ -47,12 +44,17 @@ package v20.Log is
    function Log_Dir return VString;
    --  Returns log file directory.
    
+   procedure Msg (Message : Integer);
+   procedure Msg (Message : Character);
    procedure Msg (Message : String);
    procedure Msg (Message : VString);
    --  Log a message.
 
    procedure Set_Debug (Action : Boolean);
    --  Set debug messages status on/[off].
+   
+   procedure Set_Display (Action : Boolean);
+   --  Log to display on/[off].
 
    procedure Set_Disk (Action : Boolean);
    --  Log to disk on/[off].
@@ -92,6 +94,9 @@ private
 
    Debug_On : Boolean := False;
    --  Debug messages on/[off]
+   
+   Display_On : Boolean := False;
+   --  Log to display on/[off]
 
    Disk_On : Boolean := False;
    --  Log to disk on/[off]

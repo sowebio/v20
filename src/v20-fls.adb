@@ -17,7 +17,7 @@
 --  Stéphane Rivière - sr - sriviere@soweb.io
 --
 --  @versions
---  see v20-Fls.ads
+--  see v20.ads
 -------------------------------------------------------------------------------
 
 with Ada.IO_Exceptions;
@@ -38,6 +38,32 @@ package body v20.Fls is
    end Log_Err;
 
    --  Public functions
+   
+   ----------------------------------------------------------------------------
+   procedure Backup_File (File_To_Backup : VString) is
+      Backup_File : constant VString := File_To_Backup & ".bak.";
+      Backup_To_Delete : Integer := 0;
+   begin 
+      for I in 0 .. 9 loop
+         if not Exists (Backup_File & To_VString (I)) then
+            Move_File (File_To_Backup, Backup_File & To_VString (I));
+            if I = 9 then
+               Backup_To_Delete := 0;
+            else
+               Backup_To_Delete := I + 1;
+            end if;
+            if Exists (Backup_File & To_VString (Backup_To_Delete)) then
+               Delete_File (Backup_File & To_VString (Backup_To_Delete));
+            end if;
+            exit;
+         end if; 
+      end loop;
+   end Backup_File;
+
+   procedure Backup_File (File_To_Backup : String) is
+   begin
+      Backup_File (To_VString (File_To_Backup));
+   end Backup_File;
 
    ----------------------------------------------------------------------------
    procedure Copy_File (Source_Name, Target_Name : String) is
@@ -50,7 +76,7 @@ package body v20.Fls is
          then
             Destination_Valid := False;
             Log.Err (
-                "v20.Fls.Copy_File - Destination directory does not exist: " & 
+                "v20.Fls.Copy_File: Destination directory does not exist: " & 
                 Target_Name);
          end if;
       end if;  
@@ -106,15 +132,22 @@ package body v20.Fls is
    function Delete_Directory_Tree (Dir_Tree : String) return Boolean is
       Result : Boolean := False;
    begin
-      if AD.Exists (Dir_Tree) then
-         AD.Delete_Tree (Dir_Tree);
-         if not AD.Exists (Dir_Tree) then
+   
+      if not If_Root_Directory (Dir_Tree) then
+         if AD.Exists (Dir_Tree) then
+            AD.Delete_Tree (Dir_Tree);
+            if not AD.Exists (Dir_Tree) then
+               Result := True;
+            end if;
+         else
             Result := True;
          end if;
       else
-         Result := True;
-      end if;
+         Log.Err ("Fls.Delete_Directory_Tree - Attempt to delete a root directory: " & Dir_Tree);
+      end if;   
+      
       return Result;
+
    exception
       when Error : Ada.IO_Exceptions.Use_Error =>
          Log_Err (Error);
@@ -178,7 +211,7 @@ package body v20.Fls is
             Rename (File_Write, File_Name);
          end if;
       else
-         Log.Err ("v20.Fls.Delete_Lines - Can't find: " & File_Name);
+         Log.Err ("v20.Fls.Delete_Lines: Can't find: " & File_Name);
       end if;
    end Delete_Lines;
 
@@ -227,7 +260,9 @@ package body v20.Fls is
       --  Proceed to download if needed
       if not Result then
          Log.Msg ("Download file: " & Message_Name);
-         Sys.Shell_Execute ("curl --location --output " &
+         
+         -- http1.1 to avoid curl error 'HTTP/2 stream 0 was not closed cleanly'
+         Sys.Shell_Execute ("curl --http1.1 --location --output " &
                          Dlfile & " " & Url, Exec_Error);
          if (Exec_Error = 0) and Fls.Exists (Dlfile) then
             if DlSize > 0 then
@@ -239,7 +274,7 @@ package body v20.Fls is
             end if;
          end if;
          if not Result then
-            Log.Err ("Fls.Download_File - Download file failed: " & Message_Name);
+            Log.Err ("Fls.Download_File: Download file failed: " & Message_Name);
          end if;
       end if;
       return Result;
@@ -250,6 +285,35 @@ package body v20.Fls is
    begin
       return Exists (To_String (Name));
    end Exists;
+
+   ----------------------------------------------------------------------------
+   function Extract_Directory (Name : VString) return VString is
+      Slash : constant VString := +"/";
+      Dir_End : Natural;
+      Dir_Result : VString := +"";
+   begin
+      Dir_End := Index_Backward (Name, Slash);
+      if (Dir_End > 1) then 
+         Dir_Result := Slice (Name, 1, Dir_End - 1);
+      end if;
+      return Dir_Result;
+   end Extract_Directory;
+      
+   function Extract_Directory (Name : String) return VString is
+   begin
+      return Extract_Directory (To_VString (Name));
+   end Extract_Directory;
+   
+   ----------------------------------------------------------------------------   
+   function Extract_Filename (Name : VString) return VString is
+   begin
+      return Tail_After_Match (Name, '/');
+   end Extract_Filename;
+      
+   function Extract_Filename (Name : String) return VString is
+   begin
+      return Extract_Filename (To_VString (Name));
+   end Extract_Filename;
 
    ----------------------------------------------------------------------------
    function File_Size (Name : String) return Integer is
@@ -274,6 +338,60 @@ package body v20.Fls is
    begin
       return To_VString (AD.Current_Directory);
    end Get_Directory;
+   
+   ----------------------------------------------------------------------------
+   function If_Root_Directory (Dir_Tree : VString) return Boolean is
+      Test_Dir_Tree : VString := Dir_Tree;
+      Slash : constant VString := +"/";
+      Root_Dirs : constant VString := +"bin,boot,dev,etc,home,lib,lib32,lib64," & 
+         "libx32,lost+found,media,mnt,opt,proc,root,run,sbin,srv,sys," & 
+         "tmp,usr,var,Test_Delete_Directory_Tree";
+      Result : Boolean := False;
+   begin
+      -- Dir_Tree must be fully qualified, ie starting with a slash (/)
+      if Starts_With (Dir_Tree, Slash) then
+         --  Add a slash if Dir_Tree does not ends with it
+         if not Ends_With (Dir_Tree, Slash) then
+            Test_Dir_Tree := Test_Dir_Tree & Slash;
+         end if;
+         --  If Dir_Tree counts only two slashes and at least one char between
+         if (Char_Count (Test_Dir_Tree, Slash) = 2) and
+            (Length (Dir_Tree) > 2) then
+            Test_Dir_Tree := Slice (Test_Dir_Tree, 2, Length (Test_Dir_Tree) - 1);
+            if not Empty (Field_By_Name (Root_Dirs, Test_Dir_Tree, To_String (Slash))) then
+               Result := True;
+            end if;
+         end if;
+      end if;
+      return Result;
+   end If_Root_Directory;
+   
+   function If_Root_Directory (Dir_Tree : String) return Boolean is
+   begin
+      return If_Root_Directory (To_VString (Dir_Tree));
+   end If_Root_Directory;
+    
+   ----------------------------------------------------------------------------
+   procedure Move_File (Source_Name, Target_Name : String) is
+   begin
+      Copy_File (Source_Name, Target_Name);
+      Delete_File (Source_Name);
+   end Move_File;
+
+   procedure Move_File (Source_Name, Target_Name : VString) is
+   begin
+      Move_File (ASU.To_String (Source_Name), ASU.To_String (Target_Name));
+   end Move_File;
+
+   procedure Move_File (Source_Name : VString; Target_Name : String) is
+   begin
+      Move_File (ASU.To_String (Source_Name), Target_Name);
+   end Move_File;
+
+   procedure Move_File (Source_Name : String; Target_Name : VString) is
+   begin
+      Move_File (Source_Name, ASU.To_String (Target_Name));
+   end Move_File;
 
    ----------------------------------------------------------------------------
    procedure Rename (Old_Name, New_Name : String) is

@@ -18,8 +18,7 @@
 --  Stéphane Rivière - sr - sriviere@soweb.io
 --
 --  @versions
---  20210317 - 0.1 - sr - initial release
---  20210411 - 0.2 - sr - refactoring with new Sys package
+--  see v20.ads
 ------------------------------------------------------------------------------
 
 with GNAT.Expect;
@@ -59,6 +58,12 @@ package v20.Sys is
    function Get_Env (Name : VString) return VString;
    --  Returns VString value of VString or String environment variable Name.
 
+   procedure Set_Env (Name : String; Value : String);
+   procedure Set_Env (Name : VString; Value : String);
+   procedure Set_Env (Name : String; Value : VString);
+   procedure Set_Env (Name : VString; Value : VString);
+   --  Set an environment variable
+
    function Get_Home return VString;
    --  Returns HOME path.
 
@@ -67,10 +72,19 @@ package v20.Sys is
    --  Dump information about memory usage. Size is the number of the biggest
    --  memory users we want to show. Report indicates which sorting order is
    --  used in the report.
+   
+   function Is_Command (Command : String) return Boolean;
+   function Is_Command (Command : VString) return Boolean;
+   --  Return true if command exists and reachable from path.
 
-   function Install_Packages (Packages_List : String) return Boolean;
-   --  Install system packages for Debian, Ubuntu or derivatives
-   --  distributions.
+   function Is_Package (Package_Name : VString; Host_Name : VString := +"") return Boolean;
+   --  Return true if Package_Name is installed. 
+   
+   function Install_Packages (Packages_List : String; Host_Name : VString := +"") return Boolean;
+   --  Install packages for Debian, Ubuntu or derivatives distributions.
+   
+   function Purge_Packages (Packages_List : String; Host_Name : VString := +"") return Boolean;
+   --  Install packages for Debian, Ubuntu or derivatives distributions.
 
    procedure Reset_Memory_Monitor;
    --  Reset all internal data (i.e. reset all displayed counters. This is in
@@ -102,9 +116,12 @@ package v20.Sys is
 
 private
 
-   function Install_Package (Package_Name : VString) return Boolean;
+   function Install_Package (Package_Name : VString; Host_Name : VString) return Boolean;
    --  Install a Debian or Ubuntu package.
-   
+
+   function Purge_Package (Package_Name : VString; Host_Name : VString) return Boolean;
+   --  Purge a Debian or Ubuntu package.
+
    procedure Shell_Execute_Output (Command : String;
                                    Result : out Integer;
                                    Output : out VString);

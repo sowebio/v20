@@ -39,7 +39,7 @@ package body v20.Log is
       Ansi_End : VString := +"";
    begin
 
-      if Tio.Ansi then
+      if Display_On and Tio.Ansi then
          if Line_Level = "DBG" then
             Ansi_Begin := To_VString (ASCII.ESC & "[1;33m");
          elsif Line_Level = "ERR" then
@@ -71,20 +71,27 @@ package body v20.Log is
          end if;
 
          if Title_On then
-            if (Header_Length + Length (Line) + 1) < Line_Max_Length then
+            if (Header_Length + Length (Line) + 1) < Title_Max_Length then
                Line := Line &
-                      (Line_Max_Length - Header_Length - Length (Line)) * "-";
+                      (Title_Max_Length - Header_Length - Length (Line)) * "-";
             end if;
          end if;
-         --  Console write with limited length line and ansi fancy
-         Tio.Put_Line (To_String (Prg.Time_Stamp & " - " &
-                                  Line_Task & " - " &
-                     Ansi_Begin & Line_Level & Ansi_End & " - " &
-                                  Line));
+         
+         if Display_On then
+            --  Console write with limited length line and ansi fancy
+            Tio.Put_Line (To_String (Prg.Time_Stamp & " - " &
+                            Line_Task & " - " &
+                            Ansi_Begin & Line_Level & Ansi_End & " - " &
+                            Line));
+         end if;
+         
       --  Free console mode
       else
-         Tio.Put_Line (To_String (Line));
+         if Display_On then
+            Tio.Put_Line (Ansi_Begin & To_String (Line) & Ansi_End);
+         end if;
       end if;
+      
       --  Disk write with unlimited length line
       if Disk_On then
          if Title_On then
@@ -149,6 +156,16 @@ package body v20.Log is
    begin
       Put (Message, "MSG");
    end Msg;
+   
+   procedure Msg (Message : Character) is
+   begin
+      Put (To_String (To_VString (Message)), "MSG");
+   end Msg;
+   
+   procedure Msg (Message : Integer) is
+   begin
+      Put (To_String (To_VString (Message)), "MSG");
+   end Msg;
 
    procedure Msg (Message : VString) is
    begin
@@ -160,6 +177,12 @@ package body v20.Log is
    begin
       Debug_On := Action;
    end Set_Debug;
+   
+   ----------------------------------------------------------------------------
+   procedure Set_Display (Action : Boolean)  is
+   begin
+      Display_On := Action;
+   end Set_Display;
    
    ----------------------------------------------------------------------------
    procedure Set_Header (Action : Boolean) is
@@ -227,7 +250,7 @@ package body v20.Log is
    begin
       Put (To_String (To_Upper (Message)), "MSG", True);
    end Title;
-
+   
 ------------------------------------------------------------------------------
 end v20.Log;
 ------------------------------------------------------------------------------

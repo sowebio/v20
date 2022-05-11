@@ -17,8 +17,7 @@
 --  Stéphane Rivière - sr - sriviere@soweb.io
 --
 --  @versions
---  20210317 - 0.1 - sr - initial release
---  20210411 - 0.2 - sr - refactoring with new Fls package
+--  see v20.ads
 ------------------------------------------------------------------------------
 
 with Ada.Directories;
@@ -30,6 +29,11 @@ package v20.Fls is
 
    package AD renames Ada.Directories;
    subtype FKind is AD.File_Kind;
+   
+   procedure Backup_File (File_To_Backup : String);
+   procedure Backup_File (File_To_Backup : VString);
+   -- Rename file with .bak.n suffix. Iterate n=0..9 searching a free n bak 
+   -- file. If n is free then write .bak.n, if n=9, delete .bak.0
 
    procedure Copy_File (Source_Name, Target_Name : String);
    procedure Copy_File (Source_Name, Target_Name : VString);
@@ -45,8 +49,8 @@ package v20.Fls is
    --  Dir_Tree is created (possibly including other intermediate directories).
    --  Return False if operation is unsuccessfull (i.e. if base directory tree
    --  is unconsistent or still don't exist after the creating attempt). Extra
-   --  inner slashes are processed by runtime. 
-   --  Return True if directory tree already exists.
+   --  inner slashes are processed by runtime. Return True if directory tree 
+   --  already exists.
 
    function Delete_Directory_Tree (Dir_Tree : String) return Boolean;
    function Delete_Directory_Tree (Dir_Tree : VString) return Boolean;
@@ -54,6 +58,12 @@ package v20.Fls is
    --  (possibly including other directories) are deleted. Return True if
    --  Dir_Tree is successfully deleted or was already deleted. Return False if
    --  directory still exists after the deleting attempt). 
+   --
+   --  Dir_Tree must be fully qualified, ie starting with a slash (/).
+   --
+   --  This function prevents deletion of the following root directories (see
+   --  Is_Root_Directory for further details). Pay close attention, you can't
+   --  delete /etc but you are allowed to delete /etc/network !
    --
    --  /!\ This function uses Ada.Directories.Delete_Tree, which raises an 
    --  exception if the directory tree to delete contains a *broken* symbolic
@@ -88,6 +98,14 @@ package v20.Fls is
    function Exists (Name : VString) return Boolean;
    --  Returns True if file or directory Name exists.
 
+   function Extract_Directory (Name : String) return VString;
+   function Extract_Directory (Name : VString) return VString;
+   --  Returns directory from Name.
+   
+   function Extract_Filename (Name : String) return VString;
+   function Extract_Filename (Name : VString) return VString;
+   --  Returns filename from Name.
+
    function File_Size (Name : String) return Integer;
    function File_Size (Name : VString) return Integer;
    --  Size of file
@@ -95,6 +113,22 @@ package v20.Fls is
    function Get_Directory return String renames AD.Current_Directory;
    function Get_Directory return VString;
    --  Returns the full directory name for the current default directory.
+   
+   function If_Root_Directory (Dir_Tree : VString) return Boolean;
+   function If_Root_Directory (Dir_Tree : String) return Boolean;
+   --  This function checks the following root directories: bin, boot, dev, 
+   --  etc, home, lib, lib32, lib64, libx32, lost+found, media, mnt, opt, 
+   --  proc, root, run, sbin, srv, sys, tmp, usr, var. Returns True if 
+   --  Dir_Tree is a root directory. Dir_Tree must be fully qualified, ie 
+   --  starting with a slash (/).
+
+   procedure Move_File (Source_Name, Target_Name : String);
+   procedure Move_File (Source_Name, Target_Name : VString);
+   procedure Move_File (Source_Name : VString; Target_Name : String);
+   procedure Move_File (Source_Name : String;  Target_Name : VString);
+   --  Move a Source_Name file to a Target_Name file destination. Copy_Form is
+   --  “preserve=all_attributes,mode=overwrite” (full attributes preservation
+   --  and overwrite file if exists).
 
    procedure Rename (Old_Name, New_Name : String);
    procedure Rename (Old_Name, New_Name : VString);

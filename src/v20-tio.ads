@@ -19,14 +19,15 @@
 --  Stéphane Rivière - sr - sriviere@soweb.io (HAC runtime integration)
 --
 --  @versions
---  20210322 - 0.1 - sr - v20 lib integration
---  20210322 - 0.2 - sr - v20 lib refactoring - standardize renames, help for
---                       GNATdoc, reorder and add many functions, delete all
---                       Integer and Real related types
+--  see v20.ads
 ------------------------------------------------------------------------------
 
 with Ada.Strings.Unbounded;
 with Ada.Text_IO;
+
+--  SQLite
+with Interfaces;
+--with Interfaces.C;
 
 with v20.Vst; use v20.Vst;
 
@@ -44,13 +45,19 @@ package v20.Tio is
 
    subtype Row is Natural range 0 .. Max_Row;
    subtype Column  is Natural range 0 .. Max_Column;
+   subtype Integer_64 is Interfaces.Integer_64;
 
+   procedure Put (B : Boolean);
+   procedure Put (I : Integer);
+   procedure Put (I : Integer_64);
    procedure Put (C : Character) renames ATI.Put;
    procedure Put (S : String) renames ATI.Put;
    procedure Put (V : VString);
    --  Print to the console.
 
+   procedure Put_Line (B : Boolean);
    procedure Put_Line (I : Integer);
+   procedure Put_Line (I : Integer_64);
    procedure Put_Line (C : Character);
    procedure Put_Line (S : String) renames ATI.Put_Line;
    procedure Put_Line (V : VString);
@@ -62,6 +69,9 @@ package v20.Tio is
    procedure Get_Immediate (C : out Character)
                             renames Ada.Text_IO.Get_Immediate;
    --  Get a character validated by [Enter].
+
+   function Get_Password return VString;
+   --  Returns a password blind typed
 
    procedure Pause;
    --  Displays "Press any key to continue or [Ctrl-C] to abort..." waiting for
@@ -92,9 +102,25 @@ package v20.Tio is
    procedure Cursor_Restore;
    --  Restore the previous saved cursor position.
 
+   procedure Cursor_On;
+   --  Display cursor.
+
+   procedure Cursor_Off;
+   --  Hide cursor.
+
    --  Text File_Handle
 
    subtype File is ATI.File_Type;
+
+   procedure Open_Conf (Handle : in out File; Name : String ;
+                       Wipe_Before_Process : Boolean := False);
+   procedure Open_Conf (Handle : in out File; Name : VString ;
+                       Wipe_Before_Process : Boolean := False);
+   --  Special Open procedure for config files. Creates or Append if needed.
+   --  Ensure that the complete directory tree structure exists before
+   --  creating file. Creating this directory tree if needed.
+   --  Allways make backup before Append. If Wipe_Before_Process is True, the
+   --  file Name is backuped before beeing deleted
 
    procedure Open_Read (Handle : in out File; Name : String);
    procedure Open_Read (Handle : in out File; Name : VString);
@@ -142,6 +168,15 @@ package v20.Tio is
 
    function End_Of_File (Handle : File) return Boolean renames ATI.End_Of_File;
    --  Test if enf of file reached.
+
+   function Read_File (File_To_Read : VString) return VString;
+   --  Read a text file File_To_Read and returning a VString buffer. LF
+   --  (line feed) are preserved.
+
+   procedure Write_File (File_To_Write : VString ; Content : VString);
+   --  Write a text file File_To_Write with Content. LF in content are
+   --  preserved and used as line feed. Read Open_Conf documentation for
+   --  implementation details.
 
 -------------------------------------------------------------------------------
 end v20.Tio;
