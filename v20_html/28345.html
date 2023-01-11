@@ -1,0 +1,120 @@
+<html><head><title>v20-cfg (SFConflict sonia@genesix.org 2021-09-24-11-33-03).ads</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: /home/sr/Seafile/Sowebio/informatique/github/v20/bak/v20-cfg (SFConflict sonia@genesix.org 2021-09-24-11-33-03).ads</h3>
+<SCRIPT>
+defaultStatus = "File: /home/sr/Seafile/Sowebio/informatique/github/v20/bak/v20-cfg (SFConflict sonia@genesix.org 2021-09-24-11-33-03).ads";
+top.document.title  = "v20-cfg (SFConflict sonia@genesix.org 2021-09-24-11-33-03).ads";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default"></span><span class="comment">-------------------------------------------------------------------------------</span>
+<a name="2"><font size=-1>2     </font></a><span class="comment">--  ▖▖▄▖▄▖</span>
+<a name="3"><font size=-1>3     </font></a><span class="comment">--  ▌▌▄▌▛▌</span>
+<a name="4"><font size=-1>4     </font></a><span class="comment">--  ▚▘▙▖█▌</span>
+<a name="5"><font size=-1>5     </font></a><span class="comment">--</span>
+<a name="6"><font size=-1>6     </font></a><span class="comment">--  @file      v20-Cfg.ads</span>
+<a name="7"><font size=-1>7     </font></a><span class="comment">--  @copyright See authors list below and v20.copyrights file</span>
+<a name="8"><font size=-1>8     </font></a><span class="comment">--  @licence   GPL v3</span>
+<a name="9"><font size=-1>9     </font></a><span class="comment">--  @encoding  UTF-8</span>
+<a name="10"><font size=-1>10     </font></a><span class="comment">-------------------------------------------------------------------------------</span>
+<a name="11"><font size=-1>11     </font></a><span class="comment">--  @summary</span>
+<a name="12"><font size=-1>12     </font></a><span class="comment">--  V20 library config file manager</span>
+<a name="13"><font size=-1>13     </font></a><span class="comment">--</span>
+<a name="14"><font size=-1>14     </font></a><span class="comment">--  @description</span>
+<a name="15"><font size=-1>15     </font></a><span class="comment">--</span>
+<a name="16"><font size=-1>16     </font></a><span class="comment">--  @authors</span>
+<a name="17"><font size=-1>17     </font></a><span class="comment">--  Stéphane Rivière - sr - sriviere@soweb.io</span>
+<a name="18"><font size=-1>18     </font></a><span class="comment">--</span>
+<a name="19"><font size=-1>19     </font></a><span class="comment">--  @versions</span>
+<a name="20"><font size=-1>20     </font></a><span class="comment">--  20210329 - 0.1 - sr - v20 lib integration</span>
+<a name="21"><font size=-1>21     </font></a><span class="comment">-------------------------------------------------------------------------------</span>
+<a name="22"><font size=-1>22     </font></a><span class="comment"></span>
+<a name="23"><font size=-1>23     </font></a><span class="comment"></span><span class="keyword">with <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_V.html#1972">Vst</a>; </span><span class="keyword">use <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_V.html#1972">Vst</a>;</span>
+<a name="24"><font size=-1>24     </font></a><span class="default"></span><span class="keyword">with <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_P.html#2886">Prg</a>;</span>
+<a name="25"><font size=-1>25     </font></a><span class="default"></span><span class="keyword">with <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_T.html#1971">Tio</a>;</span>
+<a name="26"><font size=-1>26     </font></a><span class="default"></span>
+<a name="27"><font size=-1>27     </font></a><span class="default"></span><span class="keyword">package <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_C.html#13046">Cfg</a> </span><span class="keyword">is</span>
+<a name="28"><font size=-1>28     </font></a><span class="keyword"></span>
+<a name="29"><font size=-1>29     </font></a><span class="keyword">   pragma </span><span class="default">Elaborate_Body;</span>
+<a name="30"><font size=-1>30     </font></a><span class="default"></span>
+<a name="31"><font size=-1>31     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_O.html#13066">Open</a> </span><span class="default">(<a href="dictionary_C.html#28021">Cfg_File_Read_In</a> : String := </span><span class="string">&quot;&quot;</span><span class="default">) </span><span class="keyword">return </span><span class="default">Boolean;</span>
+<a name="32"><font size=-1>32     </font></a><span class="default">   </span><span class="comment">--  Open and load if exist a configuration file. Create blank if non</span>
+<a name="33"><font size=-1>33     </font></a><span class="comment">   --  existent. Default configuration file name is “program name” followed by</span>
+<a name="34"><font size=-1>34     </font></a><span class="comment">   --  .cnf extension and created in the program start directory.</span>
+<a name="35"><font size=-1>35     </font></a><span class="comment"></span>
+<a name="36"><font size=-1>36     </font></a><span class="comment">   </span><span class="keyword">procedure <a href="dictionary_C.html#13069">Close</a></span><span class="default">;</span>
+<a name="37"><font size=-1>37     </font></a><span class="default">   </span><span class="comment">--  Close Cfg file. For sanity only as each setting is instantly flushed to</span>
+<a name="38"><font size=-1>38     </font></a><span class="comment">   --  disk.</span>
+<a name="39"><font size=-1>39     </font></a><span class="comment"></span>
+<a name="40"><font size=-1>40     </font></a><span class="comment">   </span><span class="keyword">procedure <a href="dictionary_S.html#13067">Set</a> </span><span class="default">(<a href="dictionary_S.html#28006">Section</a> : String;</span>
+<a name="41"><font size=-1>41     </font></a><span class="default">                  <a href="dictionary_P.html#28007">Parameter</a> : String;</span>
+<a name="42"><font size=-1>42     </font></a><span class="default">                  <a href="dictionary_V.html#28008">Value</a> : String;</span>
+<a name="43"><font size=-1>43     </font></a><span class="default">                  <a href="dictionary_C.html#28009">Comment</a> : String := </span><span class="string">&quot;&quot;</span><span class="default">);</span>
+<a name="44"><font size=-1>44     </font></a><span class="default">   </span><span class="comment">--  Create or replace an existing parameter in a section. If this latter</span>
+<a name="45"><font size=-1>45     </font></a><span class="comment">   --  does not exist, also creating it. New setting is persistent even program</span>
+<a name="46"><font size=-1>46     </font></a><span class="comment">   --  quits unexpectedly after. Avoid reserved chars [ ] = # inside</span>
+<a name="47"><font size=-1>47     </font></a><span class="comment">   --  parameters. If reserved chars are passed, the procedure does nothing. A</span>
+<a name="48"><font size=-1>48     </font></a><span class="comment">   --  optional trailing comment can also be added.</span>
+<a name="49"><font size=-1>49     </font></a><span class="comment"></span>
+<a name="50"><font size=-1>50     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_G.html#28346">Get</a> </span><span class="default">(<a href="dictionary_S.html#28012">Section</a> : String; <a href="dictionary_P.html#28013">Parameter</a> : String) </span><span class="keyword">return </span><span class="default">String;</span>
+<a name="51"><font size=-1>51     </font></a><span class="default">   </span><span class="comment">--  Return parameter in section or empty string if not found. Avoid reserved</span>
+<a name="52"><font size=-1>52     </font></a><span class="comment">   --  chars [ ] = # inside parameters.</span>
+<a name="53"><font size=-1>53     </font></a><span class="comment"></span>
+<a name="54"><font size=-1>54     </font></a><span class="comment">   </span><span class="keyword">procedure <a href="dictionary_D.html#13072">Delete</a> </span><span class="default">(<a href="dictionary_S.html#28015">Section</a> : String; <a href="dictionary_P.html#28016">Parameter</a> : String);</span>
+<a name="55"><font size=-1>55     </font></a><span class="default">   </span><span class="comment">--  Delete parameter in section. If no other parameter in this section,</span>
+<a name="56"><font size=-1>56     </font></a><span class="comment">   --  delete section too. Avoid reserved chars [ ] = # inside parameters.</span>
+<a name="57"><font size=-1>57     </font></a><span class="comment">   --  If reserved chars are passed, the procedure does nothing.</span>
+<a name="58"><font size=-1>58     </font></a><span class="comment"></span>
+<a name="59"><font size=-1>59     </font></a><span class="comment">   </span><span class="keyword">procedure <a href="dictionary_C.html#13071">Comment</a> </span><span class="default">(<a href="dictionary_T.html#28019">Text</a> : String);</span>
+<a name="60"><font size=-1>60     </font></a><span class="default">   </span><span class="comment">--  Insert a comment after the last line.</span>
+<a name="61"><font size=-1>61     </font></a><span class="comment"></span>
+<a name="62"><font size=-1>62     </font></a><span class="comment"></span><span class="keyword">private</span>
+<a name="63"><font size=-1>63     </font></a><span class="keyword"></span>
+<a name="64"><font size=-1>64     </font></a><span class="keyword">   <a href="dictionary_C.html#28025">Cfg_File_Read</a> </span><span class="default">: <a href="dictionary_V.html#1988">VString</a> := To_VString (<a href="dictionary_P.html#2886">Prg</a>.<a href="dictionary_S.html#2887">Start_Dir</a>) &amp;</span>
+<a name="65"><font size=-1>65     </font></a><span class="default">                                              </span><span class="string">&quot;/&quot; </span><span class="default">&amp; <a href="dictionary_P.html#2886">Prg</a>.<a href="dictionary_N.html#13063">Name</a> &amp; </span><span class="string">&quot;.cfg&quot;</span><span class="default">;</span>
+<a name="66"><font size=-1>66     </font></a><span class="default">   <a href="dictionary_C.html#28035">Cfg_File_Write</a> : String := <a href="dictionary_P.html#2886">Prg</a>.<a href="dictionary_S.html#2887">Start_Dir</a> &amp; </span><span class="string">&quot;/&quot; </span><span class="default">&amp; <a href="dictionary_P.html#2886">Prg</a>.<a href="dictionary_N.html#13063">Name</a> &amp; </span><span class="string">&quot;.tmp&quot;</span><span class="default">;</span>
+<a name="67"><font size=-1>67     </font></a><span class="default"></span>
+<a name="68"><font size=-1>68     </font></a><span class="default">   <a href="dictionary_C.html#28028">Cfg_Open_Section</a> : </span><span class="keyword">constant <a href="dictionary_V.html#1988">VString</a> </span><span class="default">:= +</span><span class="string">&quot;[&quot;</span><span class="default">;</span>
+<a name="69"><font size=-1>69     </font></a><span class="default">   <a href="dictionary_C.html#28029">Cfg_Close_Section</a> : </span><span class="keyword">constant <a href="dictionary_V.html#1988">VString</a> </span><span class="default">:= +</span><span class="string">&quot;]&quot;</span><span class="default">;</span>
+<a name="70"><font size=-1>70     </font></a><span class="default">   <a href="dictionary_C.html#28030">Cfg_Assignment</a> : </span><span class="keyword">constant <a href="dictionary_V.html#1988">VString</a> </span><span class="default">:= +</span><span class="string">&quot;=&quot;</span><span class="default">;</span>
+<a name="71"><font size=-1>71     </font></a><span class="default">   <a href="dictionary_C.html#28031">Cfg_Comment</a> : </span><span class="keyword">constant <a href="dictionary_V.html#1988">VString</a> </span><span class="default">:= +</span><span class="string">&quot;#&quot;</span><span class="default">;</span>
+<a name="72"><font size=-1>72     </font></a><span class="default">   <a href="dictionary_C.html#28037">Cfg_Command_Delete</a> : </span><span class="keyword">constant <a href="dictionary_V.html#1988">VString</a> </span><span class="default">:= <a href="dictionary_C.html#28028">Cfg_Open_Section</a> &amp;</span>
+<a name="73"><font size=-1>73     </font></a><span class="default">                                            <a href="dictionary_C.html#28028">Cfg_Open_Section</a> &amp; </span><span class="string">&quot;D&quot;</span><span class="default">;</span>
+<a name="74"><font size=-1>74     </font></a><span class="default">   <a href="dictionary_C.html#28036">Cfg_Command_Add</a> : </span><span class="keyword">constant <a href="dictionary_V.html#1988">VString</a> </span><span class="default">:= <a href="dictionary_C.html#28028">Cfg_Open_Section</a> &amp;</span>
+<a name="75"><font size=-1>75     </font></a><span class="default">                                         <a href="dictionary_C.html#28028">Cfg_Open_Section</a> &amp; </span><span class="string">&quot;P&quot;</span><span class="default">;</span>
+<a name="76"><font size=-1>76     </font></a><span class="default"></span>
+<a name="77"><font size=-1>77     </font></a><span class="default">   </span><span class="comment">--  Memory consumption test of an array of VString</span>
+<a name="78"><font size=-1>78     </font></a><span class="comment">   --  Table_Max  ram</span>
+<a name="79"><font size=-1>79     </font></a><span class="comment">   --  (elements) (bytes)</span>
+<a name="80"><font size=-1>80     </font></a><span class="comment">   --  500        1088</span>
+<a name="81"><font size=-1>81     </font></a><span class="comment">   --  250        488</span>
+<a name="82"><font size=-1>82     </font></a><span class="comment"></span>
+<a name="83"><font size=-1>83     </font></a><span class="comment">   <a href="dictionary_T.html#28024">Table_Max</a> </span><span class="default">: Natural := </span><span class="number">250</span><span class="default">;</span>
+<a name="84"><font size=-1>84     </font></a><span class="default">   </span><span class="keyword">type <a href="dictionary_T.html#28347">Table_Lines</a> is array </span><span class="default">(</span><span class="number">1 </span><span class="default">.. <a href="dictionary_T.html#28024">Table_Max</a>) </span><span class="keyword">of <a href="dictionary_V.html#1988">VString</a></span><span class="default">;</span>
+<a name="85"><font size=-1>85     </font></a><span class="default">   <a href="dictionary_C.html#28026">Cfg_Table</a> : <a href="dictionary_T.html#28347">Table_Lines</a>;</span>
+<a name="86"><font size=-1>86     </font></a><span class="default"></span>
+<a name="87"><font size=-1>87     </font></a><span class="default">   <a href="dictionary_C.html#28023">Cfg_Last</a> : Natural := </span><span class="number">0</span><span class="default">;</span>
+<a name="88"><font size=-1>88     </font></a><span class="default">   <a href="dictionary_C.html#28032">Cfg_Section</a> : Natural := </span><span class="number">0</span><span class="default">;</span>
+<a name="89"><font size=-1>89     </font></a><span class="default">   <a href="dictionary_C.html#28033">Cfg_Parameter</a> : Natural := </span><span class="number">0</span><span class="default">;</span>
+<a name="90"><font size=-1>90     </font></a><span class="default"></span>
+<a name="91"><font size=-1>91     </font></a><span class="default">   <a href="dictionary_H.html#28027">Handle_Read</a> : <a href="dictionary_T.html#1971">Tio</a>.<a href="dictionary_F.html#2007">File</a>;</span>
+<a name="92"><font size=-1>92     </font></a><span class="default">   <a href="dictionary_H.html#28034">Handle_Write</a> : <a href="dictionary_T.html#1971">Tio</a>.<a href="dictionary_F.html#2007">File</a>;</span>
+<a name="93"><font size=-1>93     </font></a><span class="default"></span>
+<a name="94"><font size=-1>94     </font></a><span class="default">   </span><span class="comment">--  Service functions</span>
+<a name="95"><font size=-1>95     </font></a><span class="comment"></span>
+<a name="96"><font size=-1>96     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_T.html#27981">Table_Write</a> </span><span class="default">(<a href="dictionary_L.html#27982">Line</a> : <a href="dictionary_V.html#1988">VString</a>) </span><span class="keyword">return </span><span class="default">Boolean;</span>
+<a name="97"><font size=-1>97     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_C.html#27984">Cfg_Read</a> return </span><span class="default">Boolean;</span>
+<a name="98"><font size=-1>98     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_C.html#27987">Check_Parameters</a> </span><span class="default">(<a href="dictionary_S.html#27988">Section</a> : String;</span>
+<a name="99"><font size=-1>99     </font></a><span class="default">                              <a href="dictionary_P.html#27989">Parameter</a> : String;</span>
+<a name="100"><font size=-1>100     </font></a><span class="default">                              <a href="dictionary_V.html#27990">Value</a> : String)</span>
+<a name="101"><font size=-1>101     </font></a><span class="default">                              </span><span class="keyword">return </span><span class="default">Boolean;</span>
+<a name="102"><font size=-1>102     </font></a><span class="default">   </span><span class="keyword">procedure <a href="dictionary_C.html#27992">Cfg_Search</a> </span><span class="default">(<a href="dictionary_S.html#27993">Section</a> : String; <a href="dictionary_P.html#27994">Parameter</a> : String);</span>
+<a name="103"><font size=-1>103     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_C.html#27999">Cfg_Write</a> </span><span class="default">(<a href="dictionary_S.html#28000">Section</a> : String := </span><span class="string">&quot;&quot;</span><span class="default">;</span>
+<a name="104"><font size=-1>104     </font></a><span class="default">                       <a href="dictionary_P.html#28001">Parameter</a> : String := </span><span class="string">&quot;&quot;</span><span class="default">;</span>
+<a name="105"><font size=-1>105     </font></a><span class="default">                       <a href="dictionary_V.html#28002">Value</a> : String := </span><span class="string">&quot;&quot;</span><span class="default">;</span>
+<a name="106"><font size=-1>106     </font></a><span class="default">                       <a href="dictionary_T.html#28003">Trailing_Comment</a> : <a href="dictionary_V.html#1988">VString</a> := +</span><span class="string">&quot;&quot;</span><span class="default">)</span>
+<a name="107"><font size=-1>107     </font></a><span class="default">                       </span><span class="keyword">return </span><span class="default">Boolean;</span>
+<a name="108"><font size=-1>108     </font></a><span class="default"></span>
+<a name="109"><font size=-1>109     </font></a><span class="default"></span><span class="keyword">end <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_C.html#13046">Cfg</a>;</span>
+<a name="110"><font size=-1>110     </font></a><span class="default"></span>
+</pre></body></html>

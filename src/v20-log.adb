@@ -41,11 +41,11 @@ package body v20.Log is
 
       if Display_On and Tio.Ansi then
          if Line_Level = "DBG" then
-            Ansi_Begin := To_VString (ASCII.ESC & "[1;33m");
+            Ansi_Begin := To_VString (CONSOLE_COLOR_YELLOW);
          elsif Line_Level = "ERR" then
-            Ansi_Begin := To_VString (ASCII.ESC & "[1;31m");
+            Ansi_Begin := To_VString (CONSOLE_COLOR_RED);
          end if;
-         Ansi_End := To_VString (ASCII.ESC & "[0m");
+         Ansi_End := To_VString (CONSOLE_COLOR_RESET);
       end if;
 
       --  Task length control
@@ -65,9 +65,8 @@ package body v20.Log is
          --  Line Length control
          if (Header_Length + Length (Line) + 1) > Line_Max_Length then
             --                                      these two numbers v
-            Line := Slice (Line, 1, Line_Max_Length - Header_Length - 1) &
-                                                                    (1 * "*");
-            --                                        must be equals ^                                                        
+            Line := Slice (Line, 1, Line_Max_Length - Header_Length - 1) & (1 * "*");
+            --                                               must be equals ^                                                        
          end if;
 
          if Title_On then
@@ -95,9 +94,9 @@ package body v20.Log is
       --  Disk write with unlimited length line
       if Disk_On then
          if Title_On then
-            if (Header_Length + Length (Line_Disk) + 1) < Line_Max_Length then
+            if (Header_Length + Length (Line_Disk) + 1) < Title_Max_Length then
                Line_Disk := Line_Disk &
-                (Line_Max_Length - Header_Length - Length (Line_Disk)) * "-";
+                (Title_Max_Length - Header_Length - Length (Line_Disk)) * "-";
             end if;
          end if;
          Tio.Put_Line (Handle, To_String (Prg.Time_Stamp & " - " &
@@ -152,6 +151,15 @@ package body v20.Log is
    end Line;
 
    ----------------------------------------------------------------------------
+   procedure Msg (Message : Boolean) is
+   begin
+      if Message then
+         Put ("True", "MSG");
+      else
+         Put ("False", "MSG");
+      end if;
+   end Msg;
+   
    procedure Msg (Message : String) is
    begin
       Put (Message, "MSG");
@@ -165,6 +173,11 @@ package body v20.Log is
    procedure Msg (Message : Integer) is
    begin
       Put (To_String (To_VString (Message)), "MSG");
+   end Msg;
+
+   procedure Msg (Message : Long_Integer) is
+   begin
+      Put (Long_Integer'Image (Message), "MSG");
    end Msg;
 
    procedure Msg (Message : VString) is
@@ -191,20 +204,20 @@ package body v20.Log is
    end Set_Header;
 
    ----------------------------------------------------------------------------
-   procedure Set_Log_Dir (Dir_In : String) is
+   procedure Set_Dir (Dir_In : String) is
    begin
       Log_Dir_Store := To_VString (Dir_In);
-   end Set_Log_Dir;
+   end Set_Dir;
 
-   procedure Set_Log_Dir (Dir_In : VString) is
+   procedure Set_Dir (Dir_In : VString) is
    begin
       Log_Dir_Store := Dir_In;
-   end Set_Log_Dir;
+   end Set_Dir;
 
-   function Log_Dir return VString is
+   function Get_Dir return VString is
    begin
       return Log_Dir_Store;
-   end Log_Dir;
+   end Get_Dir;
    
    ----------------------------------------------------------------------------
    procedure Set_Task (New_Task : String) is
@@ -219,15 +232,21 @@ package body v20.Log is
 
    ----------------------------------------------------------------------------
    procedure Set_Disk (Action : Boolean) is
-      Log_File_Name : constant VString := Log_Dir_Store & "/" &
-                                         Prg.Name & ".log";
+      Log_File_Name : constant VString := Log_Dir_Store & Prg.Name & ".log";
+      Log_Dir_Name : constant VString := Fls.Extract_Directory (Log_File_Name);
    begin
       Disk_On := Action;
       if Disk_On then
          if Fls.Exists (Log_File_Name) then
             Tio.Append (Handle, Log_File_Name);
          else
-            Tio.Create (Handle, Log_File_Name);
+            -- Ensure that the complete tree structure exists before creating file
+            if Fls.Create_Directory_Tree (Log_Dir_Name) then
+               Tio.Create (Handle, Log_File_Name);
+            else
+               Disk_On := False;
+               Err ("Log.Set_Disk > Can't create directory: " & Log_File_Name);
+            end if;
          end if;
          if not Tio.Is_Open (Handle) then
             Disk_On := False;

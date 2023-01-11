@@ -1,0 +1,1704 @@
+<html><head><title>Simple Invocation Tree [V]</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/></head><body bgcolor="#ffffff" TEXT="#000000"><h2>Simple Invocation Tree</h2><hr><pre>
+</pre><table BORDER CELLPADDING=4><tr><td>Non-Alpha</td><td><a href="simpleinvtree_A.html">A</a></td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td><a href="simpleinvtree_O.html">O</a></td><td>P</td><td>Q</td><td>R</td><td><a href="simpleinvtree_S.html">S</a></td><td><a href="simpleinvtree_T.html">T</a></td><td>U</td><td><a href="simpleinvtree_V.html">V</a></td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr></table><pre>
+
+<a href="dictionary_V.html#13046">v20.Cfg</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#13063">v20.Prg.Name</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#27984">v20.Cfg.Cfg_Read</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Text_IO.Reset
+| Ada.Text_IO.End_Of_File
+| <a href="dictionary_V.html#2002">v20.Tio.Get_Line</a>
+| <a href="dictionary_V.html#27981">v20.Cfg.Table_Write</a>
+
+<a href="dictionary_V.html#27992">v20.Cfg.Cfg_Search</a>
+| <a href="dictionary_V.html#5978">v20.Vst.Index</a>
+| <a href="dictionary_V.html#7164">v20.Vst.Trim_Left</a>
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| <a href="dictionary_V.html#5979">v20.Vst.Trim_Both</a>
+| Ada.Strings.Unbounded.=
+
+<a href="dictionary_V.html#27999">v20.Cfg.Cfg_Write</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4468">v20.Tio.Create</a>
+| Ada.Text_IO.Is_Open
+| <a href="dictionary_V.html#5978">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| <a href="dictionary_V.html#2004">v20.Tio.Put_Line</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_A.html#2005">Ada.Text_IO.Close</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1897">v20.Fls.Delete_File</a>
+| <a href="dictionary_V.html#1944">v20.Fls.Rename</a>
+| <a href="dictionary_V.html#1996">v20.Tio.Open_Read</a>
+| <a href="dictionary_V.html#27984">v20.Cfg.Cfg_Read</a>
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+
+<a href="dictionary_V.html#27987">v20.Cfg.Check_Parameters</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#5978">v20.Vst.Index</a>
+
+<a href="dictionary_V.html#13069">v20.Cfg.Close</a>
+| Ada.Text_IO.Is_Open
+| <a href="dictionary_A.html#2005">Ada.Text_IO.Close</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+
+<a href="dictionary_V.html#13071">v20.Cfg.Comment</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#27981">v20.Cfg.Table_Write</a>
+| <a href="dictionary_V.html#27999">v20.Cfg.Cfg_Write</a>
+
+<a href="dictionary_V.html#13072">v20.Cfg.Delete</a>
+| <a href="dictionary_V.html#27992">v20.Cfg.Cfg_Search</a>
+| <a href="dictionary_V.html#5978">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#27999">v20.Cfg.Cfg_Write</a>
+| <a href="dictionary_V.html#1976">v20.Log.Err</a>
+
+<a href="dictionary_V.html#13068">v20.Cfg.Get</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#27992">v20.Cfg.Cfg_Search</a>
+| <a href="dictionary_V.html#5978">v20.Vst.Index</a>
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#5979">v20.Vst.Trim_Both</a>
+
+<a href="dictionary_V.html#28011">v20.Cfg.Get</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#27992">v20.Cfg.Cfg_Search</a>
+| <a href="dictionary_V.html#5978">v20.Vst.Index</a>
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#5979">v20.Vst.Trim_Both</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+
+<a href="dictionary_V.html#13066">v20.Cfg.Open</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| Ada.Directories.Exists
+| <a href="dictionary_V.html#1999">v20.Tio.Create</a>
+| Ada.Text_IO.Is_Open
+| <a href="dictionary_V.html#13069">v20.Cfg.Close</a>
+| <a href="dictionary_V.html#1976">v20.Log.Err</a>
+| <a href="dictionary_V.html#1996">v20.Tio.Open_Read</a>
+| <a href="dictionary_V.html#27984">v20.Cfg.Cfg_Read</a>
+
+<a href="dictionary_V.html#13067">v20.Cfg.Set</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#27987">v20.Cfg.Check_Parameters</a>
+| <a href="dictionary_V.html#27992">v20.Cfg.Cfg_Search</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#5978">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+| <a href="dictionary_V.html#27999">v20.Cfg.Cfg_Write</a>
+| <a href="dictionary_V.html#1976">v20.Log.Err</a>
+
+<a href="dictionary_V.html#27981">v20.Cfg.Table_Write</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+
+<a href="dictionary_V.html#13073">v20.Exception_Handling</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#13063">v20.Prg.Name</a>
+| Ada.Strings.Unbounded.&
+| Ada.Exceptions.Exception_Information
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#5982">v20.Vst.Field_Count</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Text_IO.New_Line
+| <a href="dictionary_V.html#7363">v20.Vst.*</a>
+| <a href="dictionary_V.html#4433">v20.Tio.Put_Line</a>
+| <a href="dictionary_V.html#13065">v20.Prg.Time_Stamp</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#13599">v20.Prg.Duration_Stamp</a>
+| <a href="dictionary_V.html#13595">v20.Get_Build</a>
+| <a href="dictionary_V.html#13048">v20.Prg.Get_Version</a>
+| <a href="dictionary_V.html#13064">v20.Get_Version</a>
+| <a href="dictionary_V.html#5866">v20.Sys.Get_Home</a>
+| <a href="dictionary_V.html#5858">v20.Sys.Get_Alloc_Ada</a>
+| Ada.Text_IO.Put_Line
+| <a href="dictionary_V.html#5860">v20.Sys.Get_Alloc_All</a>
+| <a href="dictionary_V.html#5932">v20.Sys.Is_Command</a>
+| <a href="dictionary_V.html#5983">v20.Vst.Field_By_Index</a>
+| <a href="dictionary_V.html#2003">v20.Vst.Index</a>
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| <a href="dictionary_V.html#5966">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#7277">v20.Vst.Tail_After_Match</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| Ada.Directories.Exists
+| <a href="dictionary_V.html#4474">v20.Tio.Append</a>
+| <a href="dictionary_V.html#4468">v20.Tio.Create</a>
+| Ada.Text_IO.Is_Open
+| <a href="dictionary_V.html#2004">v20.Tio.Put_Line</a>
+| Ada.Text_IO.New_Line
+| Ada.Text_IO.Put_Line
+| <a href="dictionary_A.html#2005">Ada.Text_IO.Close</a>
+| <a href="dictionary_V.html#4447">v20.Tio.Cursor_On</a>
+| <a href="dictionary_V.html#13070">v20.Prg.Set_Exit_Status</a>
+| <a href="dictionary_V.html#4471">v20.Tio.Append</a>
+| <a href="dictionary_V.html#1999">v20.Tio.Create</a>
+
+<a href="dictionary_V.html#4528">v20.Fls.Backup_File</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#33254">v20.Fls.Backup_File</a>
+
+<a href="dictionary_V.html#33254">v20.Fls.Backup_File</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#1926">v20.Fls.Exists</a>
+| <a href="dictionary_V.html#33290">v20.Fls.Move_File</a>
+| <a href="dictionary_V.html#1900">v20.Fls.Delete_File</a>
+
+<a href="dictionary_V.html#1873">v20.Fls.Copy_File</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#1980">v20.Vst.Index_Backward</a>
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| <a href="dictionary_V.html#1926">v20.Fls.Exists</a>
+| Ada.Directories.Copy_File
+| <a href="dictionary_V.html#1976">v20.Log.Err</a>
+| <a href="dictionary_V.html#1871">v20.Fls.Log_Err</a>
+| <a href="dictionary_V.html#2003">v20.Vst.Index</a>
+
+<a href="dictionary_V.html#1877">v20.Fls.Copy_File</a>
+| Ada.Strings.Unbounded.To_String
+| <a href="dictionary_V.html#1873">v20.Fls.Copy_File</a>
+
+<a href="dictionary_V.html#1880">v20.Fls.Copy_File</a>
+| Ada.Strings.Unbounded.To_String
+| <a href="dictionary_V.html#1873">v20.Fls.Copy_File</a>
+
+<a href="dictionary_V.html#1883">v20.Fls.Copy_File</a>
+| Ada.Strings.Unbounded.To_String
+| <a href="dictionary_V.html#1873">v20.Fls.Copy_File</a>
+
+<a href="dictionary_V.html#1886">v20.Fls.Create_Directory_Tree</a>
+| Ada.Directories.Exists
+| Ada.Directories.Create_Path
+| <a href="dictionary_V.html#1871">v20.Fls.Log_Err</a>
+
+<a href="dictionary_V.html#1889">v20.Fls.Create_Directory_Tree</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1886">v20.Fls.Create_Directory_Tree</a>
+
+<a href="dictionary_V.html#1891">v20.Fls.Delete_Directory_Tree</a>
+| Ada.Directories.Exists
+| Ada.Directories.Delete_Tree
+| <a href="dictionary_V.html#1871">v20.Fls.Log_Err</a>
+| <a href="dictionary_V.html#33285">v20.Fls.If_Root_Directory</a>
+| <a href="dictionary_V.html#1976">v20.Log.Err</a>
+
+<a href="dictionary_V.html#1895">v20.Fls.Delete_Directory_Tree</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1891">v20.Fls.Delete_Directory_Tree</a>
+
+<a href="dictionary_V.html#33261">v20.Fls.Delete_Directory_Tree</a>
+| <a href="dictionary_V.html#1891">v20.Fls.Delete_Directory_Tree</a>
+
+<a href="dictionary_V.html#33264">v20.Fls.Delete_Directory_Tree</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1891">v20.Fls.Delete_Directory_Tree</a>
+
+<a href="dictionary_V.html#1897">v20.Fls.Delete_File</a>
+| Ada.Directories.Exists
+| Ada.Directories.Delete_File
+| <a href="dictionary_V.html#1871">v20.Fls.Log_Err</a>
+
+<a href="dictionary_V.html#1900">v20.Fls.Delete_File</a>
+| Ada.Strings.Unbounded.To_String
+| Ada.Directories.Exists
+| Ada.Directories.Delete_File
+
+<a href="dictionary_V.html#1902">v20.Fls.Delete_Lines</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Directories.Exists
+| <a href="dictionary_V.html#1996">v20.Tio.Open_Read</a>
+| Ada.Text_IO.Is_Open
+| <a href="dictionary_V.html#1999">v20.Tio.Create</a>
+| Ada.Text_IO.End_Of_File
+| <a href="dictionary_V.html#2002">v20.Tio.Get_Line</a>
+| <a href="dictionary_V.html#2003">v20.Vst.Index</a>
+| <a href="dictionary_V.html#2004">v20.Tio.Put_Line</a>
+| <a href="dictionary_A.html#2005">Ada.Text_IO.Close</a>
+| <a href="dictionary_V.html#1934">v20.Fls.Rename</a>
+| <a href="dictionary_V.html#1976">v20.Log.Err</a>
+
+<a href="dictionary_V.html#1910">v20.Fls.Delete_Lines</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1902">v20.Fls.Delete_Lines</a>
+
+<a href="dictionary_V.html#1913">v20.Fls.Delete_Lines</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1902">v20.Fls.Delete_Lines</a>
+
+<a href="dictionary_V.html#1916">v20.Fls.Delete_Lines</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1902">v20.Fls.Delete_Lines</a>
+
+<a href="dictionary_V.html#1919">v20.Fls.Download_File</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#1926">v20.Fls.Exists</a>
+| <a href="dictionary_V.html#1931">v20.Fls.File_Size</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2010">v20.Log.Msg</a>
+| <a href="dictionary_V.html#1900">v20.Fls.Delete_File</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+| Ada.Strings.Unbounded.Length
+
+<a href="dictionary_V.html#1926">v20.Fls.Exists</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| Ada.Directories.Exists
+
+<a href="dictionary_V.html#4527">v20.Fls.Extract_Directory</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#4544">v20.Fls.Extract_Directory</a>
+
+<a href="dictionary_V.html#4544">v20.Fls.Extract_Directory</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#7233">v20.Vst.Index_Backward</a>
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+
+<a href="dictionary_V.html#33275">v20.Fls.Extract_Filename</a>
+| <a href="dictionary_V.html#7274">v20.Vst.Tail_After_Match</a>
+
+<a href="dictionary_V.html#33277">v20.Fls.Extract_Filename</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#33275">v20.Fls.Extract_Filename</a>
+
+<a href="dictionary_V.html#1928">v20.Fls.File_Size</a>
+| Ada.Directories.Size
+| <a href="dictionary_V.html#2019">v20.Vst.To_Integer</a>
+| <a href="dictionary_V.html#1871">v20.Fls.Log_Err</a>
+
+<a href="dictionary_V.html#1931">v20.Fls.File_Size</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1928">v20.Fls.File_Size</a>
+
+<a href="dictionary_V.html#1933">v20.Fls.Get_Directory</a>
+| Ada.Directories.Current_Directory
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#33279">v20.Fls.If_Root_Directory</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#7186">v20.Vst.Starts_With</a>
+| <a href="dictionary_V.html#7195">v20.Vst.Ends_With</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#7198">v20.Vst.Char_Count</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#7322">v20.Vst.Field_By_Name</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+
+<a href="dictionary_V.html#33285">v20.Fls.If_Root_Directory</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#33279">v20.Fls.If_Root_Directory</a>
+
+<a href="dictionary_V.html#1871">v20.Fls.Log_Err</a>
+| Ada.Exceptions.Exception_Information
+| <a href="dictionary_V.html#1976">v20.Log.Err</a>
+
+<a href="dictionary_V.html#33287">v20.Fls.Move_File</a>
+| <a href="dictionary_V.html#1873">v20.Fls.Copy_File</a>
+| <a href="dictionary_V.html#1897">v20.Fls.Delete_File</a>
+
+<a href="dictionary_V.html#33290">v20.Fls.Move_File</a>
+| Ada.Strings.Unbounded.To_String
+| <a href="dictionary_V.html#33287">v20.Fls.Move_File</a>
+
+<a href="dictionary_V.html#33293">v20.Fls.Move_File</a>
+| Ada.Strings.Unbounded.To_String
+| <a href="dictionary_V.html#33287">v20.Fls.Move_File</a>
+
+<a href="dictionary_V.html#33296">v20.Fls.Move_File</a>
+| Ada.Strings.Unbounded.To_String
+| <a href="dictionary_V.html#33287">v20.Fls.Move_File</a>
+
+<a href="dictionary_V.html#1934">v20.Fls.Rename</a>
+| Ada.Directories.Exists
+| Ada.Directories.Kind
+| Ada.Directories.Delete_File
+| Ada.Directories.Rename
+| <a href="dictionary_V.html#1871">v20.Fls.Log_Err</a>
+
+<a href="dictionary_V.html#1938">v20.Fls.Rename</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1934">v20.Fls.Rename</a>
+
+<a href="dictionary_V.html#1941">v20.Fls.Rename</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1934">v20.Fls.Rename</a>
+
+<a href="dictionary_V.html#1944">v20.Fls.Rename</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1934">v20.Fls.Rename</a>
+
+<a href="dictionary_V.html#1947">v20.Fls.Search_Lines</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#1996">v20.Tio.Open_Read</a>
+| Ada.Text_IO.Is_Open
+| Ada.Text_IO.End_Of_File
+| <a href="dictionary_V.html#2002">v20.Tio.Get_Line</a>
+| <a href="dictionary_V.html#2003">v20.Vst.Index</a>
+| <a href="dictionary_A.html#2005">Ada.Text_IO.Close</a>
+
+<a href="dictionary_V.html#1953">v20.Fls.Search_Lines</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1947">v20.Fls.Search_Lines</a>
+
+<a href="dictionary_V.html#1956">v20.Fls.Search_Lines</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1947">v20.Fls.Search_Lines</a>
+
+<a href="dictionary_V.html#1959">v20.Fls.Search_Lines</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1947">v20.Fls.Search_Lines</a>
+
+<a href="dictionary_V.html#1962">v20.Fls.Set_Directory</a>
+| Ada.Directories.Exists
+| Ada.Directories.Set_Directory
+| <a href="dictionary_V.html#1871">v20.Fls.Log_Err</a>
+
+<a href="dictionary_V.html#1966">v20.Fls.Set_Directory</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1962">v20.Fls.Set_Directory</a>
+
+<a href="dictionary_V.html#13596">v20.Get_Log_Dir</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#13597">v20.Get_Tmp_Dir</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#13064">v20.Get_Version</a>
+| Ada.Strings.Fixed.Trim
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#29906">v20.Get_Version</a>
+| Ada.Strings.Fixed.Trim
+
+<a href="dictionary_V.html#1969">v20.Log</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#2846">v20.Log.Dbg</a>
+| <a href="dictionary_V.html#2882">v20.Log.Put</a>
+
+<a href="dictionary_V.html#2848">v20.Log.Dbg</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#2882">v20.Log.Put</a>
+
+<a href="dictionary_V.html#1976">v20.Log.Err</a>
+| <a href="dictionary_V.html#2882">v20.Log.Put</a>
+
+<a href="dictionary_V.html#2016">v20.Log.Err</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#2882">v20.Log.Put</a>
+
+<a href="dictionary_V.html#2853">v20.Log.Line</a>
+| Ada.Text_IO.New_Line
+| Ada.Text_IO.New_Line
+
+<a href="dictionary_V.html#19747">v20.Log.Log_Dir</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+
+<a href="dictionary_V.html#2010">v20.Log.Msg</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#2882">v20.Log.Put</a>
+
+<a href="dictionary_V.html#2855">v20.Log.Msg</a>
+| <a href="dictionary_V.html#2882">v20.Log.Put</a>
+
+<a href="dictionary_V.html#13241">v20.Log.Msg</a>
+| <a href="dictionary_V.html#2882">v20.Log.Put</a>
+
+<a href="dictionary_V.html#13243">v20.Log.Msg</a>
+| <a href="dictionary_V.html#4506">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#2882">v20.Log.Put</a>
+
+<a href="dictionary_V.html#13245">v20.Log.Msg</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#2882">v20.Log.Put</a>
+
+<a href="dictionary_V.html#13247">v20.Log.Msg</a>
+| <a href="dictionary_V.html#2882">v20.Log.Put</a>
+
+<a href="dictionary_V.html#2882">v20.Log.Put</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| <a href="dictionary_V.html#7363">v20.Vst.*</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#13065">v20.Prg.Time_Stamp</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| Ada.Text_IO.Put_Line
+| <a href="dictionary_V.html#4433">v20.Tio.Put_Line</a>
+| Ada.Text_IO.Put_Line
+
+<a href="dictionary_V.html#13251">v20.Log.Set_Dir</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#2860">v20.Log.Set_Disk</a>
+| <a href="dictionary_V.html#13063">v20.Prg.Name</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#4544">v20.Fls.Extract_Directory</a>
+| <a href="dictionary_V.html#1926">v20.Fls.Exists</a>
+| <a href="dictionary_V.html#4474">v20.Tio.Append</a>
+| <a href="dictionary_V.html#1889">v20.Fls.Create_Directory_Tree</a>
+| <a href="dictionary_V.html#4468">v20.Tio.Create</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+| Ada.Text_IO.Is_Open
+| <a href="dictionary_A.html#2005">Ada.Text_IO.Close</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| Ada.Directories.Exists
+| <a href="dictionary_V.html#4471">v20.Tio.Append</a>
+| <a href="dictionary_V.html#1999">v20.Tio.Create</a>
+| <a href="dictionary_V.html#1976">v20.Log.Err</a>
+
+<a href="dictionary_V.html#19746">v20.Log.Set_Log_Dir</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#2866">v20.Log.Set_Task</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#2870">v20.Log.Title</a>
+| Ada.Characters.Handling.To_Upper
+| <a href="dictionary_V.html#2882">v20.Log.Put</a>
+
+<a href="dictionary_V.html#2872">v20.Log.Title</a>
+| <a href="dictionary_V.html#7178">v20.Vst.To_Upper</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#2882">v20.Log.Put</a>
+
+<a href="dictionary_V.html#16955">v20.Net</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#16956">v20.Net.Command</a>
+| <a href="dictionary_V.html#13597">v20.Get_Tmp_Dir</a>
+| <a href="dictionary_V.html#13065">v20.Prg.Time_Stamp</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#4490">v20.Tio.Write_File</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#1900">v20.Fls.Delete_File</a>
+| <a href="dictionary_V.html#4485">v20.Tio.Read_File</a>
+| <a href="dictionary_V.html#2010">v20.Log.Msg</a>
+| <a href="dictionary_V.html#17041">v20.Net.Set_Exception</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+
+<a href="dictionary_V.html#16966">v20.Net.Command</a>
+| <a href="dictionary_V.html#13597">v20.Get_Tmp_Dir</a>
+| <a href="dictionary_V.html#13065">v20.Prg.Time_Stamp</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#4490">v20.Tio.Write_File</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#1900">v20.Fls.Delete_File</a>
+| <a href="dictionary_V.html#2010">v20.Log.Msg</a>
+| <a href="dictionary_V.html#17041">v20.Net.Set_Exception</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+
+<a href="dictionary_V.html#16974">v20.Net.Command</a>
+| <a href="dictionary_V.html#16966">v20.Net.Command</a>
+
+<a href="dictionary_V.html#16978">v20.Net.Copy_File</a>
+| <a href="dictionary_V.html#13597">v20.Get_Tmp_Dir</a>
+| <a href="dictionary_V.html#13065">v20.Prg.Time_Stamp</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#4490">v20.Tio.Write_File</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#17000">v20.Net.Directory_Exists</a>
+| <a href="dictionary_V.html#16974">v20.Net.Command</a>
+| <a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#1900">v20.Fls.Delete_File</a>
+| <a href="dictionary_V.html#2010">v20.Log.Msg</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+| <a href="dictionary_V.html#17041">v20.Net.Set_Exception</a>
+
+<a href="dictionary_V.html#16987">v20.Net.Copy_File</a>
+| <a href="dictionary_V.html#16978">v20.Net.Copy_File</a>
+
+<a href="dictionary_V.html#16992">v20.Net.Directory_Exists</a>
+| <a href="dictionary_V.html#13597">v20.Get_Tmp_Dir</a>
+| <a href="dictionary_V.html#13065">v20.Prg.Time_Stamp</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#4490">v20.Tio.Write_File</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#1900">v20.Fls.Delete_File</a>
+
+<a href="dictionary_V.html#17000">v20.Net.Directory_Exists</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#16992">v20.Net.Directory_Exists</a>
+
+<a href="dictionary_V.html#17003">v20.Net.File_Exists</a>
+| <a href="dictionary_V.html#13597">v20.Get_Tmp_Dir</a>
+| <a href="dictionary_V.html#13065">v20.Prg.Time_Stamp</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#4490">v20.Tio.Write_File</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#1900">v20.Fls.Delete_File</a>
+
+<a href="dictionary_V.html#17011">v20.Net.File_Exists</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#17003">v20.Net.File_Exists</a>
+
+<a href="dictionary_V.html#17022">v20.Net.Get_Network_From_Ip</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#17014">v20.Net.Ip_Check</a>
+| <a href="dictionary_V.html#5983">v20.Vst.Field_By_Index</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#17025">v20.Net.Get_Network_From_Ip</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#17022">v20.Net.Get_Network_From_Ip</a>
+
+<a href="dictionary_V.html#17014">v20.Net.Ip_Check</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#5982">v20.Vst.Field_Count</a>
+| <a href="dictionary_V.html#5983">v20.Vst.Field_By_Index</a>
+| <a href="dictionary_V.html#7157">v20.Vst.Is_Numeric</a>
+| <a href="dictionary_V.html#7136">v20.Vst.To_Integer</a>
+
+<a href="dictionary_V.html#17020">v20.Net.Ip_Check</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#17014">v20.Net.Ip_Check</a>
+
+<a href="dictionary_V.html#17027">v20.Net.Mount</a>
+| <a href="dictionary_V.html#13597">v20.Get_Tmp_Dir</a>
+| <a href="dictionary_V.html#13065">v20.Prg.Time_Stamp</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#4490">v20.Tio.Write_File</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#1900">v20.Fls.Delete_File</a>
+| <a href="dictionary_V.html#2010">v20.Log.Msg</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+| <a href="dictionary_V.html#17041">v20.Net.Set_Exception</a>
+
+<a href="dictionary_V.html#17034">v20.Net.Ping</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#5966">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#2003">v20.Vst.Index</a>
+
+<a href="dictionary_V.html#17042">v20.Net.Set_Key</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#13597">v20.Get_Tmp_Dir</a>
+| <a href="dictionary_V.html#13065">v20.Prg.Time_Stamp</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#4490">v20.Tio.Write_File</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+| <a href="dictionary_V.html#1900">v20.Fls.Delete_File</a>
+
+<a href="dictionary_V.html#17047">v20.Net.Set_Key</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#17052">v20.Net.Unmount</a>
+| <a href="dictionary_V.html#13597">v20.Get_Tmp_Dir</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#2010">v20.Log.Msg</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+| <a href="dictionary_V.html#17041">v20.Net.Set_Exception</a>
+
+<a href="dictionary_V.html#2886">v20.Prg</a>
+| Ada.Command_Line.Command_Name
+| <a href="dictionary_V.html#7271">v20.Vst.Tail_After_Match</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#7236">v20.Vst.Index_Backward</a>
+| <a href="dictionary_V.html#7256">v20.Vst.Slice</a>
+| Ada.Directories.Current_Directory
+| Ada.Calendar.Clock
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#24206">v20.Prg.Current_Time_Seconds</a>
+| Ada.Calendar.Clock
+| Ada.Calendar.Formatting.Time_Of
+
+<a href="dictionary_V.html#13599">v20.Prg.Duration_Stamp</a>
+| Ada.Calendar.Clock
+| Ada.Calendar.Seconds
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#24225">v20.Prg.Time_Format</a>
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#24209">v20.Prg.Duration_Stamp_Seconds</a>
+| Ada.Calendar.Clock
+| Ada.Calendar.Seconds
+
+<a href="dictionary_V.html#24211">v20.Prg.Duration_Stamp_Time</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#24225">v20.Prg.Time_Format</a>
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#24213">v20.Prg.Generate_Password</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#5962">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#1976">v20.Log.Err</a>
+
+<a href="dictionary_V.html#13048">v20.Prg.Get_Version</a>
+| <a href="dictionary_V.html#13063">v20.Prg.Name</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Fixed.Trim
+
+<a href="dictionary_V.html#33953">v20.Prg.Get_Version</a>
+| <a href="dictionary_V.html#13063">v20.Prg.Name</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Fixed.Trim
+
+<a href="dictionary_V.html#5980">v20.Prg.Is_User_Not_Root</a>
+| <a href="dictionary_V.html#5862">v20.Sys.Get_Env</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.=
+
+<a href="dictionary_V.html#13063">v20.Prg.Name</a>
+| <a href="dictionary_V.html#7277">v20.Vst.Tail_After_Match</a>
+| Ada.Strings.Unbounded.Length
+
+<a href="dictionary_V.html#24219">v20.Prg.Path</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#5962">v20.Sys.Shell_Execute</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| Ada.Strings.Unbounded.=
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+
+<a href="dictionary_V.html#13070">v20.Prg.Set_Exit_Status</a>
+| <a href="dictionary_A.html#24237">Ada.Command_Line.Set_Exit_Status</a>
+
+<a href="dictionary_V.html#24225">v20.Prg.Time_Format</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#13065">v20.Prg.Time_Stamp</a>
+| Ada.Calendar.Clock
+| GNAT.Calendar.Time_IO.Image
+| Ada.Strings.Unbounded.To_Unbounded_String
+| Ada.Calendar.Seconds
+| Ada.Calendar.Year
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| Ada.Calendar.Month
+| <a href="dictionary_V.html#24225">v20.Prg.Time_Format</a>
+| Ada.Strings.Unbounded.&
+| Ada.Calendar.Day
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#10687">v20.Sql</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#10688">v20.Sql.Bind</a>
+| <a href="dictionary_S.html#584">SQLite.Bind</a>
+
+<a href="dictionary_V.html#10691">v20.Sql.Bind</a>
+| <a href="dictionary_S.html#584">SQLite.Bind</a>
+
+<a href="dictionary_V.html#10695">v20.Sql.Bind</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_S.html#616">SQLite.Bind</a>
+
+<a href="dictionary_V.html#10698">v20.Sql.Bind</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_S.html#616">SQLite.Bind</a>
+
+<a href="dictionary_V.html#10712">v20.Sql.Column_Count</a>
+| <a href="dictionary_S.html#694">SQLite.Column_Count</a>
+
+<a href="dictionary_V.html#10713">v20.Sql.Column_Count</a>
+| <a href="dictionary_S.html#694">SQLite.Column_Count</a>
+
+<a href="dictionary_V.html#10715">v20.Sql.Column_Exists</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#10773">v20.Sql.Prepare</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#10734">v20.Sql.Exec</a>
+| <a href="dictionary_V.html#10840">v20.Sql.Step</a>
+| <a href="dictionary_V.html#10704">v20.Sql.Column_Integer</a>
+| <a href="dictionary_V.html#10793">v20.Sql.Reset</a>
+| <a href="dictionary_V.html#10732">v20.Sql.Exec</a>
+
+<a href="dictionary_V.html#10720">v20.Sql.Column_Exists</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#10715">v20.Sql.Column_Exists</a>
+
+<a href="dictionary_V.html#10702">v20.Sql.Column_Integer</a>
+| <a href="dictionary_S.html#655">SQLite.Column</a>
+
+<a href="dictionary_V.html#10704">v20.Sql.Column_Integer</a>
+| <a href="dictionary_S.html#655">SQLite.Column</a>
+
+<a href="dictionary_V.html#10707">v20.Sql.Column_Text</a>
+| <a href="dictionary_S.html#667">SQLite.Column</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#10709">v20.Sql.Column_Text</a>
+| <a href="dictionary_S.html#667">SQLite.Column</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#10723">v20.Sql.Column_Type</a>
+| <a href="dictionary_S.html#698">SQLite.Column_Type</a>
+| <a href="dictionary_V.html#2019">v20.Vst.To_Integer</a>
+
+<a href="dictionary_V.html#10725">v20.Sql.Column_Type</a>
+| <a href="dictionary_S.html#698">SQLite.Column_Type</a>
+| <a href="dictionary_V.html#2019">v20.Vst.To_Integer</a>
+
+<a href="dictionary_V.html#10728">v20.Sql.Delete</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2848">v20.Log.Dbg</a>
+| <a href="dictionary_V.html#10734">v20.Sql.Exec</a>
+
+<a href="dictionary_V.html#10736">v20.Sql.Error</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#5983">v20.Vst.Field_By_Index</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#7288">v20.Vst.Stript_Chars</a>
+| <a href="dictionary_V.html#7136">v20.Vst.To_Integer</a>
+
+<a href="dictionary_V.html#10732">v20.Sql.Exec</a>
+| <a href="dictionary_S.html#712">SQLite.Exec</a>
+
+<a href="dictionary_V.html#10734">v20.Sql.Exec</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_S.html#712">SQLite.Exec</a>
+
+<a href="dictionary_V.html#10742">v20.Sql.Get_Config</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#10845">v20.Sql.Table_Exists</a>
+| <a href="dictionary_V.html#10720">v20.Sql.Column_Exists</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#10773">v20.Sql.Prepare</a>
+| <a href="dictionary_V.html#10732">v20.Sql.Exec</a>
+| <a href="dictionary_V.html#10840">v20.Sql.Step</a>
+| <a href="dictionary_V.html#10709">v20.Sql.Column_Text</a>
+| <a href="dictionary_V.html#10793">v20.Sql.Reset</a>
+
+<a href="dictionary_V.html#10746">v20.Sql.Get_Config</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#10742">v20.Sql.Get_Config</a>
+
+<a href="dictionary_V.html#10752">v20.Sql.Get_Version</a>
+| <a href="dictionary_S.html#888">SQLite.Version</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#10748">v20.Sql.Index_Exists</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#10773">v20.Sql.Prepare</a>
+| <a href="dictionary_V.html#10732">v20.Sql.Exec</a>
+| <a href="dictionary_V.html#10840">v20.Sql.Step</a>
+| <a href="dictionary_V.html#10704">v20.Sql.Column_Integer</a>
+| <a href="dictionary_V.html#10793">v20.Sql.Reset</a>
+
+<a href="dictionary_V.html#10753">v20.Sql.Insert</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#5982">v20.Vst.Field_Count</a>
+| <a href="dictionary_V.html#10847">v20.Sql.Table_Exists</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#10732">v20.Sql.Exec</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#10773">v20.Sql.Prepare</a>
+| <a href="dictionary_V.html#10713">v20.Sql.Column_Count</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#2848">v20.Log.Dbg</a>
+| <a href="dictionary_V.html#10843">v20.Sql.Step</a>
+| <a href="dictionary_V.html#5983">v20.Vst.Field_By_Index</a>
+| <a href="dictionary_V.html#10709">v20.Sql.Column_Text</a>
+| Ada.Strings.Unbounded.=
+| Ada.Strings.Unbounded.=
+| <a href="dictionary_V.html#7305">v20.Vst.Replace_Pattern</a>
+| <a href="dictionary_V.html#10793">v20.Sql.Reset</a>
+| <a href="dictionary_V.html#2003">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| <a href="dictionary_V.html#10734">v20.Sql.Exec</a>
+
+<a href="dictionary_V.html#10764">v20.Sql.Last_Insert_RowID</a>
+| <a href="dictionary_S.html#763">SQLite.Last_Insert_Row</a>
+
+<a href="dictionary_V.html#10765">v20.Sql.Last_RowID</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#10773">v20.Sql.Prepare</a>
+| <a href="dictionary_V.html#10734">v20.Sql.Exec</a>
+| <a href="dictionary_V.html#10840">v20.Sql.Step</a>
+| <a href="dictionary_V.html#10704">v20.Sql.Column_Integer</a>
+| <a href="dictionary_V.html#10793">v20.Sql.Reset</a>
+
+<a href="dictionary_V.html#10769">v20.Sql.Open</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_S.html#767">SQLite.Open</a>
+
+<a href="dictionary_V.html#10771">v20.Sql.Prepare</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_S.html#780">SQLite.Prepare</a>
+
+<a href="dictionary_V.html#10773">v20.Sql.Prepare</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_S.html#780">SQLite.Prepare</a>
+
+<a href="dictionary_V.html#10775">v20.Sql.Read</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#5982">v20.Vst.Field_Count</a>
+| <a href="dictionary_V.html#10732">v20.Sql.Exec</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2848">v20.Log.Dbg</a>
+| <a href="dictionary_V.html#10773">v20.Sql.Prepare</a>
+| <a href="dictionary_V.html#10843">v20.Sql.Step</a>
+| <a href="dictionary_V.html#10709">v20.Sql.Column_Text</a>
+| <a href="dictionary_V.html#2003">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| <a href="dictionary_V.html#10793">v20.Sql.Reset</a>
+
+<a href="dictionary_V.html#10792">v20.Sql.Reset</a>
+| <a href="dictionary_S.html#795">SQLite.Reset</a>
+
+<a href="dictionary_V.html#10793">v20.Sql.Reset</a>
+| <a href="dictionary_S.html#795">SQLite.Reset</a>
+
+<a href="dictionary_V.html#10787">v20.Sql.Row_Count</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#10773">v20.Sql.Prepare</a>
+| <a href="dictionary_V.html#10734">v20.Sql.Exec</a>
+| <a href="dictionary_V.html#10840">v20.Sql.Step</a>
+| <a href="dictionary_V.html#10704">v20.Sql.Column_Integer</a>
+| <a href="dictionary_V.html#10793">v20.Sql.Reset</a>
+
+v20.Sql.Schema_Lines_List.Vector_Iterator_Interfaces
+| Ada.Containers.Vectors.Has_Element
+
+<a href="dictionary_V.html#10834">v20.Sql.Schema_Load</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| v20.Sql.Schema_Lines_List.Append
+
+<a href="dictionary_V.html#10795">v20.Sql.Schema_Need_Update</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#10834">v20.Sql.Schema_Load</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2848">v20.Log.Dbg</a>
+| <a href="dictionary_V.html#10769">v20.Sql.Open</a>
+| <a href="dictionary_V.html#10746">v20.Sql.Get_Config</a>
+| <a href="dictionary_V.html#5983">v20.Vst.Field_By_Index</a>
+| <a href="dictionary_V.html#7136">v20.Vst.To_Integer</a>
+
+<a href="dictionary_V.html#10802">v20.Sql.Schema_Need_Update</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#10795">v20.Sql.Schema_Need_Update</a>
+
+<a href="dictionary_V.html#10806">v20.Sql.Schema_Update</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#10845">v20.Sql.Table_Exists</a>
+| <a href="dictionary_V.html#10732">v20.Sql.Exec</a>
+| <a href="dictionary_V.html#10825">v20.Sql.Schema_Update.Create_Table</a>
+| <a href="dictionary_V.html#10822">v20.Sql.Schema_Update.Create_Column</a>
+| <a href="dictionary_V.html#10824">v20.Sql.Schema_Update.Create_Index</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2848">v20.Log.Dbg</a>
+| <a href="dictionary_V.html#7130">v20.Vst.To_VString</a>
+| v20.Sql.Schema_Lines_List.Last_Element
+| <a href="dictionary_V.html#10826">v20.Sql.Schema_Update.Finalize_Loop</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#10828">v20.Sql.Set_Config</a>
+| <a href="dictionary_V.html#10746">v20.Sql.Get_Config</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#10831">v20.Sql.Set_Config</a>
+
+<a href="dictionary_V.html#10821">v20.Sql.Schema_Update.Clear_Column</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#10823">v20.Sql.Schema_Update.Clear_Index</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#10822">v20.Sql.Schema_Update.Create_Column</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#10715">v20.Sql.Column_Exists</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2848">v20.Log.Dbg</a>
+| <a href="dictionary_V.html#2010">v20.Log.Msg</a>
+| <a href="dictionary_V.html#10734">v20.Sql.Exec</a>
+| <a href="dictionary_V.html#10845">v20.Sql.Table_Exists</a>
+| <a href="dictionary_V.html#10720">v20.Sql.Column_Exists</a>
+| <a href="dictionary_V.html#10821">v20.Sql.Schema_Update.Clear_Column</a>
+
+<a href="dictionary_V.html#10824">v20.Sql.Schema_Update.Create_Index</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#10748">v20.Sql.Index_Exists</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2848">v20.Log.Dbg</a>
+| <a href="dictionary_V.html#2010">v20.Log.Msg</a>
+| <a href="dictionary_V.html#10734">v20.Sql.Exec</a>
+| <a href="dictionary_V.html#10823">v20.Sql.Schema_Update.Clear_Index</a>
+
+<a href="dictionary_V.html#10825">v20.Sql.Schema_Update.Create_Table</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2010">v20.Log.Msg</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#10734">v20.Sql.Exec</a>
+| <a href="dictionary_V.html#10845">v20.Sql.Table_Exists</a>
+| <a href="dictionary_V.html#10720">v20.Sql.Column_Exists</a>
+| <a href="dictionary_V.html#10821">v20.Sql.Schema_Update.Clear_Column</a>
+| <a href="dictionary_V.html#10822">v20.Sql.Schema_Update.Create_Column</a>
+
+<a href="dictionary_V.html#10826">v20.Sql.Schema_Update.Finalize_Loop</a>
+| <a href="dictionary_V.html#10825">v20.Sql.Schema_Update.Create_Table</a>
+| <a href="dictionary_V.html#10822">v20.Sql.Schema_Update.Create_Column</a>
+| <a href="dictionary_V.html#10824">v20.Sql.Schema_Update.Create_Index</a>
+
+<a href="dictionary_V.html#10784">v20.Sql.Search</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#10775">v20.Sql.Read</a>
+| Ada.Strings.Unbounded.Length
+
+<a href="dictionary_V.html#10828">v20.Sql.Set_Config</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#10845">v20.Sql.Table_Exists</a>
+| <a href="dictionary_V.html#10720">v20.Sql.Column_Exists</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#10734">v20.Sql.Exec</a>
+
+<a href="dictionary_V.html#10831">v20.Sql.Set_Config</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#10828">v20.Sql.Set_Config</a>
+
+<a href="dictionary_V.html#10839">v20.Sql.Step</a>
+| <a href="dictionary_S.html#875">SQLite.Step</a>
+
+<a href="dictionary_V.html#10840">v20.Sql.Step</a>
+| <a href="dictionary_S.html#875">SQLite.Step</a>
+
+<a href="dictionary_V.html#10842">v20.Sql.Step</a>
+| <a href="dictionary_S.html#869">SQLite.Step</a>
+
+<a href="dictionary_V.html#10843">v20.Sql.Step</a>
+| <a href="dictionary_S.html#869">SQLite.Step</a>
+
+<a href="dictionary_V.html#10845">v20.Sql.Table_Exists</a>
+| <a href="dictionary_S.html#884">SQLite.Table_Exists</a>
+
+<a href="dictionary_V.html#10847">v20.Sql.Table_Exists</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_S.html#884">SQLite.Table_Exists</a>
+
+<a href="dictionary_V.html#10849">v20.Sql.Update</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#5982">v20.Vst.Field_Count</a>
+| <a href="dictionary_V.html#10732">v20.Sql.Exec</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#10773">v20.Sql.Prepare</a>
+| <a href="dictionary_V.html#10843">v20.Sql.Step</a>
+| <a href="dictionary_V.html#5983">v20.Vst.Field_By_Index</a>
+| <a href="dictionary_V.html#10709">v20.Sql.Column_Text</a>
+| Ada.Strings.Unbounded.=
+| Ada.Strings.Unbounded.=
+| <a href="dictionary_V.html#7305">v20.Vst.Replace_Pattern</a>
+| <a href="dictionary_V.html#10793">v20.Sql.Reset</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2848">v20.Log.Dbg</a>
+| <a href="dictionary_V.html#2003">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| <a href="dictionary_V.html#10734">v20.Sql.Exec</a>
+
+<a href="dictionary_V.html#5851">v20.Sys.Command_Path</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#5966">v20.Sys.Shell_Execute</a>
+
+<a href="dictionary_V.html#5856">v20.Sys.Command_Path</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#5851">v20.Sys.Command_Path</a>
+
+<a href="dictionary_V.html#5862">v20.Sys.Get_Env</a>
+| Ada.Environment_Variables.Exists
+| Ada.Environment_Variables.Value
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#5864">v20.Sys.Get_Env</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#5862">v20.Sys.Get_Env</a>
+
+<a href="dictionary_V.html#5866">v20.Sys.Get_Home</a>
+| <a href="dictionary_V.html#5862">v20.Sys.Get_Env</a>
+
+<a href="dictionary_V.html#5870">v20.Sys.Get_System_Name</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4485">v20.Tio.Read_File</a>
+| <a href="dictionary_V.html#2003">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#5872">v20.Sys.Get_System_Version</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4485">v20.Tio.Read_File</a>
+| <a href="dictionary_V.html#2003">v20.Vst.Index</a>
+| <a href="dictionary_V.html#5975">v20.Vst.Tail</a>
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#5882">v20.Sys.Install_Package</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#5979">v20.Vst.Trim_Both</a>
+| <a href="dictionary_V.html#5875">v20.Sys.Is_Package</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2010">v20.Log.Msg</a>
+| <a href="dictionary_V.html#5980">v20.Prg.Is_User_Not_Root</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2848">v20.Log.Dbg</a>
+| <a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+
+<a href="dictionary_V.html#5889">v20.Sys.Install_Packages</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#2855">v20.Log.Msg</a>
+| <a href="dictionary_V.html#5982">v20.Vst.Field_Count</a>
+| <a href="dictionary_V.html#5983">v20.Vst.Field_By_Index</a>
+| <a href="dictionary_V.html#5882">v20.Sys.Install_Package</a>
+| <a href="dictionary_V.html#5875">v20.Sys.Is_Package</a>
+
+<a href="dictionary_V.html#5897">v20.Sys.Install_Packages</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#5889">v20.Sys.Install_Packages</a>
+
+<a href="dictionary_V.html#5932">v20.Sys.Is_Command</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#5979">v20.Vst.Trim_Both</a>
+| <a href="dictionary_V.html#5983">v20.Vst.Field_By_Index</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| Interfaces.C.To_C
+| <a href="dictionary_V.html#5934">v20.Sys.Is_Command.Sys</a>
+
+<a href="dictionary_V.html#5937">v20.Sys.Is_Command</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#5932">v20.Sys.Is_Command</a>
+
+<a href="dictionary_V.html#5875">v20.Sys.Is_Package</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#5966">v20.Sys.Shell_Execute</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2848">v20.Log.Dbg</a>
+| <a href="dictionary_V.html#5978">v20.Vst.Index</a>
+
+<a href="dictionary_V.html#5900">v20.Sys.Purge_Package</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#5875">v20.Sys.Is_Package</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2010">v20.Log.Msg</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#5980">v20.Prg.Is_User_Not_Root</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+
+<a href="dictionary_V.html#5906">v20.Sys.Purge_Packages</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#2855">v20.Log.Msg</a>
+| <a href="dictionary_V.html#5982">v20.Vst.Field_Count</a>
+| <a href="dictionary_V.html#5983">v20.Vst.Field_By_Index</a>
+| <a href="dictionary_V.html#5900">v20.Sys.Purge_Package</a>
+| <a href="dictionary_V.html#5875">v20.Sys.Is_Package</a>
+
+<a href="dictionary_V.html#5914">v20.Sys.Purge_Packages</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#5906">v20.Sys.Purge_Packages</a>
+
+<a href="dictionary_V.html#5918">v20.Sys.Set_Env</a>
+| Ada.Environment_Variables.Set
+
+<a href="dictionary_V.html#5921">v20.Sys.Set_Env</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#5918">v20.Sys.Set_Env</a>
+
+<a href="dictionary_V.html#5924">v20.Sys.Set_Env</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#5918">v20.Sys.Set_Env</a>
+
+<a href="dictionary_V.html#5927">v20.Sys.Set_Env</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#5918">v20.Sys.Set_Env</a>
+
+<a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#5949">v20.Sys.Shell_Execute</a>
+
+<a href="dictionary_V.html#5949">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#5932">v20.Sys.Is_Command</a>
+| Interfaces.C.To_C
+| <a href="dictionary_V.html#5952">v20.Sys.Shell_Execute.Sys</a>
+
+<a href="dictionary_V.html#5956">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#5949">v20.Sys.Shell_Execute</a>
+
+<a href="dictionary_V.html#5959">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#5949">v20.Sys.Shell_Execute</a>
+
+<a href="dictionary_V.html#5962">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#5939">v20.Sys.Shell_Execute_Output</a>
+
+<a href="dictionary_V.html#5966">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#5939">v20.Sys.Shell_Execute_Output</a>
+
+<a href="dictionary_V.html#5939">v20.Sys.Shell_Execute_Output</a>
+| <a href="dictionary_V.html#5932">v20.Sys.Is_Command</a>
+| System.OS_Lib.Argument_String_To_List
+| GNAT.Expect.Get_Command_Output
+| Ada.Strings.Unbounded.To_Unbounded_String
+| System.Strings.Free
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#5945">v20.Sys.Shell_Execute_Output</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#5939">v20.Sys.Shell_Execute_Output</a>
+
+<a href="dictionary_V.html#4471">v20.Tio.Append</a>
+| Ada.Text_IO.Open
+
+<a href="dictionary_V.html#4474">v20.Tio.Append</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#4471">v20.Tio.Append</a>
+
+<a href="dictionary_V.html#4435">v20.Tio.Beep</a>
+| Ada.Text_IO.Put
+| Ada.Text_IO.Flush
+
+<a href="dictionary_V.html#4436">v20.Tio.Clear_Screen</a>
+| Ada.Text_IO.Put
+| Ada.Text_IO.Flush
+
+<a href="dictionary_V.html#1999">v20.Tio.Create</a>
+| Ada.Text_IO.Create
+
+<a href="dictionary_V.html#4468">v20.Tio.Create</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1999">v20.Tio.Create</a>
+
+<a href="dictionary_V.html#4442">v20.Tio.Cursor_Line_Backward</a>
+| Ada.Text_IO.Put
+| Ada.Text_IO.Put
+
+<a href="dictionary_V.html#4444">v20.Tio.Cursor_Line_Erase</a>
+| Ada.Text_IO.Put
+
+<a href="dictionary_V.html#4440">v20.Tio.Cursor_Line_Forward</a>
+| Ada.Text_IO.Put
+| Ada.Text_IO.Put
+
+<a href="dictionary_V.html#4437">v20.Tio.Cursor_Move</a>
+| Ada.Text_IO.Flush
+| Ada.Text_IO.Put
+| Ada.Text_IO.Put
+
+<a href="dictionary_V.html#4448">v20.Tio.Cursor_Off</a>
+| Ada.Text_IO.Put
+
+<a href="dictionary_V.html#4447">v20.Tio.Cursor_On</a>
+| Ada.Text_IO.Put
+
+<a href="dictionary_V.html#4446">v20.Tio.Cursor_Restore</a>
+| Ada.Text_IO.Put
+
+<a href="dictionary_V.html#4445">v20.Tio.Cursor_Save</a>
+| Ada.Text_IO.Put
+
+<a href="dictionary_V.html#2002">v20.Tio.Get_Line</a>
+| Ada.Text_IO.Get_Line
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#4411">v20.Tio.Get_Password</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Text_IO.Put
+| Ada.Text_IO.Get_Immediate
+| <a href="dictionary_V.html#4506">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+| Ada.Text_IO.New_Line
+
+<a href="dictionary_V.html#4449">v20.Tio.Open_Conf</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4527">v20.Fls.Extract_Directory</a>
+| Ada.Directories.Exists
+| <a href="dictionary_V.html#4528">v20.Fls.Backup_File</a>
+| <a href="dictionary_V.html#1897">v20.Fls.Delete_File</a>
+| <a href="dictionary_V.html#4471">v20.Tio.Append</a>
+| <a href="dictionary_V.html#1889">v20.Fls.Create_Directory_Tree</a>
+| <a href="dictionary_V.html#1999">v20.Tio.Create</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+
+<a href="dictionary_V.html#4456">v20.Tio.Open_Conf</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#4449">v20.Tio.Open_Conf</a>
+
+<a href="dictionary_V.html#1996">v20.Tio.Open_Read</a>
+| Ada.Text_IO.Open
+
+<a href="dictionary_V.html#4463">v20.Tio.Open_Read</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#1996">v20.Tio.Open_Read</a>
+
+<a href="dictionary_V.html#4415">v20.Tio.Pause</a>
+| Ada.Text_IO.Put
+| Ada.Text_IO.Get_Immediate
+
+<a href="dictionary_V.html#4417">v20.Tio.Put</a>
+| Ada.Text_IO.Put
+
+<a href="dictionary_V.html#4419">v20.Tio.Put</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4423">v20.Tio.Put</a>
+
+<a href="dictionary_V.html#4421">v20.Tio.Put</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4423">v20.Tio.Put</a>
+
+<a href="dictionary_V.html#4423">v20.Tio.Put</a>
+| Ada.Strings.Unbounded.To_String
+| Ada.Text_IO.Put
+
+<a href="dictionary_V.html#4477">v20.Tio.Put</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| Ada.Text_IO.Put
+
+<a href="dictionary_V.html#2004">v20.Tio.Put_Line</a>
+| Ada.Strings.Unbounded.To_String
+| Ada.Text_IO.Put_Line
+
+<a href="dictionary_V.html#4425">v20.Tio.Put_Line</a>
+| Ada.Text_IO.Put
+| Ada.Text_IO.New_Line
+
+<a href="dictionary_V.html#4427">v20.Tio.Put_Line</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4423">v20.Tio.Put</a>
+| Ada.Text_IO.New_Line
+
+<a href="dictionary_V.html#4429">v20.Tio.Put_Line</a>
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4423">v20.Tio.Put</a>
+| Ada.Text_IO.New_Line
+
+<a href="dictionary_V.html#4431">v20.Tio.Put_Line</a>
+| Ada.Text_IO.Put
+| Ada.Text_IO.New_Line
+
+<a href="dictionary_V.html#4433">v20.Tio.Put_Line</a>
+| Ada.Strings.Unbounded.To_String
+| Ada.Text_IO.Put_Line
+
+<a href="dictionary_V.html#4480">v20.Tio.Put_Line</a>
+| Ada.Text_IO.Put
+| Ada.Text_IO.New_Line
+
+<a href="dictionary_V.html#4485">v20.Tio.Read_File</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#1926">v20.Fls.Exists</a>
+| <a href="dictionary_V.html#4463">v20.Tio.Open_Read</a>
+| Ada.Text_IO.End_Of_File
+| <a href="dictionary_V.html#2002">v20.Tio.Get_Line</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_A.html#2005">Ada.Text_IO.Close</a>
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+
+<a href="dictionary_V.html#4490">v20.Tio.Write_File</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#4544">v20.Fls.Extract_Directory</a>
+| <a href="dictionary_V.html#1900">v20.Fls.Delete_File</a>
+| <a href="dictionary_V.html#1889">v20.Fls.Create_Directory_Tree</a>
+| <a href="dictionary_V.html#4468">v20.Tio.Create</a>
+| <a href="dictionary_V.html#1926">v20.Fls.Exists</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2015">v20.Sys.Shell_Execute</a>
+| <a href="dictionary_V.html#2016">v20.Log.Err</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| Ada.Strings.Unbounded.=
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#2003">v20.Vst.Index</a>
+| <a href="dictionary_V.html#2004">v20.Tio.Put_Line</a>
+| <a href="dictionary_A.html#2005">Ada.Text_IO.Close</a>
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#7357">v20.Vst.&</a>
+| <a href="dictionary_V.html#7124">v20.Vst.HAC_Image</a>
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#7360">v20.Vst.&</a>
+| <a href="dictionary_V.html#7124">v20.Vst.HAC_Image</a>
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#7363">v20.Vst.*</a>
+| Ada.Strings.Fixed.*
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#7198">v20.Vst.Char_Count</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| Ada.Strings.Unbounded.=
+
+<a href="dictionary_V.html#7206">v20.Vst.Char_Count</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#7198">v20.Vst.Char_Count</a>
+
+<a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| Ada.Strings.Unbounded.Length
+
+<a href="dictionary_V.html#7159">v20.Vst.Empty</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| Ada.Strings.Unbounded.Length
+
+<a href="dictionary_V.html#7189">v20.Vst.Ends_With</a>
+| Ada.Strings.Unbounded.Length
+| Ada.Strings.Unbounded.Element
+
+<a href="dictionary_V.html#7192">v20.Vst.Ends_With</a>
+| Ada.Strings.Unbounded.Length
+| Ada.Strings.Unbounded.Tail
+| Ada.Strings.Unbounded.To_String
+
+<a href="dictionary_V.html#7195">v20.Vst.Ends_With</a>
+| Ada.Strings.Unbounded.Length
+| Ada.Strings.Unbounded.Tail
+| Ada.Strings.Unbounded.=
+
+<a href="dictionary_V.html#5983">v20.Vst.Field_By_Index</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#2003">v20.Vst.Index</a>
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| Ada.Strings.Unbounded.Length
+
+<a href="dictionary_V.html#7322">v20.Vst.Field_By_Name</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#7159">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| Ada.Strings.Unbounded.=
+| <a href="dictionary_V.html#5978">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#5979">v20.Vst.Trim_Both</a>
+
+<a href="dictionary_V.html#5982">v20.Vst.Field_Count</a>
+| <a href="dictionary_V.html#4529">v20.Vst.Empty</a>
+| <a href="dictionary_V.html#7206">v20.Vst.Char_Count</a>
+
+<a href="dictionary_V.html#7339">v20.Vst.Field_Display</a>
+| <a href="dictionary_V.html#5983">v20.Vst.Field_By_Index</a>
+| <a href="dictionary_V.html#5982">v20.Vst.Field_Count</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#7363">v20.Vst.*</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#4423">v20.Tio.Put</a>
+| Ada.Text_IO.New_Line
+| <a href="dictionary_V.html#4433">v20.Tio.Put_Line</a>
+
+<a href="dictionary_V.html#7332">v20.Vst.Field_Search</a>
+| Ada.Strings.Unbounded.&
+| <a href="dictionary_V.html#5978">v20.Vst.Index</a>
+
+<a href="dictionary_V.html#7251">v20.Vst.Head</a>
+| Ada.Strings.Unbounded.Head
+
+<a href="dictionary_V.html#2003">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.Index
+
+<a href="dictionary_V.html#5978">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.To_String
+| Ada.Strings.Unbounded.Index
+
+<a href="dictionary_V.html#7209">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.Index
+
+<a href="dictionary_V.html#7216">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.Index
+
+<a href="dictionary_V.html#7220">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.Index
+
+<a href="dictionary_V.html#7224">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.To_String
+| Ada.Strings.Unbounded.Index
+
+<a href="dictionary_V.html#1980">v20.Vst.Index_Backward</a>
+| Ada.Strings.Unbounded.Index
+
+<a href="dictionary_V.html#7228">v20.Vst.Index_Backward</a>
+| Ada.Strings.Unbounded.Index
+
+<a href="dictionary_V.html#7233">v20.Vst.Index_Backward</a>
+| Ada.Strings.Unbounded.To_String
+| Ada.Strings.Unbounded.Index
+
+<a href="dictionary_V.html#7236">v20.Vst.Index_Backward</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| Ada.Strings.Unbounded.Index
+
+<a href="dictionary_V.html#7239">v20.Vst.Index_Backward</a>
+| Ada.Strings.Unbounded.Index
+
+<a href="dictionary_V.html#7243">v20.Vst.Index_Backward</a>
+| Ada.Strings.Unbounded.Index
+
+<a href="dictionary_V.html#7247">v20.Vst.Index_Backward</a>
+| Ada.Strings.Unbounded.To_String
+| Ada.Strings.Unbounded.Index
+
+<a href="dictionary_V.html#7157">v20.Vst.Is_Numeric</a>
+| <a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| <a href="dictionary_V.html#7154">v20.Vst.Is_Numeric</a>
+
+<a href="dictionary_V.html#7162">v20.Vst.Length</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| Ada.Strings.Unbounded.Length
+
+<a href="dictionary_V.html#7297">v20.Vst.Replace_Char</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.Length
+| Ada.Strings.Unbounded.Element
+| <a href="dictionary_V.html#4506">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#7305">v20.Vst.Replace_Pattern</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.=
+
+<a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| Ada.Strings.Unbounded.Slice
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#7256">v20.Vst.Slice</a>
+| <a href="dictionary_V.html#7162">v20.Vst.Length</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| Ada.Strings.Unbounded.Slice
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#7180">v20.Vst.Starts_With</a>
+| Ada.Strings.Unbounded.Length
+| Ada.Strings.Unbounded.Element
+
+<a href="dictionary_V.html#7183">v20.Vst.Starts_With</a>
+| Ada.Strings.Unbounded.Length
+| Ada.Strings.Unbounded.Head
+| Ada.Strings.Unbounded.To_String
+
+<a href="dictionary_V.html#7186">v20.Vst.Starts_With</a>
+| Ada.Strings.Unbounded.Length
+| Ada.Strings.Unbounded.Head
+| Ada.Strings.Unbounded.=
+
+<a href="dictionary_V.html#7280">v20.Vst.Stript_Accents</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.Length
+| Ada.Strings.Unbounded.Element
+| <a href="dictionary_V.html#4506">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#7288">v20.Vst.Stript_Chars</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| Ada.Strings.Unbounded.=
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#5975">v20.Vst.Tail</a>
+| Ada.Strings.Unbounded.Tail
+
+<a href="dictionary_V.html#7264">v20.Vst.Tail_After_Match</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| Ada.Strings.Unbounded.=
+
+<a href="dictionary_V.html#7271">v20.Vst.Tail_After_Match</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#7264">v20.Vst.Tail_After_Match</a>
+
+<a href="dictionary_V.html#7277">v20.Vst.Tail_After_Match</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#7264">v20.Vst.Tail_After_Match</a>
+
+<a href="dictionary_V.html#7145">v20.Vst.To_Hex</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.Length
+| Ada.Strings.Unbounded.Slice
+| <a href="dictionary_V.html#7140">v20.Vst.To_Hex</a>
+| Ada.Strings.Unbounded.Append
+
+<a href="dictionary_V.html#2019">v20.Vst.To_Integer</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+| <a href="dictionary_V.html#7136">v20.Vst.To_Integer</a>
+
+<a href="dictionary_V.html#7136">v20.Vst.To_Integer</a>
+| Ada.Strings.Unbounded.Length
+| Ada.Strings.Unbounded.To_String
+
+<a href="dictionary_V.html#7172">v20.Vst.To_Lower</a>
+| Ada.Characters.Handling.To_Lower
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#7174">v20.Vst.To_Lower</a>
+| Ada.Strings.Unbounded.To_String
+| Ada.Characters.Handling.To_Lower
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#1991">v20.Vst.To_String</a>
+| Ada.Strings.Unbounded.To_String
+
+<a href="dictionary_V.html#7176">v20.Vst.To_Upper</a>
+| Ada.Characters.Handling.To_Upper
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#7178">v20.Vst.To_Upper</a>
+| Ada.Strings.Unbounded.To_String
+| Ada.Characters.Handling.To_Upper
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#7150">v20.Vst.To_Val</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.Length
+| Ada.Strings.Unbounded.Element
+| <a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.&
+| Ada.Strings.Unbounded.&
+
+<a href="dictionary_V.html#4506">v20.Vst.To_VString</a>
+| Ada.Strings.Unbounded.To_Unbounded_String
+
+<a href="dictionary_V.html#4509">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#7133">v20.Vst.To_VString.HAC_Image_for_Integer</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#7130">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+
+<a href="dictionary_V.html#5979">v20.Vst.Trim_Both</a>
+| Ada.Strings.Unbounded.Trim
+
+<a href="dictionary_V.html#7164">v20.Vst.Trim_Left</a>
+| Ada.Strings.Unbounded.Trim
+
+<a href="dictionary_V.html#7166">v20.Vst.Trim_Right</a>
+| Ada.Strings.Unbounded.Trim
+
+<a href="dictionary_V.html#7169">v20.Vst.Trim_Slashes</a>
+| Ada.Strings.Unbounded.=
+| <a href="dictionary_V.html#1979">v20.Vst.To_VString</a>
+| <a href="dictionary_V.html#2003">v20.Vst.Index</a>
+| Ada.Strings.Unbounded.Length
+| <a href="dictionary_V.html#1981">v20.Vst.Slice</a>
+| <a href="dictionary_V.html#1980">v20.Vst.Index_Backward</a>
+</pre><hr>
+<table BORDER CELLPADDING=4><tr><td>Non-Alpha</td><td><a href="simpleinvtree_A.html">A</a></td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td><a href="simpleinvtree_O.html">O</a></td><td>P</td><td>Q</td><td>R</td><td><a href="simpleinvtree_S.html">S</a></td><td><a href="simpleinvtree_T.html">T</a></td><td>U</td><td><a href="simpleinvtree_V.html">V</a></td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr></table></body></html>

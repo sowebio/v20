@@ -59,6 +59,7 @@ procedure Test is
    Config : GCL.Command_Line_Configuration;
    Cursor_Animation_1 : aliased Boolean := False;
    Cursor_Animation_2 : aliased Boolean := False;
+   Package_Test : aliased Boolean := False;
    Memory_Reports : aliased Boolean := False;
    String_Option : aliased GS.String_Access;
    Long_Option : aliased Integer := 0;
@@ -450,6 +451,9 @@ begin
    GCL.Define_Switch (Config, Cursor_Animation_2'Access,
                       Switch => "-2",
                       Help => "Enable second cursor animation");
+   GCL.Define_Switch (Config, Package_Test'Access,
+                      Switch => "-3",
+                      Help => "Enable package management test");
    GCL.Define_Switch (Config, Memory_Reports'Access,
                       Switch => "-m",
                       Help => "Enable memory reports");
@@ -879,7 +883,7 @@ begin
 
    Log.Line;
 
- ----------------------------------------------------------------------------
+   ----------------------------------------------------------------------------
 
    Log.Set_Task ("STEP 11");
    Log.Title ("Local package install");
@@ -894,46 +898,50 @@ begin
    Tio.Put (+"Is 'le' package installed? ");
    Tio.Put_Line (Sys.Is_Package (+"le"));
 
-   Log.Line;
+   if Package_Test then
 
-   if Sys.Install_Packages ("joe,le") then
-      Log.Msg ("'joe' and 'le' packages has been installed.");
-   else
-      Log.Err ("At least one package has not been installed.");
-   end if;
+      Log.Line;
 
-   Log.Line;
+      if Sys.Install_Packages ("joe,le") then
+         Log.Msg ("'joe' and 'le' packages has been installed.");
+      else
+         Log.Err ("At least one package has not been installed.");
+      end if;
 
-   Tio.Put (+"Is 'joe' package installed? ");
-   Tio.Put_Line (Sys.Is_Package (+"joe"));
-   Tio.Put (+"Is 'le' package installed? ");
-   Tio.Put_Line (Sys.Is_Package (+"le"));
+      Log.Line;
 
-   Log.Line;
+      Tio.Put (+"Is 'joe' package installed? ");
+      Tio.Put_Line (Sys.Is_Package (+"joe"));
+      Tio.Put (+"Is 'le' package installed? ");
+      Tio.Put_Line (Sys.Is_Package (+"le"));
 
-   if Sys.Install_Packages ("le") then
+      Log.Line;
+
+      if Sys.Install_Packages ("le") then
          Log.Msg ("'le' is already installed, so Sys.Install_Packages returns true again.");
+      end if;
+
+      Log.Line;
+
+      if Sys.Purge_Packages ("joe,le") then
+         Log.Msg ("'joe' and 'le' packages has been purged.");
+      else
+         Log.Err ("At least one package has not been purged.");
+      end if;
+
+      Log.Line;
+
+      Tio.Put (+"Is 'joe' package installed? ");
+      Tio.Put_Line (Sys.Is_Package (+"joe"));
+
+      Tio.Put (+"Is 'le' package installed? ");
+      Tio.Put_Line (Sys.Is_Package (+"le"));
+
    end if;
 
    Log.Line;
 
-   if Sys.Purge_Packages ("joe,le") then
-      Log.Msg ("'joe' and 'le' packages has been purged.");
-   else
-      Log.Err ("At least one package has not been purged.");
-   end if;
-
-   Log.Line;
-
-   Tio.Put (+"Is 'joe' package installed? ");
-   Tio.Put_Line (Sys.Is_Package (+"joe"));
-
-   Tio.Put (+"Is 'le' package installed? ");
-   Tio.Put_Line (Sys.Is_Package (+"le"));
-
-   Log.Line;
-
- ----------------------------------------------------------------------------
+   ----------------------------------------------------------------------------
 
    Log.Set_Task ("STEP 12");
    Log.Title ("Distant package install");
@@ -983,6 +991,27 @@ begin
    Tio.Put_Line (Sys.Is_Package (+"joe",+"root@n222c1.genesix.org"));
    Tio.Put (+"Is 'le' package installed? ");
    Tio.Put_Line (Sys.Is_Package (+"le",+"root@n222c1.genesix.org"));
+
+   Log.Line;
+
+   ----------------------------------------------------------------------------
+
+   Log.Set_Task ("STEP 13");
+   Log.Title ("Check command");
+   Log.Line;
+
+   Tio.Put (+"Is NoCommand installed? ");
+   Tio.Put_Line (Sys.Is_Command (+"nocommand"));
+
+   Tio.Put (+"Where is NoCommand installed? ");
+   Tio.Put_Line (Sys.Command_Path (+"nocommand"));
+
+   Tio.Put (+"Is Bash installed? ");
+   Tio.Put_Line (Sys.Is_Command (+"bash"));
+
+   Tio.Put (+"Where is Bash installed? ");
+   Tio.Put_Line (Sys.Command_Path (+"bash"));
+
 
    Log.Set_Debug (False);
    Tio.Cursor_On;

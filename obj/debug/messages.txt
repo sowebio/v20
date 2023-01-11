@@ -1,0 +1,6 @@
+gprbuild -XGpb_Beep=bell -XGpb_Scp=root@i51c1.genesix.org:/etc/gnx -Xaide_Build=Debug -d -P/home/sr/Seafile/Sowebio/informatique/github/v20/v20.gpr -Xv20_Build=Debug -s
+gprconfig: can't find a native toolchain for language 'ada'
+gprconfig: can't find a native toolchain for language 'ada'
+v20.gpr:26:09: no compiler for language "Ada", cannot compile "gnatcoll-scripts-shell.adb"
+gprbuild: *** compilation phase failed
+[2022-07-19 10:25:23] process exited with status 4, elapsed time: 00.66s

@@ -1,0 +1,182 @@
+<html><head><title>v20-prg.adb</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: /home/sr/Seafile/Sowebio/informatique/github/v20/src/v20-prg.adb</h3>
+<SCRIPT>
+defaultStatus = "File: /home/sr/Seafile/Sowebio/informatique/github/v20/src/v20-prg.adb";
+top.document.title  = "v20-prg.adb";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default"></span><span class="comment">-------------------------------------------------------------------------------</span>
+<a name="2"><font size=-1>2     </font></a><span class="comment">--  ▖▖▄▖▄▖</span>
+<a name="3"><font size=-1>3     </font></a><span class="comment">--  ▌▌▄▌▛▌</span>
+<a name="4"><font size=-1>4     </font></a><span class="comment">--  ▚▘▙▖█▌</span>
+<a name="5"><font size=-1>5     </font></a><span class="comment">--</span>
+<a name="6"><font size=-1>6     </font></a><span class="comment">--  @file      v20-Prg.adb</span>
+<a name="7"><font size=-1>7     </font></a><span class="comment">--  @copyright See authors list below and v20.copyrights file</span>
+<a name="8"><font size=-1>8     </font></a><span class="comment">--  @licence   GPL v3</span>
+<a name="9"><font size=-1>9     </font></a><span class="comment">--  @encoding  UTF-8</span>
+<a name="10"><font size=-1>10     </font></a><span class="comment">-------------------------------------------------------------------------------</span>
+<a name="11"><font size=-1>11     </font></a><span class="comment">--  @summary</span>
+<a name="12"><font size=-1>12     </font></a><span class="comment">--  V20 library Log package</span>
+<a name="13"><font size=-1>13     </font></a><span class="comment">--</span>
+<a name="14"><font size=-1>14     </font></a><span class="comment">--  @description</span>
+<a name="15"><font size=-1>15     </font></a><span class="comment">--</span>
+<a name="16"><font size=-1>16     </font></a><span class="comment">--  @authors</span>
+<a name="17"><font size=-1>17     </font></a><span class="comment">--  Stéphane Rivière - sr - sriviere@soweb.io</span>
+<a name="18"><font size=-1>18     </font></a><span class="comment">--</span>
+<a name="19"><font size=-1>19     </font></a><span class="comment">--  @versions</span>
+<a name="20"><font size=-1>20     </font></a><span class="comment">--  see .ads</span>
+<a name="21"><font size=-1>21     </font></a><span class="comment">-------------------------------------------------------------------------------</span>
+<a name="22"><font size=-1>22     </font></a><span class="comment"></span>
+<a name="23"><font size=-1>23     </font></a><span class="comment"></span><span class="keyword">with </span><span class="default">Ada.Calendar.Formatting;</span>
+<a name="24"><font size=-1>24     </font></a><span class="default"></span><span class="keyword">with </span><span class="default">GNAT.Calendar.Time_IO;</span>
+<a name="25"><font size=-1>25     </font></a><span class="default"></span><span class="keyword">with </span><span class="default">Ada.Strings.Fixed;</span>
+<a name="26"><font size=-1>26     </font></a><span class="default"></span>
+<a name="27"><font size=-1>27     </font></a><span class="default"></span><span class="keyword">with <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_L.html#1969">Log</a>;</span>
+<a name="28"><font size=-1>28     </font></a><span class="default"></span><span class="keyword">with <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_S.html#1970">Sys</a>;</span>
+<a name="29"><font size=-1>29     </font></a><span class="default"></span>
+<a name="30"><font size=-1>30     </font></a><span class="default"></span><span class="keyword">package body <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_P.html#2886">Prg</a> </span><span class="keyword">is</span>
+<a name="31"><font size=-1>31     </font></a><span class="keyword"></span>
+<a name="32"><font size=-1>32     </font></a><span class="keyword">   package <a href="dictionary_A.html#24204">ACF</a> renames </span><span class="default">Ada.Calendar.Formatting;</span>
+<a name="33"><font size=-1>33     </font></a><span class="default">   </span><span class="keyword">package <a href="dictionary_G.html#24205">GCT</a> renames </span><span class="default">GNAT.Calendar.Time_IO;</span>
+<a name="34"><font size=-1>34     </font></a><span class="default"></span>
+<a name="35"><font size=-1>35     </font></a><span class="default">   </span><span class="comment">--  Program related --------------------------------------------------------</span>
+<a name="36"><font size=-1>36     </font></a><span class="comment"></span>
+<a name="37"><font size=-1>37     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_C.html#24206">Current_Time_Seconds</a> return </span><span class="default">Natural </span><span class="keyword">is</span>
+<a name="38"><font size=-1>38     </font></a><span class="keyword">   begin</span>
+<a name="39"><font size=-1>39     </font></a><span class="keyword">      return </span><span class="default">Integer (<a href="dictionary_A.html#24229">AC</a>.Clock - <a href="dictionary_A.html#24204">ACF</a>.Time_Of (</span><span class="number">1970</span><span class="default">, </span><span class="number">1</span><span class="default">, </span><span class="number">1</span><span class="default">, </span><span class="number">0.0</span><span class="default">));</span>
+<a name="40"><font size=-1>40     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_C.html#24206">Current_Time_Seconds</a></span><span class="default">;</span>
+<a name="41"><font size=-1>41     </font></a><span class="default"></span>
+<a name="42"><font size=-1>42     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_D.html#13599">Duration_Stamp</a> </span><span class="default">(<a href="dictionary_T.html#24207">Time</a> : Ada.Calendar.Time) </span><span class="keyword">return <a href="dictionary_V.html#1988">VString</a> is</span>
+<a name="43"><font size=-1>43     </font></a><span class="keyword">      <a href="dictionary_D.html#24208">Day_Secs</a> </span><span class="default">: Natural;</span>
+<a name="44"><font size=-1>44     </font></a><span class="default">   </span><span class="keyword">begin</span>
+<a name="45"><font size=-1>45     </font></a><span class="keyword">      <a href="dictionary_D.html#24208">Day_Secs</a> </span><span class="default">:= (</span><span class="keyword">if <a href="dictionary_A.html#24229">AC</a></span><span class="default">.Seconds (<a href="dictionary_A.html#24229">AC</a>.Clock) &lt; <a href="dictionary_A.html#24229">AC</a>.Seconds (<a href="dictionary_T.html#24207">Time</a>) </span><span class="keyword">then </span><span class="number">86400 </span><span class="keyword">else </span><span class="number">0</span><span class="default">) +</span>
+<a name="46"><font size=-1>46     </font></a><span class="default">                      Integer (<a href="dictionary_A.html#24229">AC</a>.Seconds (<a href="dictionary_A.html#24229">AC</a>.Clock) - <a href="dictionary_A.html#24229">AC</a>.Seconds (<a href="dictionary_T.html#24207">Time</a>));</span>
+<a name="47"><font size=-1>47     </font></a><span class="default">      </span><span class="comment">--  Unlimited hours counter for long uptimes</span>
+<a name="48"><font size=-1>48     </font></a><span class="comment">      </span><span class="keyword">return <a href="dictionary_T.html#4509">To_VString</a>  </span><span class="default">((<a href="dictionary_D.html#24208">Day_Secs</a> / </span><span class="number">3600</span><span class="default">)) &amp; </span><span class="string">&quot;h&quot; </span><span class="default">&amp;</span>
+<a name="49"><font size=-1>49     </font></a><span class="default">             <a href="dictionary_T.html#24225">Time_Format</a> ((<a href="dictionary_D.html#24208">Day_Secs</a> / </span><span class="number">60</span><span class="default">) </span><span class="keyword">mod </span><span class="number">60</span><span class="default">) &amp; </span><span class="string">&quot;m&quot; </span><span class="default">&amp;</span>
+<a name="50"><font size=-1>50     </font></a><span class="default">             <a href="dictionary_T.html#24225">Time_Format</a>  (<a href="dictionary_D.html#24208">Day_Secs</a> </span><span class="keyword">mod </span><span class="number">60</span><span class="default">) &amp; </span><span class="string">&quot;s&quot;</span><span class="default">;</span>
+<a name="51"><font size=-1>51     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_D.html#13599">Duration_Stamp</a></span><span class="default">;</span>
+<a name="52"><font size=-1>52     </font></a><span class="default"></span>
+<a name="53"><font size=-1>53     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_D.html#24209">Duration_Stamp_Seconds</a> </span><span class="default">(<a href="dictionary_T.html#24210">Time</a> : Ada.Calendar.Time) </span><span class="keyword">return </span><span class="default">Natural </span><span class="keyword">is</span>
+<a name="54"><font size=-1>54     </font></a><span class="keyword">   begin</span>
+<a name="55"><font size=-1>55     </font></a><span class="keyword">      return </span><span class="default">(</span><span class="keyword">if <a href="dictionary_A.html#24229">AC</a></span><span class="default">.Seconds (<a href="dictionary_A.html#24229">AC</a>.Clock) &lt; <a href="dictionary_A.html#24229">AC</a>.Seconds (<a href="dictionary_T.html#24210">Time</a>) </span><span class="keyword">then </span><span class="number">86400 </span><span class="keyword">else </span><span class="number">0</span><span class="default">) +</span>
+<a name="56"><font size=-1>56     </font></a><span class="default">                      Integer (<a href="dictionary_A.html#24229">AC</a>.Seconds (<a href="dictionary_A.html#24229">AC</a>.Clock) - <a href="dictionary_A.html#24229">AC</a>.Seconds (<a href="dictionary_T.html#24210">Time</a>));</span>
+<a name="57"><font size=-1>57     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_D.html#24209">Duration_Stamp_Seconds</a></span><span class="default">;</span>
+<a name="58"><font size=-1>58     </font></a><span class="default"></span>
+<a name="59"><font size=-1>59     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_D.html#24211">Duration_Stamp_Time</a> </span><span class="default">(<a href="dictionary_T.html#24212">Time_Seconds</a> : Integer) </span><span class="keyword">return <a href="dictionary_V.html#1988">VString</a> is</span>
+<a name="60"><font size=-1>60     </font></a><span class="keyword">   begin</span>
+<a name="61"><font size=-1>61     </font></a><span class="keyword">      </span><span class="comment">--  Unlimited hours counter for long uptimes</span>
+<a name="62"><font size=-1>62     </font></a><span class="comment">      </span><span class="keyword">return <a href="dictionary_T.html#4509">To_VString</a>  </span><span class="default">((<a href="dictionary_T.html#24212">Time_Seconds</a> / </span><span class="number">3600</span><span class="default">)) &amp; </span><span class="string">&quot;h&quot; </span><span class="default">&amp;</span>
+<a name="63"><font size=-1>63     </font></a><span class="default">             <a href="dictionary_T.html#24225">Time_Format</a> ((<a href="dictionary_T.html#24212">Time_Seconds</a> / </span><span class="number">60</span><span class="default">) </span><span class="keyword">mod </span><span class="number">60</span><span class="default">) &amp; </span><span class="string">&quot;m&quot; </span><span class="default">&amp;</span>
+<a name="64"><font size=-1>64     </font></a><span class="default">             <a href="dictionary_T.html#24225">Time_Format</a>  (<a href="dictionary_T.html#24212">Time_Seconds</a> </span><span class="keyword">mod </span><span class="number">60</span><span class="default">) &amp; </span><span class="string">&quot;s&quot;</span><span class="default">;</span>
+<a name="65"><font size=-1>65     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_D.html#24211">Duration_Stamp_Time</a></span><span class="default">;</span>
+<a name="66"><font size=-1>66     </font></a><span class="default"></span>
+<a name="67"><font size=-1>67     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_G.html#24213">Generate_Password</a> return <a href="dictionary_V.html#1988">VString</a> is</span>
+<a name="68"><font size=-1>68     </font></a><span class="keyword">      </span><span class="comment">--  Sowebio password generation with 64 chars:</span>
+<a name="69"><font size=-1>69     </font></a><span class="comment">      --    ([A-Z] + [a-z] + [0-9] + '_' + '-')</span>
+<a name="70"><font size=-1>70     </font></a><span class="comment">      --  Search space size:</span>
+<a name="71"><font size=-1>71     </font></a><span class="comment">      --    &gt; 1,26 x 10^25</span>
+<a name="72"><font size=-1>72     </font></a><span class="comment">      --  Space exploration time:</span>
+<a name="73"><font size=-1>73     </font></a><span class="comment">      --    40000 centuries @ 100 billion tests per second.</span>
+<a name="74"><font size=-1>74     </font></a><span class="comment">      --  Command line with standard tools:</span>
+<a name="75"><font size=-1>75     </font></a><span class="comment">      --    &lt; /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-14};echo;</span>
+<a name="76"><font size=-1>76     </font></a><span class="comment">      --  Generates 14 chars long passwords like:</span>
+<a name="77"><font size=-1>77     </font></a><span class="comment">      --    x2U5hhIKX7IJt6</span>
+<a name="78"><font size=-1>78     </font></a><span class="comment">      <a href="dictionary_S.html#24214">SE_Result</a> </span><span class="default">: Integer := </span><span class="number">0</span><span class="default">;</span>
+<a name="79"><font size=-1>79     </font></a><span class="default">      <a href="dictionary_S.html#24215">SE_Output</a> : <a href="dictionary_V.html#1988">VString</a> := +</span><span class="string">&quot;&quot;</span><span class="default">;</span>
+<a name="80"><font size=-1>80     </font></a><span class="default">   </span><span class="keyword">begin</span>
+<a name="81"><font size=-1>81     </font></a><span class="keyword">      <a href="dictionary_S.html#1970">Sys</a></span><span class="default">.<a href="dictionary_S.html#5962">Shell_Execute</a> (</span><span class="string">&quot;&lt; /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-14};echo;&quot;</span><span class="default">, <a href="dictionary_S.html#24214">SE_Result</a>, <a href="dictionary_S.html#24215">SE_Output</a>);</span>
+<a name="82"><font size=-1>82     </font></a><span class="default">      </span><span class="keyword">if </span><span class="default">(<a href="dictionary_S.html#24214">SE_Result</a> /= </span><span class="number">0</span><span class="default">) </span><span class="keyword">then</span>
+<a name="83"><font size=-1>83     </font></a><span class="keyword">         <a href="dictionary_L.html#1969">Log</a></span><span class="default">.<a href="dictionary_E.html#1976">Err</a> (</span><span class="string">&quot;v20.Prg.Generate_Password &gt; Password generation command failed&quot;</span><span class="default">);</span>
+<a name="84"><font size=-1>84     </font></a><span class="default">      </span><span class="keyword">end if</span><span class="default">;</span>
+<a name="85"><font size=-1>85     </font></a><span class="default">      </span><span class="keyword">return <a href="dictionary_S.html#24215">SE_Output</a></span><span class="default">;</span>
+<a name="86"><font size=-1>86     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_G.html#24213">Generate_Password</a></span><span class="default">;</span>
+<a name="87"><font size=-1>87     </font></a><span class="default"></span>
+<a name="88"><font size=-1>88     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_G.html#13048">Get_Version</a> return <a href="dictionary_V.html#1988">VString</a> is</span>
+<a name="89"><font size=-1>89     </font></a><span class="keyword">   begin</span>
+<a name="90"><font size=-1>90     </font></a><span class="keyword">      return </span><span class="default">(<a href="dictionary_N.html#13063">Name</a> &amp; </span><span class="string">&quot; v&quot; </span><span class="default">&amp;</span>
+<a name="91"><font size=-1>91     </font></a><span class="default">              Ada.Strings.Fixed.Trim (Natural'Image (<a href="dictionary_V.html#24232">Version_Major</a>),</span>
+<a name="92"><font size=-1>92     </font></a><span class="default">              Ada.Strings.Left) &amp; </span><span class="string">&quot;.&quot; </span><span class="default">&amp;</span>
+<a name="93"><font size=-1>93     </font></a><span class="default">              Ada.Strings.Fixed.Trim (Natural'Image (<a href="dictionary_V.html#24233">Version_Minor</a>),</span>
+<a name="94"><font size=-1>94     </font></a><span class="default">          Ada.Strings.Left));</span>
+<a name="95"><font size=-1>95     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_G.html#13048">Get_Version</a></span><span class="default">;</span>
+<a name="96"><font size=-1>96     </font></a><span class="default"></span>
+<a name="97"><font size=-1>97     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_G.html#24216">Get_Version_Major</a> return </span><span class="default">Natural </span><span class="keyword">is</span>
+<a name="98"><font size=-1>98     </font></a><span class="keyword">   begin</span>
+<a name="99"><font size=-1>99     </font></a><span class="keyword">      return <a href="dictionary_V.html#24232">Version_Major</a></span><span class="default">;</span>
+<a name="100"><font size=-1>100     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_G.html#24216">Get_Version_Major</a></span><span class="default">;</span>
+<a name="101"><font size=-1>101     </font></a><span class="default"></span>
+<a name="102"><font size=-1>102     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_G.html#24217">Get_Version_Minor</a> return </span><span class="default">Natural </span><span class="keyword">is</span>
+<a name="103"><font size=-1>103     </font></a><span class="keyword">   begin</span>
+<a name="104"><font size=-1>104     </font></a><span class="keyword">      return <a href="dictionary_V.html#24233">Version_Minor</a></span><span class="default">;</span>
+<a name="105"><font size=-1>105     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_G.html#24217">Get_Version_Minor</a></span><span class="default">;</span>
+<a name="106"><font size=-1>106     </font></a><span class="default"></span>
+<a name="107"><font size=-1>107     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_I.html#5980">Is_User_Not_Root</a> return </span><span class="default">Boolean </span><span class="keyword">is</span>
+<a name="108"><font size=-1>108     </font></a><span class="keyword">   begin</span>
+<a name="109"><font size=-1>109     </font></a><span class="keyword">      </span><span class="comment">--  Determining if the current user is root is not so simple. Indeed, USER</span>
+<a name="110"><font size=-1>110     </font></a><span class="comment">      --  and USERNAME can contain a &quot;root&quot; user who is not named &quot;root&quot; (juste</span>
+<a name="111"><font size=-1>111     </font></a><span class="comment">      --  declare another user with a UID of 0). Two solutions are possible:</span>
+<a name="112"><font size=-1>112     </font></a><span class="comment">      --  - Use the HOME environment variable, which allows to determine if the</span>
+<a name="113"><font size=-1>113     </font></a><span class="comment">      --    user's home is &quot;root&quot;.</span>
+<a name="114"><font size=-1>114     </font></a><span class="comment">      --  - Use the command &quot;whoami&quot; which will return &quot;root&quot;, even if the user</span>
+<a name="115"><font size=-1>115     </font></a><span class="comment">      --  &quot;root&quot; has another name.</span>
+<a name="116"><font size=-1>116     </font></a><span class="comment">              </span><span class="keyword">return </span><span class="default">(</span><span class="keyword">not </span><span class="default">(<a href="dictionary_S.html#1970">Sys</a>.<a href="dictionary_G.html#5862">Get_Env</a> (</span><span class="string">&quot;HOME&quot;</span><span class="default">) = +</span><span class="string">&quot;/root&quot;</span><span class="default">));</span>
+<a name="117"><font size=-1>117     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_I.html#5980">Is_User_Not_Root</a></span><span class="default">;</span>
+<a name="118"><font size=-1>118     </font></a><span class="default"></span>
+<a name="119"><font size=-1>119     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_N.html#13063">Name</a> return <a href="dictionary_V.html#1988">VString</a> is</span>
+<a name="120"><font size=-1>120     </font></a><span class="keyword">      <a href="dictionary_R.html#24218">Result</a> </span><span class="default">: <a href="dictionary_V.html#1988">VString</a> := <a href="dictionary_T.html#7277">Tail_After_Match</a> (<a href="dictionary_C.html#24234">Command</a>, </span><span class="string">&quot;/&quot;</span><span class="default">);</span>
+<a name="121"><font size=-1>121     </font></a><span class="default">   </span><span class="keyword">begin</span>
+<a name="122"><font size=-1>122     </font></a><span class="keyword">      if </span><span class="default">(Length (<a href="dictionary_R.html#24218">Result</a>) = </span><span class="number">0</span><span class="default">) </span><span class="keyword">then</span>
+<a name="123"><font size=-1>123     </font></a><span class="keyword">         <a href="dictionary_R.html#24218">Result</a> </span><span class="default">:= <a href="dictionary_C.html#24234">Command</a>;</span>
+<a name="124"><font size=-1>124     </font></a><span class="default">      </span><span class="keyword">end if</span><span class="default">;</span>
+<a name="125"><font size=-1>125     </font></a><span class="default">     </span><span class="keyword">return <a href="dictionary_R.html#24218">Result</a></span><span class="default">;</span>
+<a name="126"><font size=-1>126     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_N.html#13063">Name</a></span><span class="default">;</span>
+<a name="127"><font size=-1>127     </font></a><span class="default"></span>
+<a name="128"><font size=-1>128     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_P.html#24219">Path</a> return </span><span class="default">String </span><span class="keyword">is</span>
+<a name="129"><font size=-1>129     </font></a><span class="keyword">      <a href="dictionary_R.html#24220">Result_Code</a> </span><span class="default">: Natural := </span><span class="number">0</span><span class="default">;</span>
+<a name="130"><font size=-1>130     </font></a><span class="default">      <a href="dictionary_R.html#24221">Result_String</a> : <a href="dictionary_V.html#1988">VString</a> := +</span><span class="string">&quot;&quot;</span><span class="default">;</span>
+<a name="131"><font size=-1>131     </font></a><span class="default">   </span><span class="keyword">begin</span>
+<a name="132"><font size=-1>132     </font></a><span class="keyword">      <a href="dictionary_S.html#1970">Sys</a></span><span class="default">.<a href="dictionary_S.html#5962">Shell_Execute</a> (</span><span class="string">&quot;pwd&quot;</span><span class="default">, <a href="dictionary_R.html#24220">Result_Code</a>, <a href="dictionary_R.html#24221">Result_String</a>);</span>
+<a name="133"><font size=-1>133     </font></a><span class="default">      </span><span class="comment">-- pwd at root returns /</span>
+<a name="134"><font size=-1>134     </font></a><span class="comment">      -- pwn elsewhere returns a path without a trailing slash</span>
+<a name="135"><font size=-1>135     </font></a><span class="comment">      </span><span class="keyword">if </span><span class="default">(<a href="dictionary_S.html#1981">Slice</a> (<a href="dictionary_R.html#24221">Result_String</a>, Length (<a href="dictionary_R.html#24221">Result_String</a>), Length (<a href="dictionary_R.html#24221">Result_String</a>)) /= +</span><span class="string">&quot;/&quot;</span><span class="default">) </span><span class="keyword">then</span>
+<a name="136"><font size=-1>136     </font></a><span class="keyword">         <a href="dictionary_R.html#24221">Result_String</a> </span><span class="default">:= <a href="dictionary_R.html#24221">Result_String</a> &amp; </span><span class="string">&quot;/&quot;</span><span class="default">;</span>
+<a name="137"><font size=-1>137     </font></a><span class="default">      </span><span class="keyword">end if</span><span class="default">;</span>
+<a name="138"><font size=-1>138     </font></a><span class="default">      </span><span class="keyword">return <a href="dictionary_T.html#1991">To_String</a> </span><span class="default">(<a href="dictionary_R.html#24221">Result_String</a>);</span>
+<a name="139"><font size=-1>139     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_P.html#24219">Path</a></span><span class="default">;</span>
+<a name="140"><font size=-1>140     </font></a><span class="default"></span>
+<a name="141"><font size=-1>141     </font></a><span class="default">   </span><span class="keyword">procedure <a href="dictionary_S.html#13070">Set_Exit_Status</a> </span><span class="default">(<a href="dictionary_C.html#24222">Code</a> : Natural) </span><span class="keyword">is</span>
+<a name="142"><font size=-1>142     </font></a><span class="keyword">   begin</span>
+<a name="143"><font size=-1>143     </font></a><span class="keyword">      <a href="dictionary_P.html#24235">Prg_Exit_Status</a> </span><span class="default">:= <a href="dictionary_P.html#24235">Prg_Exit_Status</a> + <a href="dictionary_C.html#24222">Code</a>;</span>
+<a name="144"><font size=-1>144     </font></a><span class="default">      Ada.Command_Line.<a href="dictionary_S.html#24237">Set_Exit_Status</a></span>
+<a name="145"><font size=-1>145     </font></a><span class="default">                             (Ada.Command_Line.Exit_Status (<a href="dictionary_P.html#24235">Prg_Exit_Status</a>));</span>
+<a name="146"><font size=-1>146     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_S.html#13070">Set_Exit_Status</a></span><span class="default">;</span>
+<a name="147"><font size=-1>147     </font></a><span class="default"></span>
+<a name="148"><font size=-1>148     </font></a><span class="default">   </span><span class="keyword">procedure <a href="dictionary_S.html#13047">Set_Version</a> </span><span class="default">(<a href="dictionary_M.html#24223">Major</a> : Natural; <a href="dictionary_M.html#24224">Minor</a> : Natural) </span><span class="keyword">is</span>
+<a name="149"><font size=-1>149     </font></a><span class="keyword">   begin</span>
+<a name="150"><font size=-1>150     </font></a><span class="keyword">      <a href="dictionary_V.html#24232">Version_Major</a> </span><span class="default">:= <a href="dictionary_M.html#24223">Major</a>;</span>
+<a name="151"><font size=-1>151     </font></a><span class="default">      <a href="dictionary_V.html#24233">Version_Minor</a> := <a href="dictionary_M.html#24224">Minor</a>;</span>
+<a name="152"><font size=-1>152     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_S.html#13047">Set_Version</a></span><span class="default">;</span>
+<a name="153"><font size=-1>153     </font></a><span class="default"></span>
+<a name="154"><font size=-1>154     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_T.html#24225">Time_Format</a> </span><span class="default">(<a href="dictionary_I.html#24226">Input_To_Format</a> : Integer) </span><span class="keyword">return <a href="dictionary_V.html#1988">VString</a> is</span>
+<a name="155"><font size=-1>155     </font></a><span class="keyword">      <a href="dictionary_T.html#24227">Two_Digits_Output</a> </span><span class="default">: <a href="dictionary_V.html#1988">VString</a>;</span>
+<a name="156"><font size=-1>156     </font></a><span class="default">   </span><span class="keyword">begin</span>
+<a name="157"><font size=-1>157     </font></a><span class="keyword">      <a href="dictionary_T.html#24227">Two_Digits_Output</a> </span><span class="default">:= <a href="dictionary_T.html#4509">To_VString</a> (<a href="dictionary_I.html#24226">Input_To_Format</a>);</span>
+<a name="158"><font size=-1>158     </font></a><span class="default">      </span><span class="keyword">if <a href="dictionary_I.html#24226">Input_To_Format</a> </span><span class="default">&lt; </span><span class="number">10 </span><span class="keyword">then</span>
+<a name="159"><font size=-1>159     </font></a><span class="keyword">         <a href="dictionary_T.html#24227">Two_Digits_Output</a> </span><span class="default">:= +</span><span class="string">&quot;0&quot; </span><span class="default">&amp; <a href="dictionary_T.html#24227">Two_Digits_Output</a>;</span>
+<a name="160"><font size=-1>160     </font></a><span class="default">      </span><span class="keyword">end if</span><span class="default">;</span>
+<a name="161"><font size=-1>161     </font></a><span class="default">      </span><span class="keyword">return <a href="dictionary_T.html#24227">Two_Digits_Output</a></span><span class="default">;</span>
+<a name="162"><font size=-1>162     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_T.html#24225">Time_Format</a></span><span class="default">;</span>
+<a name="163"><font size=-1>163     </font></a><span class="default"></span>
+<a name="164"><font size=-1>164     </font></a><span class="default">   </span><span class="keyword">function <a href="dictionary_T.html#13065">Time_Stamp</a> return <a href="dictionary_V.html#1988">VString</a> is</span>
+<a name="165"><font size=-1>165     </font></a><span class="keyword">   begin</span>
+<a name="166"><font size=-1>166     </font></a><span class="keyword">      return </span><span class="default">To_VString (<a href="dictionary_G.html#24205">GCT</a>.Image (<a href="dictionary_A.html#24229">AC</a>.Clock, </span><span class="string">&quot;%Y%m%d-%H%M%S&quot;</span><span class="default">));</span>
+<a name="167"><font size=-1>167     </font></a><span class="default">   </span><span class="keyword">end <a href="dictionary_T.html#13065">Time_Stamp</a></span><span class="default">;</span>
+<a name="168"><font size=-1>168     </font></a><span class="default"></span>
+<a name="169"><font size=-1>169     </font></a><span class="default"></span><span class="comment">-------------------------------------------------------------------------------</span>
+<a name="170"><font size=-1>170     </font></a><span class="comment"></span><span class="keyword">end <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_P.html#2886">Prg</a>;</span>
+<a name="171"><font size=-1>171     </font></a><span class="default"></span><span class="comment">-------------------------------------------------------------------------------</span>
+<a name="172"><font size=-1>172     </font></a><span class="comment"></span>
+</pre></body></html>

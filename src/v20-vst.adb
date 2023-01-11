@@ -57,6 +57,16 @@ package body v20.Vst is
 
    --  Types conversion -------------------------------------------------------
 
+   function Ascii_Value_To_Hex (Input : VString) return VString is
+      Input_Value : constant Integer := To_Integer (Input);
+   begin
+      if (Input_Value >= 0) and (Input_Value <= 127) then
+         return To_Hex (To_VString (Character'Val (Input_Value)));
+      else
+         return +"";
+      end if;
+   end Ascii_Value_To_Hex;
+
    function To_VString (B : Boolean) return VString is
    begin
       if B then
@@ -79,18 +89,19 @@ package body v20.Vst is
    end To_VString;
 
    function To_Integer (V : VString) return Integer is
+      Result : Integer := 0;
    begin
       if Length (V) > 0 then
-         return Integer'Value (ASU.To_String (V));
-      else
-         return 0;
+         if Is_Numeric (V) then
+            Result := Integer'Value (ASU.To_String (V));
+         end if;
       end if;
+      return Result;
    end To_Integer;
 
    function To_Integer (V : String) return Integer is
    begin
       return To_Integer (To_VString (V));
-      -- return Integer'Value (V);
    end To_Integer;
 
    function To_String (V : VString) return String is
@@ -115,6 +126,10 @@ package body v20.Vst is
          String_Extracted := ASU.Slice (Source => String_To_Convert, Low => I, High => I);
          ASU.Append (String_Converted, To_Hex ( Character'Pos (String_Extracted(1))) & " ");
       end loop;
+      --  Strip last trailing space
+      if Length (String_Converted) >= 3 then
+         String_Converted := Slice (String_Converted, 1, Length (String_Converted) - 1);
+      end if;
       return String_Converted;
    end To_Hex;
 
@@ -128,7 +143,6 @@ package body v20.Vst is
       end if;
       return S_Out;
    end To_Val;
-
 
    --  Types tests ------------------------------------------------------------
 
@@ -436,44 +450,51 @@ package body v20.Vst is
       String_To_Process_Length : constant Natural := Length (String_To_Process);
       UTF8_To_Process  : Boolean := False;
       UTF8_ESC          : constant Character := Character'Val(195);
-      UTF8_A_Acute      : constant Character := Character'Val(160); -- à
-      UTF8_A_Umlaut     : constant Character := Character'Val(162); -- ä
-      UTF8_C_Cedilla    : constant Character := Character'Val(167); -- ç
-      UTF8_E_Grave      : constant Character := Character'Val(168); -- è
-      UTF8_E_Acute      : constant Character := Character'Val(169); -- é
-      UTF8_E_Circumflex : constant Character := Character'Val(170); -- ê
-      UTF8_E_Umlaut     : constant Character := Character'Val(171); -- ë
-      UTF8_I_Circumflex : constant Character := Character'Val(174); -- î
-      UTF8_I_Umlaut     : constant Character := Character'Val(175); -- ï
-      UTF8_O_Circumflex : constant Character := Character'Val(180); -- î
-      UTF8_U_Grave      : constant Character := Character'Val(185); -- ï
    begin
       for I in 1 .. String_To_Process_Length loop
          Result_Char := Element (String_To_Process, I);
          if UTF8_To_Process then
+
+            -- Checked with ./gnx app update 15 --name="àâçèéêëîïôù-ÀÂÇÈÉÊËÎÏÔÙ-savio"
+            --if Index (String_To_Process, "savio") > 0 then
+            --   Log.Msg (Character'Pos(Result_Char));
+            --end if;
+
             -- UTF-8 to ASCII
-            if    Result_Char = UTF8_A_Acute      then
+            if    ((Result_Char = Character'Val(160)) or    -- à
+                   (Result_Char = Character'Val(162))) then -- â
                Result_Char:= 'a';
-            elsif Result_Char = UTF8_A_Umlaut     then
-               Result_Char:= 'a';
-            elsif Result_Char = UTF8_E_Grave      then
-               Result_Char:= 'e';
-            elsif Result_Char = UTF8_E_Acute      then
-               Result_Char:= 'e';
-            elsif Result_Char = UTF8_E_Circumflex then
-               Result_Char:= 'e';
-            elsif Result_Char = UTF8_E_Umlaut     then
-               Result_Char:= 'e';
-            elsif Result_Char = UTF8_I_Circumflex then
-               Result_Char:= 'i';
-            elsif Result_Char = UTF8_I_Umlaut     then
-               Result_Char:= 'i';
-            elsif Result_Char = UTF8_O_Circumflex then
-               Result_Char:= 'o';
-            elsif Result_Char = UTF8_U_Grave      then
-               Result_Char:= 'u';
-            elsif Result_Char = UTF8_C_Cedilla    then
+            elsif Result_Char = Character'Val(167) then     -- ç
                Result_Char:= 'c';
+            elsif ((Result_Char = Character'Val(168)) or    -- è
+                   (Result_Char = Character'Val(169)) or    -- é
+                   (Result_Char = Character'Val(170)) or    -- ê
+                   (Result_Char = Character'Val(171))) then -- ë
+               Result_Char:= 'e';
+            elsif  ((Result_Char = Character'Val(174)) or   -- î
+                   (Result_Char = Character'Val(175))) then -- ï
+               Result_Char:= 'i';
+            elsif Result_Char = Character'Val(180) then     -- ô
+               Result_Char:= 'o';
+            elsif Result_Char = Character'Val(185) then     -- ù
+               Result_Char:= 'u';
+            elsif ((Result_Char = Character'Val(128)) or    -- À
+                   (Result_Char = Character'Val(130))) then -- Â
+               Result_Char:= 'A';
+            elsif Result_Char = Character'Val(135) then     -- Ç
+               Result_Char:= 'C';
+            elsif ((Result_Char = Character'Val(136)) or    -- È
+                   (Result_Char = Character'Val(137)) or    -- É
+                   (Result_Char = Character'Val(138)) or    -- Ê
+                   (Result_Char = Character'Val(139))) then -- Ë
+               Result_Char:= 'E';
+            elsif  ((Result_Char = Character'Val(142)) or   -- Î
+                   (Result_Char = Character'Val(143))) then -- Ï
+               Result_Char:= 'I';
+            elsif Result_Char = Character'Val(148) then     -- Ô
+               Result_Char:= 'O';
+            elsif Result_Char = Character'Val(153) then     -- Ù
+               Result_Char:= 'U';
             else
                Result_Char:= '?';
             end if;
@@ -488,6 +509,8 @@ package body v20.Vst is
                   Result_Char:= 'a';
                elsif Result_Char = 'â' then
                   Result_Char:= 'a';
+               elsif Result_Char = 'ç' then
+                  Result_Char:= 'c';
                elsif Result_Char = 'é' then
                   Result_Char:= 'e';
                elsif Result_Char = 'è' then
@@ -504,8 +527,28 @@ package body v20.Vst is
                   Result_Char:= 'o';
                elsif Result_Char = 'ù' then
                   Result_Char:= 'u';
-               elsif Result_Char = 'ç' then
-                  Result_Char:= 'c';
+               elsif Result_Char = 'À' then
+                  Result_Char:= 'A';
+               elsif Result_Char = 'Â' then
+                  Result_Char:= 'A';
+               elsif Result_Char = 'Ç' then
+                  Result_Char:= 'C';
+               elsif Result_Char = 'É' then
+                  Result_Char:= 'E';
+               elsif Result_Char = 'È' then
+                  Result_Char:= 'E';
+               elsif Result_Char = 'Ê' then
+                  Result_Char:= 'E';
+               elsif Result_Char = 'Ë' then
+                  Result_Char:= 'E';
+               elsif Result_Char = 'Î' then
+                  Result_Char:= 'I';
+               elsif Result_Char = 'Ï' then
+                  Result_Char:= 'I';
+               elsif Result_Char = 'Ô' then
+                  Result_Char:= 'O';
+               elsif Result_Char = 'Ù' then
+                  Result_Char:= 'U';
                elsif Character'Pos (Result_Char) > 127 then
                   Result_Char:= '?';
                end if;
@@ -662,17 +705,6 @@ package body v20.Vst is
       return Trim_Both (Result_String);
    end Field_By_Name ;
 
-   ----------------------------------------------------------------------------
-   function Field_Search (String_To_Process : VString ; Field_To_Search : VString ; Field_Delimiter : String) return Boolean is
-      Result : Boolean := False;
-   begin
-      -- "a" should not be found in "span" so search "a & delimiter"
-      if (Index (String_To_Process & Field_Delimiter, Field_To_Search & Field_Delimiter) > 0) then
-         Result := True;
-      end if;
-      return Result;
-   end Field_Search;
-
    ---------------------------------------------------------------------------
    function Field_Count (String_To_Process : VString ; Field_Delimiter : String) return Integer is
    begin
@@ -754,6 +786,34 @@ package body v20.Vst is
       end if;
 
    end Field_Display;
+
+   ----------------------------------------------------------------------------
+   function Field_Included (String_To_Process : VString ; Items_List  : VString ; Field_Delimiter : String) return Boolean is
+      Items_Count : constant Natural := Field_Count (Items_List, Field_Delimiter);
+      Items_Found : Natural := 0;
+      Current_Item_Element : VString;
+   begin
+      if (Items_Count > 0) then
+         for Index_Item in 1..Items_Count loop
+            Current_Item_Element := Field_By_Index (Items_List, Index_Item, Field_Delimiter);
+            if Field_Search (String_To_Process, Current_Item_Element, Field_Delimiter) then
+               Items_Found := Items_Found + 1;
+            end if;
+         end loop;
+      end if;
+      return (Items_Found = Items_Count);
+   end Field_Included;
+
+   ----------------------------------------------------------------------------
+   function Field_Search (String_To_Process : VString ; Field_To_Search : VString ; Field_Delimiter : String) return Boolean is
+      Result : Boolean := False;
+   begin
+      -- "a" should not be found in "span" so search "a & delimiter"
+      if (Index (String_To_Process & Field_Delimiter, Field_To_Search & Field_Delimiter) > 0) then
+         Result := True;
+      end if;
+      return Result;
+   end Field_Search;
 
    --  Operators --------------------------------------------------------------
 

@@ -5,7 +5,7 @@
 --
 -- @file      v20.copyrights
 -- @copyright See authors list and v20.copyrights for index from name initials
--- @licence   EUPL 1.2
+-- @licence   Gplv3
 -- @encoding  UTF-8
 ------------------------------------------------------------------------------
 -- @summary
@@ -23,11 +23,9 @@
 
 * Detailed copyrights and credits
 
-Please refer to the document...
+Please refer to the document 20 Ada Library User Manual
 
-sow - v20 Ada Library User Manual.pdf
-
-...located in ./doc subdirectory.
+Located in v20-doc repository.
 
 ------------------------------------------------------------------------------
 -- eof

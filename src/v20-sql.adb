@@ -49,12 +49,17 @@
 --with Ada.Exceptions;         use Ada.Exceptions;
 --with Ada.IO_Exceptions;
 
+with Ada.Exceptions;
+with Ada.IO_Exceptions;
+
 with Interfaces.C;
 
 with v20.Fls;
 with v20.Log;
 
 package body v20.Sql is
+
+   package AE  renames Ada.Exceptions;
 
    --
    procedure Bind (Parameter : Positive; Value : Integer) is
@@ -158,17 +163,26 @@ package body v20.Sql is
    procedure Exec (Command : String) is
    begin
       SQLite.Exec (Handle_Database, Command);
+   exception
+      when Fault : others =>
+         Log.Err ("Sql.Exec > " & Command);
+         Error (Fault);
    end Exec;
+
    procedure Exec (Command : VString) is
    begin
       SQLite.Exec (Handle_Database, To_String (Command));
+   exception
+      when Fault : others =>
+         Log.Err ("Sql.Exec > " & Command);
+         Error (Fault);
    end Exec;
 
    --
-   function Error (Information : String ; Information_Extended : out VString) return Natural is
+   function Error (Information : String ; Information_Extended : out VString) return Integer is
       Exception_Information : VString := To_VString (Information);
       Exception_Information_Extended : VString := +"Extended information unavailable, see error code number";
-      Exception_Information_Number : Natural := 0;
+      Exception_Information_Number : Integer := 0;
    begin
 
       if not Empty (Exception_Information) then
@@ -176,68 +190,139 @@ package body v20.Sql is
          Exception_Information := Field_By_Index (Exception_Information, 1, CR);
          Exception_Information := Field_By_Index (Exception_Information, 2, "[");
          Exception_Information := Stript_Chars (Exception_Information, +" ]" & CRLF);
-         Exception_Information_Number := To_Integer (Exception_Information);
 
-         if Exception_Information_Number = Info_Ok then
-            Exception_Information_Extended := +"Operation successful";
-         elsif Exception_Information_Number = Info_Row then
-            Exception_Information_Extended := +"Another row of output is available";
-         elsif Exception_Information_Number = Info_Done then
-            Exception_Information_Extended := +"Operation has completed";
-         elsif Exception_Information_Number = Error_Generic then
-            Exception_Information_Extended := +"Generic error code when no other error code can be used";
-         elsif Exception_Information_Number = Error_Internal then
-            Exception_Information_Extended := +"Internal error";
-         elsif Exception_Information_Number = Error_Perm then
-            Exception_Information_Extended := +"Permission error accessing a newly created database";
-         elsif Exception_Information_Number = Error_Abort then
-            Exception_Information_Extended := +"Operation was aborted";
-         elsif Exception_Information_Number = Error_Busy then
-            Exception_Information_Extended := +"Database is busy";
-         elsif Exception_Information_Number = Error_Locked then
-            Exception_Information_Extended := +"Database is locked";
-         elsif Exception_Information_Number = Error_No_Mem then
-            Exception_Information_Extended := +"No memory available";
-         elsif Exception_Information_Number = Error_Readonly then
-            Exception_Information_Extended := +"Database is in read only mode";
-         elsif Exception_Information_Number = Error_Interrupt then
-            Exception_Information_Extended := +"An operation was interrupted";
-         elsif Exception_Information_Number = Error_In_Out then
-            Exception_Information_Extended := +"Read or write disk error";
-         elsif Exception_Information_Number = Error_Corrupt then
-            Exception_Information_Extended := +"The database is corrupted";
-         elsif Exception_Information_Number = Error_Not_Found then
-            Exception_Information_Extended := +"Multiple contexts error, see SQLite documentation";
-         elsif Exception_Information_Number = Error_Full then
-            Exception_Information_Extended := +"The disk is full";
-         elsif Exception_Information_Number = Error_Cant_Open then
-            Exception_Information_Extended := +"Can't open database or working file";
-         elsif Exception_Information_Number = Error_Protocol then
-            Exception_Information_Extended := +"Locking protocol problem";
-         elsif Exception_Information_Number = Error_Schema then
-            Exception_Information_Extended := +"Schema has changed during operation";
-         elsif Exception_Information_Number = Error_Too_Big then
-            Exception_Information_Extended := +"String or blob too large";
-         elsif Exception_Information_Number = Error_Constraint then
-            Exception_Information_Extended := +"A SQL constraint violation occurred";
-         elsif Exception_Information_Number = Error_Mismatch then
-            Exception_Information_Extended := +"A type mismatch occurred";
-         elsif Exception_Information_Number = Error_Misuse then
-            Exception_Information_Extended := +"Incorrect use of SQLite interface";
-         elsif Exception_Information_Number = Error_No_Lfs then
-            Exception_Information_Extended := +"No Large File Support, database can't grow";
-         elsif Exception_Information_Number = Error_Authent then
-            Exception_Information_Extended := +"Not authorized SQL prepared";
-         elsif Exception_Information_Number = Error_Range then
-            Exception_Information_Extended := +"A parameter number argument in Bind or Column routines is out of range";
-         elsif Exception_Information_Number = Error_Not_A_DB then
-            Exception_Information_Extended := +"Not a SQLite database";
+         -- If Error_Code here
+         if Is_Numeric (Exception_Information) then
+            Exception_Information_Number := To_Integer (Exception_Information);
+            Exception_Information_Extended := Error_Display (Exception_Information_Number);
+            Information_Extended := Exception_Information_Extended;
          end if;
-         Information_Extended := Exception_Information_Extended;
+
+      else
+         --  Send raw information
+         Information_Extended := +"No Error_Code present, send remaining raw information: " & Exception_Information;
       end if;
 
       return Exception_Information_Number;
    end Error;
+
+    --
+   procedure Error (Exception_Hook : AE.Exception_Occurrence) is
+      Exception_Information : VString := To_VString (AE.Exception_Information (Exception_Hook));
+      Exception_Information_Extended : VString := +"Extended information unavailable, see error code number";
+      Exception_Information_Number : Integer := 0;
+   begin
+
+      if not Empty (Exception_Information) then
+
+         Exception_Information := Field_By_Index (Exception_Information, 1, CR);
+         Exception_Information := Field_By_Index (Exception_Information, 2, "[");
+         Exception_Information := Stript_Chars (Exception_Information, +" ]" & CRLF);
+
+         -- If Error_Code here
+         if Is_Numeric (Exception_Information) then
+            Exception_Information_Number := To_Integer (Exception_Information);
+            Exception_Information_Extended := Error_Display (Exception_Information_Number);
+         end if;
+
+      else
+         Exception_Information_Number := Status_No_Code;
+      end if;
+
+      Log.Err ("Genesix DB exception: " & Error_Display (Exception_Information_Number));
+
+   end Error;
+
+   function Error (Exception_Hook : AE.Exception_Occurrence) return Integer is
+      Exception_Information : VString := To_VString (AE.Exception_Information (Exception_Hook));
+      Exception_Information_Number : Integer := 0;
+   begin
+
+      if not Empty (Exception_Information) then
+
+         Exception_Information := Field_By_Index (Exception_Information, 1, CR);
+         Exception_Information := Field_By_Index (Exception_Information, 2, "[");
+         Exception_Information := Stript_Chars (Exception_Information, +" ]" & CRLF);
+
+         -- If Error_Code here
+         if Is_Numeric (Exception_Information) then
+            Exception_Information_Number := To_Integer (Exception_Information);
+         end if;
+      end if;
+
+      return Exception_Information_Number;
+   end Error;
+
+   --
+   function Error_Display (Error_Code : Integer) return VString is
+      Error_String : VString;
+   begin
+
+      if Error_Code = Status_Need_Update then
+         Error_String := +"Database need update";
+      elsif Error_Code = Status_No_Code then
+         Error_String := +"No Error_Code present";
+      elsif Error_Code = Info_Ok then
+         Error_String := +"Operation successful";
+      elsif Error_Code = Info_Row then
+         Error_String := +"Another row of output is available";
+      elsif Error_Code = Info_Done then
+         Error_String := +"Operation has completed";
+      elsif Error_Code = Error_Generic then
+         Error_String := +"Generic error code when no other error code can be used";
+      elsif Error_Code = Error_Internal then
+         Error_String := +"Internal error";
+      elsif Error_Code = Error_Perm then
+         Error_String := +"Permission error accessing a newly created database";
+      elsif Error_Code = Error_Abort then
+         Error_String := +"Operation was aborted";
+      elsif Error_Code = Error_Busy then
+         Error_String := +"Database is busy";
+      elsif Error_Code = Error_Locked then
+         Error_String := +"Database is locked";
+      elsif Error_Code = Error_No_Mem then
+         Error_String := +"No memory available";
+      elsif Error_Code = Error_Readonly then
+         Error_String := +"Database is in read only mode";
+      elsif Error_Code = Error_Interrupt then
+         Error_String := +"An operation was interrupted";
+      elsif Error_Code = Error_In_Out then
+         Error_String := +"Read or write disk error";
+      elsif Error_Code = Error_Corrupt then
+         Error_String := +"The database is corrupted";
+      elsif Error_Code = Error_Not_Found then
+         Error_String := +"Multiple contexts error, see SQLite documentation";
+      elsif Error_Code = Error_Full then
+         Error_String := +"The disk is full";
+      elsif Error_Code = Error_Cant_Open then
+         Error_String := +"Can't open database or working file";
+      elsif Error_Code = Error_Protocol then
+         Error_String := +"Locking protocol problem";
+      elsif Error_Code = Error_Schema then
+         Error_String := +"Schema has changed during operation";
+      elsif Error_Code = Error_Too_Big then
+         Error_String := +"String or blob too large";
+      elsif Error_Code = Error_Constraint then
+         Error_String := +"A SQL constraint violation occurred";
+      elsif Error_Code = Error_Mismatch then
+         Error_String := +"A type mismatch occurred";
+      elsif Error_Code = Error_Misuse then
+         Error_String := +"Incorrect use of SQLite interface";
+      elsif Error_Code = Error_No_Lfs then
+         Error_String := +"No Large File Support, database can't grow";
+      elsif Error_Code = Error_Authent then
+         Error_String := +"Not authorized SQL prepared";
+      elsif Error_Code = Error_Range then
+         Error_String := +"A parameter number argument in Bind or Column routines is out of range";
+      elsif Error_Code = Error_Not_A_DB then
+         Error_String := +"Not a SQLite database";
+      else
+         Error_String := +"Error_Code unknown: " & Trim_Left (To_VString (Error_Code));
+      end if;
+
+      return Error_String;
+
+   end Error_Display;
 
    --
    function Get_Config (Parameter : VString) return VString is
@@ -303,7 +388,7 @@ package body v20.Sql is
    begin
 
       if not Table_Exists (Table_Name) then
-         Log.Err ("Sql.Insert: Table does not exists: " & Table_Name);
+         Log.Err ("Sql.Insert > Table does not exists: " & Table_Name);
          raise Table_Dont_Exists with To_String (Table_Name);
       end if;
 
@@ -331,6 +416,9 @@ package body v20.Sql is
                if (Column_Text (Local_Statement, 3) = "INTEGER") then
                   Insert_Columns_Values := Insert_Columns_Values & Current_Value & ",";
                elsif (Column_Text (Local_Statement, 3) = "TEXT") then
+                  -- Single quotes outside string and, inside string, escape single quote with pair of single quotes
+                  Insert_Columns_Values := Insert_Columns_Values & "'" & Replace_Pattern (Current_Value, +"'", +"''") & "',";
+               elsif (Column_Text (Local_Statement, 3) = "BLOB") then
                   -- Single quotes outside string and, inside string, escape single quote with pair of single quotes
                   Insert_Columns_Values := Insert_Columns_Values & "'" & Replace_Pattern (Current_Value, +"'", +"''") & "',";
                end if;
@@ -428,8 +516,13 @@ package body v20.Sql is
       Exec ("RELEASE SV_Read;");
 
       -- Delete last RD
-      if Length (Sql_Result) > 2 then
-         Sql_Result := Slice (Sql_Result, 1, Length (Sql_Result) - 1);
+      if Length (Sql_Result) >= 2 then -- to handle one digit answer with a trailing RD = 2 chars
+         --  Old code
+         --  Sql_Result := Slice (Sql_Result, 1, Length (Sql_Result) - 1);
+         --  New code
+         if Slice (Sql_Result, Length (Sql_Result), Length (Sql_Result)) = RD then
+            Sql_Result := Slice (Sql_Result, 1, Length (Sql_Result) - 1);
+         end if;
       end if;
 
       Log.Dbg ("Read: " & Sql_Result);
@@ -440,8 +533,25 @@ package body v20.Sql is
 
    --
    function Search (Table_Name : VString; Condition : VString) return Boolean is
+   Search : constant VString := Read (Table_Name, +"*", Condition);
+   Result : Boolean := False;
    begin
-      return (Length (Read (Table_Name, +"*", Condition)) > 0);
+      -- old code was too straight
+      -- return (length (Read (Table_Name, +"*", Condition) > 0)
+
+      -- Check for succesful search answer
+      if Search = ("1" & RD) then
+         --Log.Msg ("Sql.Read result (result 1\): " & To_Hex (Search));
+         Result := True;
+      else
+         --  Check for not empty answer
+         if Length (Search) > 0 then
+            --Log.Msg ("Sql.Read result (not empty): " & To_Hex (Search));
+            Result := True;
+         end if;
+      end if;
+
+      return Result;
    end Search;
 
    --
@@ -468,21 +578,31 @@ package body v20.Sql is
       SQLite.Reset (Local_Handle_Statement);
    end Reset;
 
-   function Schema_Need_Update (Database_FullName : VString ; Major : Natural; Minor : Natural) return Boolean is
-      --Result : Boolean := True;
+   function Schema_Need_Update (Database_FullName : VString ; Major : Natural; Minor : Natural) return Integer is
       Database_Version : Natural;
       Schema_Version : constant Natural := (Major * 10) + Minor;
    begin
 
-      if not Fls.Exists (Database_FullName) then
-         Log.Err ("Sql.Schema_Need_Update: Can't open database: " & Database_FullName);
-         raise Table_Dont_Exists with To_String (Database_FullName);
-      end if;
+      --  if not Fls.Exists (Database_FullName) then
+      --     Log.Err ("Sql.Schema_Need_Update: Can't open database: " & Database_FullName);
+      --     raise Table_Dont_Exists with To_String (Database_FullName);
+      --  end if;
 
       -- Preload Database definition
       Schema_Load (Database_Name, To_String (Database_FullName));
-      Schema_Load (Database_Pragma,"journal_mode","WAL");
+
+      -- sqlite doc : The DELETE journaling mode is the normal behavior. In the DELETE mode, the rollback
+      -- journal is deleted at the conclusion of each transaction. Indeed, the delete operation is the action
+      -- that causes the transaction to commit.
+      Schema_Load (Database_Pragma,"journal_mode","DELETE"); -- .."journal_mode","WAL");
+
+      -- sqlite doc : When synchronous is FULL (2), the SQLite database engine will use the xSync method of the
+      -- VFS to ensure that all content is safely written to the disk surface prior to continuing. This ensures
+      -- that an operating system crash or power failure will not corrupt the database. FULL synchronous is very
+      -- safe, but it is also slower. FULL is the most commonly used synchronous setting when not in WAL mode.
       Schema_Load (Database_Pragma,"synchronous","FULL");
+
+      -- sqlite doc : As of SQLite version 3.6.19, the default setting for foreign key enforcement is OFF.
       Schema_Load (Database_Pragma,"foreign_keys","ON");
 
       -- Open DB and eventually apply pragmas
@@ -523,11 +643,21 @@ package body v20.Sql is
         To_Integer (Field_By_Index (Get_Config ("Schema_Version"), 2, "."));
 
       -- False if Database_Version is >= Schema_Version => no need updating
-      return (Database_Version < Schema_Version);
+      if (Database_Version < Schema_Version) then
+         return Status_Need_Update;
+      else
+         return Info_Ok;
+      end if;
+
+   exception
+      when Fault : Ada.IO_Exceptions.Data_Error =>
+         return Error (Fault);
+      when Fault : Ada.IO_Exceptions.Status_Error =>
+         return Error (Fault);
 
    end Schema_Need_Update;
 
-   function Schema_Need_Update (Database_FullName : String ; Major : Natural; Minor : Natural) return Boolean is
+   function Schema_Need_Update (Database_FullName : String ; Major : Natural; Minor : Natural) return Integer is
    begin
       return Schema_Need_Update (To_VString (Database_FullName), Major, Minor);
    end Schema_Need_Update;
@@ -887,6 +1017,10 @@ package body v20.Sql is
          for Index in 1 .. Counter_Columns loop
             Current_Column := Field_By_Index (Field_By_Index (Columns_Values, Index, CD), 1, ND);
             -- If field name and column name match
+
+            --Table_Column := Column_Text (Local_Statement, 2);
+            --if Current_Column = Table_Column then
+
             if Current_Column = Column_Text (Local_Statement, 2) then
                -- Fill Name and Value, according to field type
                Current_Value := Field_By_Index (Field_By_Index (Columns_Values, Index, CD), 2, ND);
@@ -898,6 +1032,7 @@ package body v20.Sql is
                   -- Single quotes outside string and, inside string, escape single quote with pair of single quotes
                   Update_Columns_Values := Update_Columns_Values & "'" & Replace_Pattern (Current_Value, +"'", +"''") & "',";
                end if;
+               exit; -- No need to iterate further after match
             end if;
          end loop;
       end loop;

@@ -34,7 +34,7 @@ package body v20.Cfg is
       Result : Boolean := True;
    begin
       if Cfg_Last = Table_Max then
-         Log.Err ("v20.Cfg.Table_Write: Cfg.Table_Write > too large to load: " & Cfg_File_Read);
+         Log.Err ("v20.Cfg.Table_Write > Too large to load: " & Cfg_File_Read);
          Cfg_Last := 0;
          Result := False;
       else
@@ -172,11 +172,11 @@ package body v20.Cfg is
          if Tio.Is_Open (Handle_Read) then
             Result := Cfg_Read;
          else
-            Log.Err ("v20.Cfg.Cfg_Write: Can't open new " & Cfg_File_Read);
+            Log.Err ("v20.Cfg.Cfg_Write > Can't open new: " & Cfg_File_Read);
             Result := False;
          end if;
       else
-         Log.Err ("v20.Cfg.Cfg_Write: Can't create " & Cfg_File_Write);
+         Log.Err ("v20.Cfg.Cfg_Write > Can't create: " & Cfg_File_Write);
          Result := False;
       end if;
       return Result;
@@ -243,18 +243,16 @@ package body v20.Cfg is
                                            Trailing_Comment;
                Cfg_Last := Cfg_Last + 2;
             else
-               Log.Err ("v20.Cfg.Set: Too large: " & Cfg_File_Read);
-               Log.Err ("v20.Cfg.Set: For further writes to: " &
-                                                      Cfg_File_Write);
+               Log.Err ("v20.Cfg.Set > Too large: " & Cfg_File_Read);
+               Log.Err ("v20.Cfg.Set > For further writes to: " & Cfg_File_Write);
             end if;
          end if;
 
          if not Cfg_Write (Section, Parameter, Value, Trailing_Comment) then
-            Log.Err ("v20.Cfg.Set: Cfg_Write operation failed");
+            Log.Err ("v20.Cfg.Set > Cfg_Write operation failed");
          end if;
       else
-         Log.Err (
-            "v20.Cfg.Set: Invalid character in Section, Parameter or Value");
+         Log.Err ("v20.Cfg.Set > Invalid character in Section, Parameter or Value");
       end if;
    end Set;
 
@@ -316,7 +314,7 @@ package body v20.Cfg is
          end if;
 
          if not Cfg_Write then
-            Log.Err ("v20.Cfg.Delete: Cfg_Write operation failed");
+            Log.Err ("v20.Cfg.Delete > Cfg_Write operation failed");
          end if;
       end if;
    end Delete;
@@ -344,7 +342,7 @@ package body v20.Cfg is
          if Tio.Is_Open (Handle_Read) then
             Close;
          else
-            Log.Err ("v20.Cfg.Open: Can't create Cnf file");
+            Log.Err ("v20.Cfg.Open > Can't create Cnf file");
          end if;
       end if;
       --  Open in read mode
@@ -361,8 +359,7 @@ package body v20.Cfg is
       if Tio.Is_Open (Handle_Read) then
          Tio.Close (Handle_Read);
       else
-         Log.Err ("v20.Cfg.close: Should be opened before closing: " &
-                   Cfg_File_Read);
+         Log.Err ("v20.Cfg.close > Should be opened before closing: " & Cfg_File_Read);
       end if;
    end Close;
 

@@ -42,6 +42,10 @@ package v20.Sys is
    --    - Sys.Sort_Total_Allocs
    --    - Sys.Marked_Blocks
 
+   function Command_Path (Command_Name : String) return VString;
+   function Command_Path (Command_Name : VString) return VString;
+   -- Return full qualified command path.
+
    function Get_Alloc_Ada return String;
    --  Return current and max allocations done from Ada excluding others
    --  languages. Format of returned string : Ada Cur: [ 868 ] Max: [ 1600 ]
@@ -53,7 +57,7 @@ package v20.Sys is
    --  information, both the peak and the current Size.
 
    --  Environment
-
+   
    function Get_Env (Name : String) return VString;
    function Get_Env (Name : VString) return VString;
    --  Returns VString value of VString or String environment variable Name.
@@ -72,6 +76,15 @@ package v20.Sys is
    --  Dump information about memory usage. Size is the number of the biggest
    --  memory users we want to show. Report indicates which sorting order is
    --  used in the report.
+      
+   function Get_System_Name return VString;
+   --  Returns system name like "Debian" or "Ubuntu" or "not handled 
+   --  (unprocessed system string returned)".
+
+   function Get_System_Version return VString;
+   --  Returns system version like 10, 11 for Debian or 18.04, 20.04, 22.04 
+   --  for Ubuntu or "System not handled (unprocessed system string returned)". 
+   --  For Ubuntu systems, subversion like 18.04.6 and LTS string are omitted.
    
    function Is_Command (Command : String) return Boolean;
    function Is_Command (Command : VString) return Boolean;
@@ -81,9 +94,11 @@ package v20.Sys is
    --  Return true if Package_Name is installed. 
    
    function Install_Packages (Packages_List : String; Host_Name : VString := +"") return Boolean;
+   function Install_Packages (Packages_List : VString; Host_Name : VString := +"") return Boolean;
    --  Install packages for Debian, Ubuntu or derivatives distributions.
    
    function Purge_Packages (Packages_List : String; Host_Name : VString := +"") return Boolean;
+   function Purge_Packages (Packages_List : VString; Host_Name : VString := +"") return Boolean;
    --  Install packages for Debian, Ubuntu or derivatives distributions.
 
    procedure Reset_Memory_Monitor;

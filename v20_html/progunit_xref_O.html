@@ -1,0 +1,286 @@
+<html><head><title>Program Unit Cross Reference [O]</title><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/></head><body bgcolor="#ffffff" TEXT="#000000"><h2>Program Unit Cross Reference</h2><hr><pre>
+</pre><table BORDER CELLPADDING=4><tr><td>Non-Alpha</td><td><a href="progunit_xref_A.html">A</a></td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td><a href="progunit_xref_O.html">O</a></td><td>P</td><td>Q</td><td>R</td><td><a href="progunit_xref_S.html">S</a></td><td><a href="progunit_xref_T.html">T</a></td><td>U</td><td><a href="progunit_xref_V.html">V</a></td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr></table><pre>
+
+<a href="dictionary_O.html#487">Object</a><a name="487"> </a>   (Package)
+    Spec   [<a href="20665.html#35">object.ads, 35</a>]            object.ads
+    Body   [<a href="19590.html#34">object.adb, 34</a>]            object.adb
+    Child   [<a href="442.html#40">object-handle.ads, 40</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+    Use   [<a href="516.html#28">sqlite.adb, 28</a>]             <a href="dictionary_S.html#518">SQLite</a>
+    Ref   [<a href="40673.html#415">b__test.adb, 415</a>]           <a href="dictionary_A.html#40784">ada_main.adainit</a>
+    Ref   [<a href="40673.html#416">b__test.adb, 416</a>]           <a href="dictionary_A.html#40784">ada_main.adainit</a>
+    Child   [<a href="48903.html#30">object-handle.adb, 30</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+
+<a href="dictionary_O.html#19603">Object.Decrement_Count</a><a name="19603"> </a>   (Procedure)
+    Ref   [<a href="20665.html#156">object.ads, 156</a>]            <a href="dictionary_O.html#487">Object</a>
+    Spec   [<a href="20665.html#58">object.ads, 58</a>]            <a href="dictionary_O.html#487">Object</a>
+    Body   [<a href="19590.html#93">object.adb, 93</a>]            <a href="dictionary_O.html#487">Object</a>
+    Call   [<a href="19590.html#148">object.adb, 148</a>]           <a href="dictionary_O.html#945">Object.Release</a>
+
+<a href="dictionary_O.html#19598">Object.Equal</a><a name="19598"> </a>   (Function)
+  Declared as: Boolean
+    Spec   [<a href="20665.html#84">object.ads, 84</a>]            <a href="dictionary_O.html#487">Object</a>
+    Body   [<a href="19590.html#69">object.adb, 69</a>]            <a href="dictionary_O.html#487">Object</a>
+    Call   [<a href="19590.html#78">object.adb, 78</a>]            <a href="dictionary_O.html#19598">Object.Equal</a>
+    Call   [<a href="19590.html#129">object.adb, 129</a>]           <a href="dictionary_O.html#19609">Object.Less</a>
+    Call   [<a href="48903.html#112">object-handle.adb, 112</a>]    <a href="dictionary_O.html#466">Object.Handle.<=</a>
+    Call   [<a href="48903.html#130">object-handle.adb, 130</a>]    <a href="dictionary_O.html#469">Object.Handle.=</a>
+    Call   [<a href="48903.html#144">object-handle.adb, 144</a>]    <a href="dictionary_O.html#475">Object.Handle.></a>
+
+<a href="dictionary_O.html#946">Object.Finalize</a><a name="946"> </a>   (Procedure)
+    Spec   [<a href="20665.html#103">object.ads, 103</a>]           <a href="dictionary_O.html#487">Object</a>
+    Override   [<a href="20665.html#103">object.ads, 103</a>]       Ada.Finalization.Finalize
+    Body   [<a href="19590.html#82">object.adb, 82</a>]            <a href="dictionary_O.html#487">Object</a>
+    Call   [<a href="516.html#580">sqlite.adb, 580</a>]           <a href="dictionary_S.html#724">SQLite.Finalize</a>
+    Call   [<a href="516.html#584">sqlite.adb, 584</a>]           <a href="dictionary_S.html#724">SQLite.Finalize</a>
+    Call   [<a href="516.html#595">sqlite.adb, 595</a>]           <a href="dictionary_S.html#729">SQLite.Finalize</a>
+    Call   [<a href="516.html#599">sqlite.adb, 599</a>]           <a href="dictionary_S.html#729">SQLite.Finalize</a>
+    Call   [<a href="516.html#611">sqlite.adb, 611</a>]           <a href="dictionary_S.html#733">SQLite.Finalize</a>
+    Call   [<a href="516.html#615">sqlite.adb, 615</a>]           <a href="dictionary_S.html#733">SQLite.Finalize</a>
+    Call   [<a href="516.html#620">sqlite.adb, 620</a>]           <a href="dictionary_S.html#738">SQLite.Finalize</a>
+    Override   [<a href="2042.html#620">sqlite.ads, 620</a>]       <a href="dictionary_S.html#724">SQLite.Finalize</a>
+    Override   [<a href="2042.html#638">sqlite.ads, 638</a>]       <a href="dictionary_S.html#729">SQLite.Finalize</a>
+    Override   [<a href="2042.html#664">sqlite.ads, 664</a>]       <a href="dictionary_S.html#733">SQLite.Finalize</a>
+
+<a href="dictionary_O.html#443">Object.Handle</a><a name="443"> </a>   (Generic Package)
+    Spec   [<a href="442.html#40">object-handle.ads, 40</a>]     object-handle.ads
+    With   [<a href="2042.html#16">sqlite.ads, 16</a>]            <a href="dictionary_S.html#518">SQLite</a>
+    Instance   [<a href="2042.html#623">sqlite.ads, 623</a>]       <a href="dictionary_S.html#896">SQLite.Data_Base_Handles</a>
+    Ref   [<a href="2042.html#623">sqlite.ads, 623</a>]            <a href="dictionary_S.html#896">SQLite.Data_Base_Handles</a>
+    Instance   [<a href="2042.html#645">sqlite.ads, 645</a>]       <a href="dictionary_S.html#897">SQLite.Statement_Handles</a>
+    Ref   [<a href="2042.html#645">sqlite.ads, 645</a>]            <a href="dictionary_S.html#897">SQLite.Statement_Handles</a>
+    Instance   [<a href="2042.html#666">sqlite.ads, 666</a>]       <a href="dictionary_S.html#895">SQLite.Backup_Handles</a>
+    Ref   [<a href="2042.html#666">sqlite.ads, 666</a>]            <a href="dictionary_S.html#895">SQLite.Backup_Handles</a>
+    Body   [<a href="48903.html#30">object-handle.adb, 30</a>]     object-handle.adb
+
+<a href="dictionary_O.html#463">Object.Handle.<</a><a name="463"> </a>   (Function)
+  Declared as: Boolean
+    Spec   [<a href="442.html#124">object-handle.ads, 124</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+    Body   [<a href="48903.html#104">object-handle.adb, 104</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+
+<a href="dictionary_O.html#466">Object.Handle.<=</a><a name="466"> </a>   (Function)
+  Declared as: Boolean
+    Spec   [<a href="442.html#125">object-handle.ads, 125</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+    Body   [<a href="48903.html#109">object-handle.adb, 109</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+
+<a href="dictionary_O.html#469">Object.Handle.=</a><a name="469"> </a>   (Function)
+  Declared as: Boolean
+    Spec   [<a href="442.html#126">object-handle.ads, 126</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+    Body   [<a href="48903.html#118">object-handle.adb, 118</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+
+<a href="dictionary_O.html#478">Object.Handle.=</a><a name="478"> </a>   (Function)
+  Declared as: Boolean
+    Spec   [<a href="442.html#139">object-handle.ads, 139</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+    Body   [<a href="48903.html#150">object-handle.adb, 150</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+
+<a href="dictionary_O.html#481">Object.Handle.=</a><a name="481"> </a>   (Function)
+  Declared as: Boolean
+    Spec   [<a href="442.html#141">object-handle.ads, 141</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+    Body   [<a href="48903.html#162">object-handle.adb, 162</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+
+<a href="dictionary_O.html#475">Object.Handle.></a><a name="475"> </a>   (Function)
+  Declared as: Boolean
+    Spec   [<a href="442.html#128">object-handle.ads, 128</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+    Body   [<a href="48903.html#140">object-handle.adb, 140</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+
+<a href="dictionary_O.html#472">Object.Handle.>=</a><a name="472"> </a>   (Function)
+  Declared as: Boolean
+    Spec   [<a href="442.html#127">object-handle.ads, 127</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+    Body   [<a href="48903.html#135">object-handle.adb, 135</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+
+<a href="dictionary_O.html#448">Object.Handle.Adjust</a><a name="448"> </a>   (Procedure)
+    Spec   [<a href="442.html#50">object-handle.ads, 50</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Override   [<a href="442.html#50">object-handle.ads, 50</a>]   Ada.Finalization.Adjust
+    Body   [<a href="48903.html#32">object-handle.adb, 32</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+
+<a href="dictionary_O.html#450">Object.Handle.Finalize</a><a name="450"> </a>   (Procedure)
+    Spec   [<a href="442.html#59">object-handle.ads, 59</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Override   [<a href="442.html#59">object-handle.ads, 59</a>]   Ada.Finalization.Finalize
+    Body   [<a href="48903.html#39">object-handle.adb, 39</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+
+<a href="dictionary_O.html#452">Object.Handle.Invalidate</a><a name="452"> </a>   (Procedure)
+    Ref   [<a href="442.html#147">object-handle.ads, 147</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Spec   [<a href="442.html#68">object-handle.ads, 68</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Body   [<a href="48903.html#45">object-handle.adb, 45</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+
+<a href="dictionary_O.html#454">Object.Handle.Is_Valid</a><a name="454"> </a>   (Function)
+  Declared as: Boolean
+    Ref   [<a href="442.html#148">object-handle.ads, 148</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Spec   [<a href="442.html#78">object-handle.ads, 78</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Body   [<a href="48903.html#53">object-handle.adb, 53</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Instantiation   [<a href="2042.html#645">sqlite.ads, 645</a>]   <a href="dictionary_S.html#897">SQLite.Statement_Handles</a>
+       Call   [<a href="516.html#674">sqlite.adb, 674</a>]           <a href="dictionary_S.html#761">SQLite.Is_Valid</a>
+
+<a href="dictionary_O.html#456">Object.Handle.Ptr</a><a name="456"> </a>   (Function)
+  Declared as: Object_Type_Ptr
+    Ref   [<a href="442.html#149">object-handle.ads, 149</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Spec   [<a href="442.html#88">object-handle.ads, 88</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Body   [<a href="48903.html#58">object-handle.adb, 58</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Instantiation   [<a href="2042.html#623">sqlite.ads, 623</a>]   <a href="dictionary_S.html#896">SQLite.Data_Base_Handles</a>
+       Call   [<a href="516.html#169">sqlite.adb, 169</a>]           <a href="dictionary_S.html#566">SQLite.Bind</a>
+       Call   [<a href="516.html#188">sqlite.adb, 188</a>]           <a href="dictionary_S.html#575">SQLite.Bind</a>
+       Call   [<a href="516.html#207">sqlite.adb, 207</a>]           <a href="dictionary_S.html#584">SQLite.Bind</a>
+       Call   [<a href="516.html#232">sqlite.adb, 232</a>]           <a href="dictionary_S.html#593">SQLite.Bind</a>
+       Call   [<a href="516.html#248">sqlite.adb, 248</a>]           <a href="dictionary_S.html#593">SQLite.Bind</a>
+       Call   [<a href="516.html#275">sqlite.adb, 275</a>]           <a href="dictionary_S.html#605">SQLite.Bind</a>
+       Call   [<a href="516.html#301">sqlite.adb, 301</a>]           <a href="dictionary_S.html#616">SQLite.Bind</a>
+       Call   [<a href="516.html#329">sqlite.adb, 329</a>]           <a href="dictionary_S.html#605">SQLite.Bind</a>
+       Call   [<a href="516.html#345">sqlite.adb, 345</a>]           <a href="dictionary_S.html#605">SQLite.Bind</a>
+       Call   [<a href="516.html#375">sqlite.adb, 375</a>]           <a href="dictionary_S.html#630">SQLite.Bind</a>
+       Call   [<a href="516.html#396">sqlite.adb, 396</a>]           <a href="dictionary_S.html#642">SQLite.Bind</a>
+       Call   [<a href="516.html#555">sqlite.adb, 555</a>]           <a href="dictionary_S.html#716">SQLite.Filename</a>
+       Rename   [<a href="516.html#555">sqlite.adb, 555</a>]         <a href="dictionary_S.html#722">SQLite.Filename.Object</a>
+       Call   [<a href="516.html#625">sqlite.adb, 625</a>]           <a href="dictionary_S.html#740">SQLite.Get_User_Data</a>
+       Call   [<a href="516.html#641">sqlite.adb, 641</a>]           <a href="dictionary_S.html#742">SQLite.Init</a>
+       Call   [<a href="516.html#642">sqlite.adb, 642</a>]           <a href="dictionary_S.html#742">SQLite.Init</a>
+       Call   [<a href="516.html#681">sqlite.adb, 681</a>]           <a href="dictionary_S.html#763">SQLite.Last_Insert_Row</a>
+       Call   [<a href="516.html#768">sqlite.adb, 768</a>]           <a href="dictionary_S.html#767">SQLite.Open</a>
+       Call   [<a href="516.html#797">sqlite.adb, 797</a>]           <a href="dictionary_S.html#780">SQLite.Prepare</a>
+       Call   [<a href="516.html#807">sqlite.adb, 807</a>]           <a href="dictionary_S.html#780">SQLite.Prepare</a>
+       Rename   [<a href="516.html#797">sqlite.adb, 797</a>]         <a href="dictionary_S.html#790">SQLite.Prepare.(unnamed_block).Object</a>
+       Call   [<a href="516.html#831">sqlite.adb, 831</a>]           <a href="dictionary_S.html#800">SQLite.Set_User_Data</a>
+       Rename   [<a href="516.html#831">sqlite.adb, 831</a>]         <a href="dictionary_S.html#803">SQLite.Set_User_Data.Object</a>
+       Call   [<a href="516.html#1009">sqlite.adb, 1009</a>]          <a href="dictionary_S.html#847">SQLite.Set_Trace</a>
+       Rename   [<a href="516.html#1009">sqlite.adb, 1009</a>]        <a href="dictionary_S.html#850">SQLite.Set_Trace.Object</a>
+       Call   [<a href="516.html#1016">sqlite.adb, 1016</a>]          <a href="dictionary_S.html#851">SQLite.Set_Trace</a>
+       Rename   [<a href="516.html#1016">sqlite.adb, 1016</a>]        <a href="dictionary_S.html#854">SQLite.Set_Trace.Object</a>
+       Call   [<a href="516.html#1023">sqlite.adb, 1023</a>]          <a href="dictionary_S.html#855">SQLite.Set_Trace</a>
+       Rename   [<a href="516.html#1023">sqlite.adb, 1023</a>]        <a href="dictionary_S.html#858">SQLite.Set_Trace.Object</a>
+       Call   [<a href="516.html#1030">sqlite.adb, 1030</a>]          <a href="dictionary_S.html#859">SQLite.Set_Trace</a>
+       Rename   [<a href="516.html#1030">sqlite.adb, 1030</a>]        <a href="dictionary_S.html#862">SQLite.Set_Trace.Object</a>
+       Call   [<a href="516.html#1061">sqlite.adb, 1061</a>]          <a href="dictionary_S.html#869">SQLite.Step</a>
+    Instantiation   [<a href="2042.html#645">sqlite.ads, 645</a>]   <a href="dictionary_S.html#897">SQLite.Statement_Handles</a>
+       Call   [<a href="516.html#166">sqlite.adb, 166</a>]           <a href="dictionary_S.html#566">SQLite.Bind</a>
+       Rename   [<a href="516.html#166">sqlite.adb, 166</a>]         <a href="dictionary_S.html#574">SQLite.Bind.Object</a>
+       Call   [<a href="516.html#185">sqlite.adb, 185</a>]           <a href="dictionary_S.html#575">SQLite.Bind</a>
+       Rename   [<a href="516.html#185">sqlite.adb, 185</a>]         <a href="dictionary_S.html#583">SQLite.Bind.Object</a>
+       Call   [<a href="516.html#204">sqlite.adb, 204</a>]           <a href="dictionary_S.html#584">SQLite.Bind</a>
+       Rename   [<a href="516.html#204">sqlite.adb, 204</a>]         <a href="dictionary_S.html#592">SQLite.Bind.Object</a>
+       Call   [<a href="516.html#218">sqlite.adb, 218</a>]           <a href="dictionary_S.html#593">SQLite.Bind</a>
+       Rename   [<a href="516.html#218">sqlite.adb, 218</a>]         <a href="dictionary_S.html#597">SQLite.Bind.Object</a>
+       Call   [<a href="516.html#272">sqlite.adb, 272</a>]           <a href="dictionary_S.html#605">SQLite.Bind</a>
+       Rename   [<a href="516.html#272">sqlite.adb, 272</a>]         <a href="dictionary_S.html#615">SQLite.Bind.Object</a>
+       Call   [<a href="516.html#298">sqlite.adb, 298</a>]           <a href="dictionary_S.html#616">SQLite.Bind</a>
+       Rename   [<a href="516.html#298">sqlite.adb, 298</a>]         <a href="dictionary_S.html#627">SQLite.Bind.Object</a>
+       Call   [<a href="516.html#315">sqlite.adb, 315</a>]           <a href="dictionary_S.html#605">SQLite.Bind</a>
+       Rename   [<a href="516.html#315">sqlite.adb, 315</a>]         <a href="dictionary_S.html#615">SQLite.Bind.Object</a>
+       Call   [<a href="516.html#372">sqlite.adb, 372</a>]           <a href="dictionary_S.html#630">SQLite.Bind</a>
+       Rename   [<a href="516.html#372">sqlite.adb, 372</a>]         <a href="dictionary_S.html#641">SQLite.Bind.Object</a>
+       Call   [<a href="516.html#393">sqlite.adb, 393</a>]           <a href="dictionary_S.html#642">SQLite.Bind</a>
+       Rename   [<a href="516.html#393">sqlite.adb, 393</a>]         <a href="dictionary_S.html#648">SQLite.Bind.Object</a>
+       Call   [<a href="516.html#411">sqlite.adb, 411</a>]           <a href="dictionary_S.html#649">SQLite.Column</a>
+       Call   [<a href="516.html#424">sqlite.adb, 424</a>]           <a href="dictionary_S.html#655">SQLite.Column</a>
+       Call   [<a href="516.html#437">sqlite.adb, 437</a>]           <a href="dictionary_S.html#661">SQLite.Column</a>
+       Call   [<a href="516.html#454">sqlite.adb, 454</a>]           <a href="dictionary_S.html#667">SQLite.Column</a>
+       Call   [<a href="516.html#476">sqlite.adb, 476</a>]           <a href="dictionary_S.html#680">SQLite.Column</a>
+       Call   [<a href="516.html#508">sqlite.adb, 508</a>]           <a href="dictionary_S.html#694">SQLite.Column_Count</a>
+       Call   [<a href="516.html#520">sqlite.adb, 520</a>]           <a href="dictionary_S.html#698">SQLite.Column_Type</a>
+       Call   [<a href="516.html#669">sqlite.adb, 669</a>]           <a href="dictionary_S.html#755">SQLite.Is_Null</a>
+       Call   [<a href="516.html#805">sqlite.adb, 805</a>]           <a href="dictionary_S.html#780">SQLite.Prepare</a>
+       Call   [<a href="516.html#807">sqlite.adb, 807</a>]           <a href="dictionary_S.html#780">SQLite.Prepare</a>
+       Call   [<a href="516.html#824">sqlite.adb, 824</a>]           <a href="dictionary_S.html#795">SQLite.Reset</a>
+       Call   [<a href="516.html#879">sqlite.adb, 879</a>]           <a href="dictionary_S.html#831">SQLite.Trace_Callbak.Create_Statement</a>
+       Rename   [<a href="516.html#879">sqlite.adb, 879</a>]         <a href="dictionary_S.html#832">SQLite.Trace_Callbak.Create_Statement.(unnamed_block).Object</a>
+       Call   [<a href="516.html#1039">sqlite.adb, 1039</a>]          <a href="dictionary_S.html#863">SQLite.SQL</a>
+       Rename   [<a href="516.html#1039">sqlite.adb, 1039</a>]        <a href="dictionary_S.html#867">SQLite.SQL.Object</a>
+       Call   [<a href="516.html#1052">sqlite.adb, 1052</a>]          <a href="dictionary_S.html#869">SQLite.Step</a>
+       Rename   [<a href="516.html#1052">sqlite.adb, 1052</a>]        <a href="dictionary_S.html#873">SQLite.Step.Object</a>
+    Instantiation   [<a href="2042.html#666">sqlite.ads, 666</a>]   <a href="dictionary_S.html#895">SQLite.Backup_Handles</a>
+       Call   [<a href="516.html#645">sqlite.adb, 645</a>]           <a href="dictionary_S.html#742">SQLite.Init</a>
+       Call   [<a href="516.html#652">sqlite.adb, 652</a>]           <a href="dictionary_S.html#742">SQLite.Init</a>
+       Call   [<a href="516.html#778">sqlite.adb, 778</a>]           <a href="dictionary_S.html#776">SQLite.Pagecount</a>
+       Call   [<a href="516.html#816">sqlite.adb, 816</a>]           <a href="dictionary_S.html#791">SQLite.Remaining</a>
+       Call   [<a href="516.html#1082">sqlite.adb, 1082</a>]          <a href="dictionary_S.html#877">SQLite.Step</a>
+
+<a href="dictionary_O.html#458">Object.Handle.Ref</a><a name="458"> </a>   (Function)
+  Declared as: Handle
+    Ref   [<a href="442.html#150">object-handle.ads, 150</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Spec   [<a href="442.html#98">object-handle.ads, 98</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Body   [<a href="48903.html#63">object-handle.adb, 63</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Instantiation   [<a href="2042.html#666">sqlite.ads, 666</a>]   <a href="dictionary_S.html#895">SQLite.Backup_Handles</a>
+       Call   [<a href="516.html#643">sqlite.adb, 643</a>]           <a href="dictionary_S.html#742">SQLite.Init</a>
+
+<a href="dictionary_O.html#485">Object.Handle.Release</a><a name="485"> </a>   (Procedure)
+    Ref   [<a href="442.html#171">object-handle.ads, 171</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Spec   [<a href="442.html#170">object-handle.ads, 170</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+    Body   [<a href="48903.html#71">object-handle.adb, 71</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Call   [<a href="48903.html#41">object-handle.adb, 41</a>]     <a href="dictionary_O.html#450">Object.Handle.Finalize</a>
+    Call   [<a href="48903.html#48">object-handle.adb, 48</a>]     <a href="dictionary_O.html#452">Object.Handle.Invalidate</a>
+    Call   [<a href="48903.html#94">object-handle.adb, 94</a>]     <a href="dictionary_O.html#460">Object.Handle.Set</a>
+
+<a href="dictionary_O.html#460">Object.Handle.Set</a><a name="460"> </a>   (Procedure)
+    Ref   [<a href="442.html#151">object-handle.ads, 151</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Spec   [<a href="442.html#105">object-handle.ads, 105</a>]    <a href="dictionary_O.html#443">Object.Handle</a>
+    Body   [<a href="48903.html#90">object-handle.adb, 90</a>]     <a href="dictionary_O.html#443">Object.Handle</a>
+    Instantiation   [<a href="2042.html#623">sqlite.ads, 623</a>]   <a href="dictionary_S.html#896">SQLite.Data_Base_Handles</a>
+       Call   [<a href="516.html#763">sqlite.adb, 763</a>]           <a href="dictionary_S.html#767">SQLite.Open</a>
+       Call   [<a href="516.html#807">sqlite.adb, 807</a>]           <a href="dictionary_S.html#780">SQLite.Prepare</a>
+       Call   [<a href="516.html#894">sqlite.adb, 894</a>]           <a href="dictionary_S.html#809">SQLite.Trace_Callbak</a>
+       Call   [<a href="516.html#904">sqlite.adb, 904</a>]           <a href="dictionary_S.html#809">SQLite.Trace_Callbak</a>
+       Call   [<a href="516.html#917">sqlite.adb, 917</a>]           <a href="dictionary_S.html#809">SQLite.Trace_Callbak</a>
+       Call   [<a href="516.html#923">sqlite.adb, 923</a>]           <a href="dictionary_S.html#809">SQLite.Trace_Callbak</a>
+    Instantiation   [<a href="2042.html#645">sqlite.ads, 645</a>]   <a href="dictionary_S.html#897">SQLite.Statement_Handles</a>
+       Call   [<a href="516.html#795">sqlite.adb, 795</a>]           <a href="dictionary_S.html#780">SQLite.Prepare</a>
+       Call   [<a href="516.html#876">sqlite.adb, 876</a>]           <a href="dictionary_S.html#831">SQLite.Trace_Callbak.Create_Statement</a>
+
+<a href="dictionary_O.html#965">Object.Increment_Count</a><a name="965"> </a>   (Procedure)
+    Ref   [<a href="20665.html#157">object.ads, 157</a>]            <a href="dictionary_O.html#487">Object</a>
+    Spec   [<a href="20665.html#113">object.ads, 113</a>]           <a href="dictionary_O.html#487">Object</a>
+    Body   [<a href="19590.html#108">object.adb, 108</a>]           <a href="dictionary_O.html#487">Object</a>
+    Call   [<a href="516.html#838">sqlite.adb, 838</a>]           <a href="dictionary_S.html#800">SQLite.Set_User_Data</a>
+    Call   [<a href="48903.html#35">object-handle.adb, 35</a>]     <a href="dictionary_O.html#448">Object.Handle.Adjust</a>
+    Call   [<a href="48903.html#66">object-handle.adb, 66</a>]     <a href="dictionary_O.html#458">Object.Handle.Ref</a>
+    Call   [<a href="48903.html#98">object-handle.adb, 98</a>]     <a href="dictionary_O.html#460">Object.Handle.Set</a>
+
+<a href="dictionary_O.html#19607">Object.Initialize</a><a name="19607"> </a>   (Procedure)
+    Spec   [<a href="20665.html#119">object.ads, 119</a>]           <a href="dictionary_O.html#487">Object</a>
+    Override   [<a href="20665.html#119">object.ads, 119</a>]       Ada.Finalization.Initialize
+    Body   [<a href="19590.html#113">object.adb, 113</a>]           <a href="dictionary_O.html#487">Object</a>
+
+<a href="dictionary_O.html#19609">Object.Less</a><a name="19609"> </a>   (Function)
+  Declared as: Boolean
+    Spec   [<a href="20665.html#89">object.ads, 89</a>]            <a href="dictionary_O.html#487">Object</a>
+    Body   [<a href="19590.html#118">object.adb, 118</a>]           <a href="dictionary_O.html#487">Object</a>
+    Call   [<a href="19590.html#127">object.adb, 127</a>]           <a href="dictionary_O.html#19609">Object.Less</a>
+    Call   [<a href="48903.html#106">object-handle.adb, 106</a>]    <a href="dictionary_O.html#463">Object.Handle.<</a>
+    Call   [<a href="48903.html#114">object-handle.adb, 114</a>]    <a href="dictionary_O.html#466">Object.Handle.<=</a>
+    Call   [<a href="48903.html#137">object-handle.adb, 137</a>]    <a href="dictionary_O.html#472">Object.Handle.>=</a>
+    Call   [<a href="48903.html#146">object-handle.adb, 146</a>]    <a href="dictionary_O.html#475">Object.Handle.></a>
+
+<a href="dictionary_O.html#19592">Object.Lock</a><a name="19592"> </a>   (Protected)
+    Spec   [<a href="19590.html#38">object.adb, 38</a>]            <a href="dictionary_O.html#487">Object</a>
+    Body   [<a href="19590.html#49">object.adb, 49</a>]            <a href="dictionary_O.html#487">Object</a>
+    Use   [<a href="19590.html#98">object.adb, 98</a>]             <a href="dictionary_O.html#19603">Object.Decrement_Count</a>
+    Use   [<a href="19590.html#110">object.adb, 110</a>]            <a href="dictionary_O.html#965">Object.Increment_Count</a>
+
+<a href="dictionary_O.html#19593">Object.Lock.Decrement</a><a name="19593"> </a>   (Procedure)
+    Ref   [<a href="19590.html#45">object.adb, 45</a>]             <a href="dictionary_O.html#19592">Object.Lock</a>
+    Spec   [<a href="19590.html#39">object.adb, 39</a>]            <a href="dictionary_O.html#19592">Object.Lock</a>
+    Body   [<a href="19590.html#50">object.adb, 50</a>]            <a href="dictionary_O.html#19592">Object.Lock</a>
+    Call   [<a href="19590.html#98">object.adb, 98</a>]            <a href="dictionary_O.html#19603">Object.Decrement_Count</a>
+
+<a href="dictionary_O.html#19596">Object.Lock.Increment</a><a name="19596"> </a>   (Procedure)
+    Ref   [<a href="19590.html#46">object.adb, 46</a>]             <a href="dictionary_O.html#19592">Object.Lock</a>
+    Spec   [<a href="19590.html#43">object.adb, 43</a>]            <a href="dictionary_O.html#19592">Object.Lock</a>
+    Body   [<a href="19590.html#63">object.adb, 63</a>]            <a href="dictionary_O.html#19592">Object.Lock</a>
+    Call   [<a href="19590.html#110">object.adb, 110</a>]           <a href="dictionary_O.html#965">Object.Increment_Count</a>
+
+<a href="dictionary_O.html#19613">Object.Put_Traceback</a><a name="19613"> </a>   (Procedure)
+    Spec   [<a href="20665.html#143">object.ads, 143</a>]           <a href="dictionary_O.html#487">Object</a>
+    Body   [<a href="19590.html#134">object.adb, 134</a>]           <a href="dictionary_O.html#487">Object</a>
+
+<a href="dictionary_O.html#945">Object.Release</a><a name="945"> </a>   (Procedure)
+    Spec   [<a href="20665.html#132">object.ads, 132</a>]           <a href="dictionary_O.html#487">Object</a>
+    Body   [<a href="19590.html#139">object.adb, 139</a>]           <a href="dictionary_O.html#487">Object</a>
+    Call   [<a href="516.html#574">sqlite.adb, 574</a>]           <a href="dictionary_S.html#724">SQLite.Finalize</a>
+    Call   [<a href="516.html#835">sqlite.adb, 835</a>]           <a href="dictionary_S.html#800">SQLite.Set_User_Data</a>
+    Call   [<a href="48903.html#82">object-handle.adb, 82</a>]     <a href="dictionary_O.html#485">Object.Handle.Release</a>
+
+<a href="dictionary_O.html#19616">Object.Release.Free</a><a name="19616"> </a>   (Procedure)
+    Call   [<a href="19590.html#153">object.adb, 153</a>]           <a href="dictionary_O.html#945">Object.Release</a>
+    Instantiation   [<a href="19590.html#140">object.adb, 140</a>]   <a href="dictionary_O.html#945">Object.Release</a>
+
+<a href="dictionary_O.html#19620">Object.Set_Trace_File</a><a name="19620"> </a>   (Procedure)
+    Spec   [<a href="20665.html#153">object.ads, 153</a>]           <a href="dictionary_O.html#487">Object</a>
+    Body   [<a href="19590.html#157">object.adb, 157</a>]           <a href="dictionary_O.html#487">Object</a>
+</pre><hr>
+<table BORDER CELLPADDING=4><tr><td>Non-Alpha</td><td><a href="progunit_xref_A.html">A</a></td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td><td>N</td><td><a href="progunit_xref_O.html">O</a></td><td>P</td><td>Q</td><td>R</td><td><a href="progunit_xref_S.html">S</a></td><td><a href="progunit_xref_T.html">T</a></td><td>U</td><td><a href="progunit_xref_V.html">V</a></td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr></table></body></html>

@@ -75,9 +75,7 @@ package body v20.Fls is
                              Index_Backward (To_VString (Source_Name), "/"))))
          then
             Destination_Valid := False;
-            Log.Err (
-                "v20.Fls.Copy_File: Destination directory does not exist: " & 
-                Target_Name);
+            Log.Err ("v20.Fls.Copy_File > Destination directory does not exist: " & Target_Name);
          end if;
       end if;  
       if Destination_Valid then      
@@ -132,7 +130,6 @@ package body v20.Fls is
    function Delete_Directory_Tree (Dir_Tree : String) return Boolean is
       Result : Boolean := False;
    begin
-   
       if not If_Root_Directory (Dir_Tree) then
          if AD.Exists (Dir_Tree) then
             AD.Delete_Tree (Dir_Tree);
@@ -145,9 +142,7 @@ package body v20.Fls is
       else
          Log.Err ("Fls.Delete_Directory_Tree - Attempt to delete a root directory: " & Dir_Tree);
       end if;   
-      
       return Result;
-
    exception
       when Error : Ada.IO_Exceptions.Use_Error =>
          Log_Err (Error);
@@ -160,6 +155,18 @@ package body v20.Fls is
    function Delete_Directory_Tree (Dir_Tree : VString) return Boolean is
    begin
       return Delete_Directory_Tree (To_String (Dir_Tree));
+   end Delete_Directory_Tree;
+   
+   procedure Delete_Directory_Tree (Dir_Tree : String) is
+      Dummy : Boolean;
+   begin
+      Dummy := Delete_Directory_Tree (Dir_Tree);
+   end Delete_Directory_Tree;
+   
+   procedure Delete_Directory_Tree (Dir_Tree : VString) is
+      Dummy : Boolean;
+   begin
+      Dummy := Delete_Directory_Tree (To_String (Dir_Tree));
    end Delete_Directory_Tree;
 
    ----------------------------------------------------------------------------
@@ -211,7 +218,7 @@ package body v20.Fls is
             Rename (File_Write, File_Name);
          end if;
       else
-         Log.Err ("v20.Fls.Delete_Lines: Can't find: " & File_Name);
+         Log.Err ("v20.Fls.Delete_Lines > Can't find: " & File_Name);
       end if;
    end Delete_Lines;
 
@@ -274,7 +281,7 @@ package body v20.Fls is
             end if;
          end if;
          if not Result then
-            Log.Err ("Fls.Download_File: Download file failed: " & Message_Name);
+            Log.Err ("Fls.Download_File > Download file failed: " & Message_Name);
          end if;
       end if;
       return Result;

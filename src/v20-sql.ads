@@ -24,7 +24,6 @@
 
 -- Schema
 with Ada.Containers.Vectors;
---with Ada.Containers.Indefinite_Vectors;
 with Ada.Text_IO;
 
 --  SQLite
@@ -83,36 +82,39 @@ package v20.Sql is
 
    package Schema_Lines_List is new Ada.Containers.Vectors (Index_Type => Natural, Element_Type => Schema_Line);
 
+   Status_Need_Update : constant Integer := 500;
+   Status_No_Code     : constant Integer := 501;
+
    --  https://www.sqlite.org/rescode.html
    --  Gap in numbering means unused code
-   Info_Ok          : constant := 0;
-   Info_Row         : constant := 100;
-   Info_Done        : constant := 101;
+   Info_Ok            : constant Integer := 0;
+   Info_Row           : constant Integer := 100;
+   Info_Done          : constant Integer := 101;
 
-   Error_Generic    : constant := 1;
-   Error_Internal   : constant := 2;
-   Error_Perm       : constant := 3;
-   Error_Abort      : constant := 4;
-   Error_Busy       : constant := 5;
-   Error_Locked     : constant := 6;
-   Error_No_Mem     : constant := 7;
-   Error_Readonly   : constant := 8;
-   Error_Interrupt  : constant := 9;
-   Error_In_Out     : constant := 10;
-   Error_Corrupt    : constant := 11;
-   Error_Not_Found  : constant := 12;
-   Error_Full       : constant := 13;
-   Error_Cant_Open  : constant := 14;
-   Error_Protocol   : constant := 15;
-   Error_Schema     : constant := 17;
-   Error_Too_Big    : constant := 18;
-   Error_Constraint : constant := 19;
-   Error_Mismatch   : constant := 20;
-   Error_Misuse     : constant := 21;
-   Error_No_Lfs     : constant := 22;
-   Error_Authent    : constant := 23;
-   Error_Range      : constant := 25;
-   Error_Not_A_DB   : constant := 26;
+   Error_Generic      : constant Integer := 1;
+   Error_Internal     : constant Integer := 2;
+   Error_Perm         : constant Integer := 3;
+   Error_Abort        : constant Integer := 4;
+   Error_Busy         : constant Integer := 5;
+   Error_Locked       : constant Integer := 6;
+   Error_No_Mem       : constant Integer := 7;
+   Error_Readonly     : constant Integer := 8;
+   Error_Interrupt    : constant Integer := 9;
+   Error_In_Out       : constant Integer := 10;
+   Error_Corrupt      : constant Integer := 11;
+   Error_Not_Found    : constant Integer := 12;
+   Error_Full         : constant Integer := 13;
+   Error_Cant_Open    : constant Integer := 14;
+   Error_Protocol     : constant Integer := 15;
+   Error_Schema       : constant Integer := 17;
+   Error_Too_Big      : constant Integer := 18;
+   Error_Constraint   : constant Integer := 19;
+   Error_Mismatch     : constant Integer := 20;
+   Error_Misuse       : constant Integer := 21;
+   Error_No_Lfs       : constant Integer := 22;
+   Error_Authent      : constant Integer := 23;
+   Error_Range        : constant Integer := 25;
+   Error_Not_A_DB     : constant Integer := 26;
 
    --
    procedure Bind (Parameter : Positive; Value : Integer);
@@ -175,8 +177,14 @@ package v20.Sql is
    --    Status_Error     - Access error
    --    Use_Error        - File open error
 
-   function Error (Information : String ; Information_Extended : out VString) return Natural;
+   function Error (Information : String ; Information_Extended : out VString) return Integer;
    --  SQLite error processing
+
+   procedure Error (Exception_Hook : Ada.Exceptions.Exception_Occurrence);
+   --  SQLite error processing
+
+   function Error_Display (Error_Code : Integer) return VString;
+   --  SQLite status, info and error display
 
    procedure Exec (Command : String);
    procedure Exec (Command : VString);
@@ -284,8 +292,8 @@ package v20.Sql is
    --  Exceptions :
    --    Constraint_Error - Command is an invalid handle
 
-   function Schema_Need_Update (Database_FullName : String ; Major : Natural; Minor : Natural) return Boolean;
-   function Schema_Need_Update (Database_FullName : VString ; Major : Natural; Minor : Natural) return Boolean;
+   function Schema_Need_Update (Database_FullName : String ; Major : Natural; Minor : Natural) return Integer;
+   function Schema_Need_Update (Database_FullName : VString ; Major : Natural; Minor : Natural) return Integer;
    -- Return True if program version is inferior to required schema version. Useful to
    -- avoid running Schema_CRUD each time the program is ran.
 

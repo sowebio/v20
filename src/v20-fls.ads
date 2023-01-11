@@ -54,6 +54,9 @@ package v20.Fls is
 
    function Delete_Directory_Tree (Dir_Tree : String) return Boolean;
    function Delete_Directory_Tree (Dir_Tree : VString) return Boolean;
+   procedure Delete_Directory_Tree (Dir_Tree : String);
+   procedure Delete_Directory_Tree (Dir_Tree : VString);
+   
    --  Delete a directory tree Dir_Tree. The directory and all of its contents
    --  (possibly including other directories) are deleted. Return True if
    --  Dir_Tree is successfully deleted or was already deleted. Return False if

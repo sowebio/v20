@@ -49,7 +49,7 @@ package v20.Tio is
 
    procedure Put (B : Boolean);
    procedure Put (I : Integer);
-   procedure Put (I : Integer_64);
+   procedure Put (I : Long_Integer);
    procedure Put (C : Character) renames ATI.Put;
    procedure Put (S : String) renames ATI.Put;
    procedure Put (V : VString);
@@ -57,11 +57,19 @@ package v20.Tio is
 
    procedure Put_Line (B : Boolean);
    procedure Put_Line (I : Integer);
-   procedure Put_Line (I : Integer_64);
+   procedure Put_Line (I : Long_Integer);
    procedure Put_Line (C : Character);
    procedure Put_Line (S : String) renames ATI.Put_Line;
    procedure Put_Line (V : VString);
    --  Print to the console then add a new line.
+
+   procedure Animated_Delay (Delay_Seconds : Positive);
+   -- Animated delay in seconds with markers each 5 and 10 seconds.
+   -- ....!....|....!....|....!./ < animated wheel with /-\|/-| characters
+   -- .1s !5s  |10s
+
+   function Confirm_Twice (User_Prompt_1 : VString ; User_Prompt_2 : VString) return Boolean;
+   -- Double check by user before action. Returns True if user has validate.
 
    procedure Line (Spacing : ATI.Positive_Count := 1) renames ATI.New_Line;
    --  Add a new line to the console
@@ -113,9 +121,12 @@ package v20.Tio is
    subtype File is ATI.File_Type;
 
    procedure Open_Conf (Handle : in out File; Name : String ;
-                       Wipe_Before_Process : Boolean := False);
+                       Wipe_Before_Process : Boolean := False ;
+                       Permissions : VString := +"");
+
    procedure Open_Conf (Handle : in out File; Name : VString ;
-                       Wipe_Before_Process : Boolean := False);
+                       Wipe_Before_Process : Boolean := False ;
+                       Permissions : VString := +"");
    --  Special Open procedure for config files. Creates or Append if needed.
    --  Ensure that the complete directory tree structure exists before
    --  creating file. Creating this directory tree if needed.
@@ -169,11 +180,11 @@ package v20.Tio is
    function End_Of_File (Handle : File) return Boolean renames ATI.End_Of_File;
    --  Test if enf of file reached.
 
-   function Read_File (File_To_Read : VString) return VString;
+   function Read_File (File_Name : VString) return VString;
    --  Read a text file File_To_Read and returning a VString buffer. LF
    --  (line feed) are preserved.
 
-   procedure Write_File (File_To_Write : VString ; Content : VString);
+   procedure Write_File (File_Name : VString ; Content : VString ; Permissions : VString := +"");
    --  Write a text file File_To_Write with Content. LF in content are
    --  preserved and used as line feed. Read Open_Conf documentation for
    --  implementation details.

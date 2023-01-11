@@ -26,10 +26,25 @@ with Interfaces.C;
 
 with v20.Log;
 with v20.Prg;
+with v20.Tio;
 
 package body v20.Sys is
 
    package AEV renames Ada.Environment_Variables;
+   
+   function Command_Path (Command_Name : String) return VString is
+      Exec_Error : Integer;
+      Find_Command : constant VString := +"which " & Command_Name;
+      Exec_Output : VString;
+   begin
+      Shell_Execute (Find_Command, Exec_Error, Exec_Output);
+      return Exec_Output;
+   end Command_Path;
+   
+   function Command_Path (Command_Name : VString) return VString is
+   begin
+      return Command_Path (To_String (Command_Name ));
+   end Command_Path;
 
    ---------------------------------------------------------------------------
    function Get_Alloc_Ada return String is
@@ -72,13 +87,41 @@ package body v20.Sys is
    begin                          -- Report_View cast
       GNATCOLL.Memory.Dump (Size, GNATCOLL.Memory.Report_Type (Report_View));
    end Get_Memory_Dump;
+   
+  ---------------------------------------------------------------------------  
+   function Get_System_Name return VString is
+      System_Name : VString := Tio.Read_File (+"/etc/issue.net");
+   begin
+      if (Index (System_Name, "Debian") > 0) then
+         System_Name := +"debian";
+      elsif (Index (System_Name, "Ubuntu") > 0) then
+         System_Name := +"ubuntu";
+      else
+         System_Name := +"System not handled (" & System_Name & ")";
+      end if;
+      return System_Name;
+   end Get_System_Name;
+   
+   function Get_System_Version return VString is
+      System_Name : constant VString := Tio.Read_File (+"/etc/issue.net");
+      System_Version : VString := +"";
+   begin
+      if (Index (System_Name, "Debian") > 0) then
+         System_Version := Tail (System_Name, 18);
+      elsif (Index (System_Name, "Ubuntu") > 0) then
+         System_Version := Slice (System_Name, 8, 12);
+      else
+         System_Version := +"System not handled (" & System_Name & ")";
+      end if;
+      return System_Version;
+   end Get_System_Version;
 
    ---------------------------------------------------------------------------
    function Is_Package (Package_Name : VString; Host_Name : VString := +"") return Boolean is
       Exec_Error : Integer;
-      Check_Command : constant VString := "dpkg -s " & Package_Name & " | grep Status:";
-  --    Exec_Output_Local : VString := +"'install ok installed'";
-  --    Exec_Output_Local : VString := +"install ok installed'";
+      Check_Command : constant VString := "dpkg -s " & Package_Name;
+      Exec_Output : VString;
+      Exec_Output_Install_Ok : constant VString := +"Status: install ok installed";
    begin
       if Empty (Host_Name) then
          -- Exec_Error checking is irrelevant with dpkg-query, allways check 
@@ -87,12 +130,15 @@ package body v20.Sys is
          -- package available in, for example, two architectures, as libcurl4
          -- (libcurl4:amd64, libcurl4:i386), the response string 
          -- 'install ok installed' appears two times instead of once.
-         Sys.Shell_Execute (Check_Command & STD_ERR_OUT_REDIRECT, Exec_Error); --, Exec_Output);
+         -- Exec_Error checking is also irrelevant with dpkg -s. String status
+         -- texting is explicitly mandatory
+         Sys.Shell_Execute (Check_Command & STD_ERR_OUT_REDIRECT, Exec_Error, Exec_Output); --, Exec_Output);
       else
          Sys.Shell_Execute (+"ssh -q -o StrictHostKeyChecking=no " & Host_Name & " " & DQ & 
-                            Check_Command & DQ & STD_ERR_OUT_REDIRECT, Exec_Error);
+                            Check_Command & DQ & STD_ERR_OUT_REDIRECT, Exec_Error, Exec_Output);
       end if;
-      return (Exec_Error = 0);
+      Log.Dbg ("Is_Install Exec_Output: " & Exec_Output);
+      return (Index (Exec_Output, Exec_Output_Install_Ok) > 0);
    end Is_Package;
 
    ---------------------------------------------------------------------------
@@ -101,29 +147,33 @@ package body v20.Sys is
       -- apt and aptitude are for user's end (more human friendly but 
       -- unstable CLI between versions), apt-get is for scripts (stable CLI)
       Installer : VString := +"apt-get";
+      Package_Name_Trimmed : constant VString := Trim_Both (Package_Name);
       Result : Boolean := True;
    begin
-      if not Is_Package (Package_Name, Host_Name) then
-         Log.Msg ("Installing " & Package_Name);
+   
+      if not Is_Package (Package_Name_Trimmed, Host_Name) then
          if Empty (Host_Name) then
+            Log.Msg ("Local install of " & Package_Name_Trimmed);
             if Prg.Is_User_Not_Root then
                Installer := "sudo " & Installer;
             end if;
-            Sys.Shell_Execute (Installer & " install -y " & Package_Name & STD_ERR_OUT_REDIRECT, Exec_Error);
+            Log.Dbg ("Command: " & Installer & " install -y " & Package_Name_Trimmed & STD_ERR_OUT_REDIRECT);
+            Sys.Shell_Execute (Installer & " install -y " & Package_Name_Trimmed & STD_ERR_OUT_REDIRECT, Exec_Error);
          else
+            Log.Msg ("Remote install of " & Package_Name_Trimmed);
             -- Use of Exec_Output seems to disturb results. Definitly we should handle redirection analysis through STD and ERR files
             Sys.Shell_Execute (+"ssh -q -o StrictHostKeyChecking=no " & Host_Name & " " & 
-               DQ & Installer & " install -y " & Package_Name & DQ & STD_ERR_OUT_REDIRECT, Exec_Error);
+               DQ & Installer & " install -y " & Package_Name_Trimmed & DQ & STD_ERR_OUT_REDIRECT, Exec_Error);
          end if;
          
          if Exec_Error = 0 then
-            Log.Msg (Package_Name & " installed successfully.");
+            Log.Msg (Package_Name_Trimmed & " installed successfully.");
          else
-            Log.Err ("v20.Sys.Install_Package: Exec error installing: " & Package_Name);
+            Log.Err ("v20.Sys.Install_Package > Exec error installing: " & Package_Name_Trimmed & " Error code: " & To_VString (Exec_Error));
             Result := False;
          end if;
       else
-         Log.Msg ("Package " & Package_Name & " already installed.");
+         Log.Msg ("Package " & Package_Name_Trimmed & " already installed.");
       end if;
       return Result;
    end Install_Package;
@@ -153,6 +203,11 @@ package body v20.Sys is
       return Result;
    end Install_Packages;
    
+   function Install_Packages (Packages_List : VString; Host_Name : VString := +"") return Boolean is
+   begin
+      return Install_Packages (To_String (Packages_List), Host_Name);
+   end Install_Packages;
+   
    ---------------------------------------------------------------------------
    function Purge_Package (Package_Name : VString; Host_Name : VString) return Boolean is
       Exec_Error : Integer;
@@ -177,7 +232,7 @@ package body v20.Sys is
          if Exec_Error = 0 then
             Log.Msg (Package_Name & " installed successfully.");
          else
-            Log.Err ("v20.Sys.Install_Package: Exec error purging: " & Package_Name);
+            Log.Err ("v20.Sys.Install_Package > Exec error purging: " & Package_Name);
             Result := False;
          end if;
       else
@@ -188,7 +243,7 @@ package body v20.Sys is
 
    function Purge_Packages (Packages_List : String; Host_Name : VString := +"") return Boolean is
       Packages_String : constant VString := To_VString (Packages_List);
-         Packages_Count : Natural;
+      Packages_Count : Natural;
       Result : Boolean := True;
    begin
       Log.Msg ("Check packages to purge.");
@@ -209,6 +264,11 @@ package body v20.Sys is
          end loop;
       end if;
       return Result;
+   end Purge_Packages;
+   
+   function Purge_Packages (Packages_List : VString; Host_Name : VString := +"") return Boolean is
+   begin
+      return Purge_Packages (To_String (Packages_List), Host_Name);
    end Purge_Packages;
    
    ---------------------------------------------------------------------------

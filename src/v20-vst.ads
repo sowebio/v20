@@ -40,8 +40,8 @@ package v20.Vst is
    function To_VString (B : Boolean) return VString;
    function To_VString (I : Integer) return VString;
    function To_VString (C : Character) return VString;
-   function To_VString (S : String) return VString
-                                              renames ASU.To_Unbounded_String;
+   function To_VString (S : String) return VString renames ASU.To_Unbounded_String;
+
    --  Convert an Integer, a Char or a String type into VString type.
 
    function To_Integer (V : String) return Integer;
@@ -50,6 +50,10 @@ package v20.Vst is
 
    function To_String (V : VString) return String;
    --  Convert a VString to a String.
+
+   function Ascii_Value_To_Hex (Input : VString) return VString;
+   --  Convert an ASCII VString value ranging 0..127 to a VString hexadecimal
+   --  output. For example, with input is +"61" dec, result is +"3D" hex.
 
    function To_Hex (Byte : Interfaces.Unsigned_8) return String;
    --  Convert a Byte to a String hexadecimal output.
@@ -222,7 +226,7 @@ package v20.Vst is
    function Stript_Accents (String_To_Process : VString ) return VString;
    --  Replace common accented characters with their lower ASCII equivalent.
    --  Encoding processed are Latin_1, UTF-8 and character handled are
-   --  à â é è ê ë î ï ô ù ç.
+   --  à â é è ê ë î ï ô ù ç À Â É È Ê Ë Î Ï Ô Ù Ç.
 
    function Stript_Chars (String_To_Process : VString ; Char_List : VString) return VString;
    --  Stript each char in String_To_Process relative to Char_List
@@ -239,8 +243,8 @@ package v20.Vst is
 
    --  /!\ Use only Field_Delimiter characters between 0dec and 127dec, due to
    --  /!\ some keyboard available characters encoding with 2 chars. Some
-   --  /!\ recommended keyboards Field_Delimiter characters are [:], [^], [|]
-   --  /!\ (AltGr+6), [`] (AltGr+7)
+   --  /!\ recommended keyboards Field_Delimiter characters are listed in
+   --  /!\ v20.ads but also in the v20 documentation
 
    function Field_By_Index (String_Input : VString ; Index_Field : Integer ; Field_Delimiter : String) return VString;
    --  Return a field indexed by Index_Field and delimited by Field_Delimiter
@@ -249,14 +253,17 @@ package v20.Vst is
    function Field_By_Name (String_Input : VString ; Field_To_Search : VString ; Field_Delimiter : String) return VString;
    --  Return a field from a search string and delimited by Field_Delimiter.
 
-   function Field_Search (String_To_Process : VString ; Field_To_Search : VString ; Field_Delimiter : String) return Boolean;
-   --  Search Field_To_Search in String_To_Process and return True if found.
-
    function Field_Count (String_To_Process : VString ; Field_Delimiter : String) return Integer;
    --  Count fields in String_To_Process and return fields number.
 
    procedure Field_Display (String_To_Process : VString; Column_Delimiter : String; Row_Delimiter : String; Custom_Header : String := "");
    --  Formatted display of a string fields structured in rows and columns
+
+   function Field_Included (String_To_Process : VString ; Items_List  : VString ; Field_Delimiter : String) return Boolean;
+   --  Returns True if all Items_List are included in String_To_Process list, which is delimited by Field_Delimiter.
+
+   function Field_Search (String_To_Process : VString ; Field_To_Search : VString ; Field_Delimiter : String) return Boolean;
+   --  Search Field_To_Search in String_To_Process and return True if found.
 
    --  Operators --------------------------------------------------------------
 

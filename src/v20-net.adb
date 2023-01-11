@@ -20,14 +20,300 @@
 --  see .ads
 -------------------------------------------------------------------------------
 
+with v20.Fls;
 with v20.Log;
 with v20.Prg;
 with v20.Sys;
+with v20.Tio;
 
 package body v20.Net is
 
+ ---------------------------------------------------------------------------
+   function Command (Target : in VString ; Command_In : in VString ; SE_Output : out VString) return Boolean is
+      Temp_Key_Name : constant VString := v20.Get_Tmp_Dir & Prg.Time_Stamp & "-v20-net-command-private.key";
+      Temp_Output : constant VString := v20.Get_Tmp_Dir & Prg.Time_Stamp & "-v20-net-command.output";
+      Command_String : VString := +"";
+      Key_To_Use : VString := +"";
+      SE_Result : Integer := 0;
+      Result : Boolean := False;
+   begin
+
+      if not Empty (SSH_Key) then
+         Tio.Write_File (Temp_Key_Name, SSH_Key, +"0600");
+         Key_To_Use := "-i " & Temp_Key_Name & " ";
+      end if;
+
+      -- Command must be between quotation marks to keep the redirections safe on the distant host
+      Command_String := +"ssh" & SSH_Default_Options & Key_To_Use & Target & " " & DQ & Command_In & DQ & " > " & Temp_Output;
+      Sys.Shell_Execute (Command_String, SE_Result);
+
+      if not Empty (SSH_Key) then
+         Fls.Delete_File (Temp_Key_Name);
+      end if;
+
+      SE_Output := Tio.Read_File (Temp_Output);
+      Fls.Delete_File (Temp_Output);
+
+      if (SE_Result = 0) then
+         if SSH_Message then
+            Log.Msg ("Remote command " & Command_In & " on " & Target & " successful");
+         end if;
+         Result := True;
+      else
+         -- A command in error does not necessarily mean an order error.
+         -- One may want to test the non-existence of a file, which will
+         -- nevertheless trigger a non-zero error code. Hence the error message
+         -- in the exception handling block
+         if SSH_Message then
+            Log.Err ("Net.Send_Command > Command error with: " & Command_String & " on " & Target & " Error: " & To_VString (SE_Result));
+         end if;
+         if Set_Exception then
+            raise Error_Command;
+         end if;
+      end if;
+
+      return Result;
+   end Command;
+
+---------------------------------------------------------------------------
+   function Command (Target : in VString ; Command_In : in VString) return Boolean is
+      Temp_Key_Name : constant VString := v20.Get_Tmp_Dir & Prg.Time_Stamp & "-v20-net-command-private.key";
+      Command_String : VString := +"";
+      Key_To_Use : VString := +"";
+      Result : Boolean := False;
+      SE_Result : Integer := 0;
+   begin
+
+      if not Empty (SSH_Key) then
+         Tio.Write_File (Temp_Key_Name, SSH_Key, +"0600");
+         Key_To_Use := "-i " & Temp_Key_Name & " ";
+      end if;
+
+      -- Command must be between quotation marks to keep the redirections safe on the distant host
+      Command_String := +"ssh" & SSH_Default_Options & Key_To_Use & Target & " " & DQ & Command_In & DQ &
+                                                      (if SSH_Output then "" else STD_ERR_OUT_REDIRECT);
+      Sys.Shell_Execute (Command_String, SE_Result);
+
+      if not Empty (SSH_Key) then
+         Fls.Delete_File (Temp_Key_Name);
+      end if;
+
+      if (SE_Result = 0) then
+         if  SSH_Message then
+            Log.Msg ("Remote command: " & Command_In & " on " & Target & " successful");
+         end if;
+         Result := True;
+      else
+         -- A command in error does not necessarily mean an order error.
+         -- One may want to test the non-existence of a file, which will
+         -- nevertheless trigger a non-zero error code. Hence the error message
+         -- in the exception handling block
+         if SSH_Message then
+            Log.Err ("Net.Send_Command > Command error with: " & Command_String & " on " & Target & " Error: " & To_VString (SE_Result));
+         end if;
+         if Set_Exception then
+            raise Error_Command;
+         end if;
+      end if;
+
+      return Result;
+
+   end Command;
+
+   procedure Command (Target : in VString ; Command_In : in VString) is
+      Dummy : Boolean;
+   begin
+      Dummy := Command (Target, Command_In);
+   end Command;
+
    ---------------------------------------------------------------------------
-   function Ip_Check (Ip : in VString) return Boolean is
+   function Copy_File (Target : in VString ; File_Tx : in VString; Directory_Rx : in VString ; Options : in VString := +"") return Boolean is
+      Temp_Key_Name : constant VString := v20.Get_Tmp_Dir & Prg.Time_Stamp & "-v20-net-copy_file-private.key";
+      Command_String : VString := +"";
+      Exec_Error : Integer;
+      Key_To_Use : VString := +"";
+      Result : Boolean := False;
+   begin
+
+      if not Empty (SSH_Key) then
+         Tio.Write_File (Temp_Key_Name, SSH_Key, +"0600");
+         Key_To_Use := "-i " & Temp_Key_Name & " ";
+      end if;
+
+      -- scp <options> $file1 $file2 $fileN root@$host:$dir/[/distant_received_filename]
+      Command_String := +"scp " & Options & " " & SSH_Default_Options & Key_To_Use & File_Tx & " " & Target & ":" & Directory_Rx &
+                                                               (if SSH_Output then "" else STD_ERR_OUT_REDIRECT);
+      -- Default distant directory creation for safety
+      if not Net.Directory_Exists (Target, Directory_Rx) then
+         Command (Target, +"mkdir --parents " & Directory_Rx);
+      end if;
+
+      Sys.Shell_Execute (Command_String, Exec_Error);
+
+      if not Empty (SSH_Key) then
+         Fls.Delete_File (Temp_Key_Name);
+      end if;
+
+      if (Exec_Error = 0) then
+         if  SSH_Message then
+            Log.Msg ("Remote copy: " & File_Tx & " to " & Directory_Rx & " successful");
+         end if;
+         Result := True;
+      else
+         Log.Err ("Net.Send_File > Copy error with: " & Command_String & " to " & Target & " Error: " & To_VString (Exec_Error));
+         if Set_Exception then
+            raise Error_Copy_File;
+         end if;
+      end if;
+
+      return Result;
+
+   end Copy_File;
+
+   procedure Copy_File (Target : in VString ; File_Tx : in VString; Directory_Rx : in VString ; Options : in VString := +"") is
+      Dummy : Boolean;
+   begin
+      Dummy := Copy_File (Target, File_Tx, Directory_Rx, Options);
+   end Copy_File;
+
+   ----------------------------------------------------------------------------
+   function Delete_Directory_Tree (Target : in VString ; Dir_Tree : VString) return Boolean is
+      Temp_Key_Name : constant VString := v20.Get_Tmp_Dir & Prg.Time_Stamp & "-v20-net-delete-directory-tree.key";
+      Command_String : VString := +"";
+      Exec_Error : Integer;
+      Key_To_Use : VString := +"";
+      Result : Boolean := False;
+   begin
+      if not Is_Root_Directory (Dir_Tree) then
+
+         if not Empty (SSH_Key) then
+            Tio.Write_File (Temp_Key_Name, SSH_Key, +"0600");
+            Key_To_Use := "-i " & Temp_Key_Name & " ";
+         end if;
+
+         Command_String := +"ssh" & SSH_Default_Options &
+                                 Key_To_Use & Target & " " &
+                                 DQ & "rm -fr " & Dir_Tree & DQ &
+                             (if SSH_Output then "" else STD_ERR_OUT_REDIRECT);
+
+         Sys.Shell_Execute (Command_String, Exec_Error);
+         if (Exec_Error = 0) then
+            Result := True;
+         end if;
+
+         if not Empty (SSH_Key) then
+            Fls.Delete_File (Temp_Key_Name);
+         end if;
+
+      else
+         Log.Err ("Fls.Delete_Directory_Tree - Attempt to delete a root directory: " & Dir_Tree);
+      end if;
+      return Result;
+   end Delete_Directory_Tree;
+
+   ----------------------------------------------------------------------------
+   function Delete_File (Target : in VString ; File_To_Delete : in VString) return Boolean is
+      Result : Boolean := True;
+   begin
+      if File_Exists (Target, File_To_Delete) then
+         Result := Net.Command (Target, +"rm -- force " & File_To_Delete);
+      end if;
+      return Result;
+   end Delete_File;
+
+   procedure Delete_File (Target : in VString ; File_To_Delete : in VString) is
+      Dummy : Boolean;
+   begin
+      Dummy := Delete_File (Target, File_To_Delete);
+   end Delete_File;
+
+   ---------------------------------------------------------------------------
+   function Directory_Exists (Target : in VString ; Name : String) return Boolean is
+      Temp_Key_Name : constant VString := v20.Get_Tmp_Dir & Prg.Time_Stamp & "-v20-net-directory_exists-private.key";
+      Command_String : VString := +"";
+      Exec_Error : Integer;
+      Key_To_Use : VString := +"";
+      Result : Boolean := False;
+   begin
+      if not Empty (SSH_Key) then
+         Tio.Write_File (Temp_Key_Name, SSH_Key, +"0600");
+         Key_To_Use := "-i " & Temp_Key_Name & " ";
+      end if;
+
+      Command_String := +"ssh" & SSH_Default_Options &
+                                 Key_To_Use & Target & " " &
+                                 DQ & "test -d " & Name & DQ &
+                             (if SSH_Output then "" else STD_ERR_OUT_REDIRECT);
+      Sys.Shell_Execute (Command_String, Exec_Error);
+      if (Exec_Error = 0) then
+         Result := True;
+      end if;
+
+      if not Empty (SSH_Key) then
+         Fls.Delete_File (Temp_Key_Name);
+      end if;
+
+      return Result;
+   end Directory_Exists;
+
+   function Directory_Exists (Target : in VString ; Name : VString) return Boolean is
+   begin
+      return Directory_Exists (Target, To_String (Name));
+   end Directory_Exists;
+
+   ---------------------------------------------------------------------------
+   function File_Exists (Target : in VString ; Name : String) return Boolean is
+      Temp_Key_Name : constant VString := v20.Get_Tmp_Dir & Prg.Time_Stamp & "-v20-net-file_exists-private.key";
+      Command_String : VString := +"";
+      Exec_Error : Integer;
+      Key_To_Use : VString := +"";
+      Result : Boolean := False;
+   begin
+      if not Empty (SSH_Key) then
+         Tio.Write_File (Temp_Key_Name, SSH_Key, +"0600");
+         Key_To_Use := "-i " & Temp_Key_Name & " ";
+      end if;
+
+      Command_String := +"ssh" & SSH_Default_Options &
+                                 Key_To_Use & Target & " " &
+                                 DQ & "test -f " & Name & DQ &
+                             (if SSH_Output then "" else STD_ERR_OUT_REDIRECT);
+      Sys.Shell_Execute (Command_String, Exec_Error);
+      if (Exec_Error = 0) then
+         Result := True;
+      end if;
+
+      if not Empty (SSH_Key) then
+         Fls.Delete_File (Temp_Key_Name);
+      end if;
+
+      return Result;
+   end File_Exists;
+
+   function File_Exists (Target : in VString ; Name : VString) return Boolean is
+   begin
+      return File_Exists (Target, To_String (Name));
+   end File_Exists;
+
+  ---------------------------------------------------------------------------
+   function Get_Network_From_Ip (Ip : in VString) return VString is
+      Result : VString := +"";
+   begin
+      if Is_Ip_Ok (Ip) then
+         Result := Field_By_Index (Ip, 1, ".") & "." &
+                   Field_By_Index (Ip, 2, ".") & "." &
+                   Field_By_Index (Ip, 3, ".");
+      end if;
+      return Result;
+   end Get_Network_From_Ip;
+
+   function Get_Network_From_Ip (Ip : in String) return VString is
+   begin
+      return Get_Network_From_Ip (To_VString (Ip));
+   end Get_Network_From_Ip;
+
+   ---------------------------------------------------------------------------
+   function Is_Ip_Ok (Ip : in VString) return Boolean is
       Ip_Part : VString := +"";
       Ip_Num : Natural;
       Result : Boolean := False;
@@ -51,109 +337,252 @@ package body v20.Net is
          end if;
       end if;
       return Result;
-   end Ip_Check;
+   end Is_Ip_Ok;
 
-   function Ip_Check (Ip : in String) return Boolean is
+   function Is_Ip_Ok (Ip : in String) return Boolean is
    begin
-      return Ip_Check (To_VString (Ip));
-   end Ip_Check;
+      return Is_Ip_Ok (To_VString (Ip));
+   end Is_Ip_Ok;
 
    ---------------------------------------------------------------------------
-   function Get_Network_From_Ip (Ip : in VString) return VString is
-      Result : VString := +"";
+   function Is_Ping_Ok (Target : in VString) return Boolean is
+      SE_Result : Integer := 0;
+      SE_Output : VString := +"";
    begin
-      if Ip_Check (Ip) then
-         Result := Field_By_Index (Ip, 1, ".") & "." &
-                   Field_By_Index (Ip, 2, ".") & "." &
-                   Field_By_Index (Ip, 3, ".");
+      -- SE_Output is mandatory to capture (and suppress) PING output
+      -- "1 packets transmitted, 1 received, 0% packet loss,"
+      Sys.Shell_Execute ("ping -c 1 " & Target, SE_Result, SE_Output);
+      return (SE_Result = 0);
+   end Is_Ping_Ok;
+
+   ----------------------------------------------------------------------------
+   function Is_Root_Directory (Dir_Tree : VString) return Boolean is
+      Test_Dir_Tree : VString := Dir_Tree;
+      Slash : constant VString := +"/";
+      Root_Dirs : constant VString := +"bin,boot,dev,etc,home,lib,lib32,lib64," &
+         "libx32,lost+found,media,mnt,opt,proc,root,run,sbin,srv,sys," &
+         "tmp,usr,var,Test_Delete_Directory_Tree";
+      Result : Boolean := False;
+   begin
+      -- Dir_Tree must be fully qualified, ie starting with a slash (/)
+      if Starts_With (Dir_Tree, Slash) then
+         --  Add a slash if Dir_Tree does not ends with it
+         if not Ends_With (Dir_Tree, Slash) then
+            Test_Dir_Tree := Test_Dir_Tree & Slash;
+         end if;
+         --  If Dir_Tree counts only two slashes and at least one char between
+         if (Char_Count (Test_Dir_Tree, Slash) = 2) and
+            (Length (Dir_Tree) > 2) then
+            Test_Dir_Tree := Slice (Test_Dir_Tree, 2, Length (Test_Dir_Tree) - 1);
+            if not Empty (Field_By_Name (Root_Dirs, Test_Dir_Tree, To_String (Slash))) then
+               Result := True;
+            end if;
+         end if;
       end if;
       return Result;
-   end Get_Network_From_Ip;
+   end Is_Root_Directory;
 
-   function Get_Network_From_Ip (Ip : in String) return VString is
+   ----------------------------------------------------------------------------
+   function Is_Ssh_Ok (Target : in VString) return Boolean is
+      SE_Result : Integer := 0;
+      --SE_Output : VString := +"";
    begin
-      return Get_Network_From_Ip (To_VString (Ip));
-   end Get_Network_From_Ip;
+      Sys.Shell_Execute ("ssh -q -o BatchMode=yes -o StrictHostKeyChecking=no -o ConnectTimeout=5 " & Target & " 'exit 0' ", SE_Result); -- , SE_Output);
+      return (SE_Result = 0);
+   end Is_Ssh_Ok;
 
-   ---------------------------------------------------------------------------
+   ----------------------------------------------------------------------------
    procedure Mount (Target : VString) is
-      Mount_Point : constant VString := (if Prg.Is_User_Not_Root then Sys.Get_Home else +"") & "/mnt/" & Target;
+      Temp_Key_Name : constant VString := v20.Get_Tmp_Dir & Prg.Time_Stamp & "-v20-net-mount-private.key";
+      Mount_Point : constant VString := v20.Get_Tmp_Dir & "v20-net-mount/" & Target;
       Exec_Error : Integer;
+      Command_String : VString := +"";
+      Key_To_Use : VString := +"";
    begin
-
       -- Default creation for safety
       Sys.Shell_Execute (+"mkdir --parents " & Mount_Point & STD_ERR_OUT_REDIRECT, Exec_Error);
       if (Exec_Error = 0) then
+
+         if not Empty (SSH_Key) then
+            Tio.Write_File (Temp_Key_Name, SSH_Key, +"0600");
+            Key_To_Use := " -o IdentityFile=" & Temp_Key_Name & " ";
+         end if;
+
          -- Mount
-         Sys.Shell_Execute (+"sshfs " & Target & ":/ " & Mount_Point & STD_ERR_OUT_REDIRECT, Exec_Error);
-         --Sys.Shell_Execute (+"sshfs root@" & Target & ".genesix.org:/ " & Mount_Point & STD_ERR_OUT_REDIRECT, Exec_Error);
+         Command_String := +"sshfs " & Target & ":/ " & Mount_Point & Key_To_Use &
+                                (if SSH_Output then "" else STD_ERR_OUT_REDIRECT);
+         Sys.Shell_Execute (Command_String, Exec_Error);
+
+         if not Empty (SSH_Key) then
+            Fls.Delete_File (Temp_Key_Name);
+         end if;
+
          if (Exec_Error = 0) then
-            Log.Msg (Target & " mounted in " & Mount_Point);
+            if  SSH_Message then
+               Log.Msg (Target & " mounted in " & Mount_Point);
+            end if;
          else
-            Log.Err ("Srv.Mount: Error mounting " & Target & " in " & Mount_Point & " Error: " & To_VString (Exec_Error));
-            raise Error_Mount;
+            Log.Err ("Net.Mount > Error mounting: " & Target & " in " & Mount_Point & " Error: " & To_VString (Exec_Error));
+            if Set_Exception then
+               raise Error_Mount;
+            end if;
          end if;
       else
-         Log.Err ("Srv.Mount: Error creating local mount point " & Mount_Point & " Error: " & To_VString (Exec_Error));
-         raise Error_Mount;
+         Log.Err ("Net.Mount > Error creating local mount point: " & Mount_Point & " Error: " & To_VString (Exec_Error));
+         if Set_Exception then
+            raise Error_Mount;
+         end if;
       end if;
 
    end Mount;
 
-   ---------------------------------------------------------------------------
-   procedure Send_Command (Target : in VString ; Command : in VString) is
-      Exec_Error : Integer;
+   ----------------------------------------------------------------------------
+   function Mount_Remote (Remote_Host : VString ; Target_To_Mount : VString ; Mount_Point : VString ; Mount_Options : in VString := +"") return Boolean is
+      Result : Boolean := False;
    begin
-
-      -- -q : Quiet
-      -- -o StrictHostKeyChecking=no : avoid 'The authenticity...can't be established. Are you sure...connecting (yes/no)?'
-      -- ssh -q -o StrictHostKeyChecking=no $file1 $file2 $fileN root@$host:$dir/
-
-      -- Command must be between quotation marks to keep the redirects on the distant host
-      Sys.Shell_Execute (+"ssh -q -o StrictHostKeyChecking=no " & Target & " " & DQ & Command & DQ & STD_ERR_OUT_REDIRECT, Exec_Error); -- & STD_ERR_OUT_REDIRECT, Exec_Error);
-      if (Exec_Error = 0) then
-         Log.Msg ("Distant command " & Command & " on " & Target);
+      if Net.Command (Remote_Host, +"mkdir --parents " & Mount_Point) then
+         if Net.Command (Remote_Host, +"mount " & Mount_Options & " " & Target_To_Mount & " " & Mount_Point) then
+            Result := True;
+         else
+            Log.Err ("Net.Mount_Remote > Error mounting: " & Target_To_Mount & " linked to " & Mount_Point & " on " & Remote_Host);
+         end if;
       else
-         Log.Err ("Srv.Send_Command: Command error with " & Command & " on " & Target & " Error: " & To_VString (Exec_Error));
-         raise Error_Send_Command;
+         Log.Err ("Net.Mount_Remote > Error creating mount point: " & Mount_Point & " targetting " & Target_To_Mount & " on " & Remote_Host);
+      end if;
+      return Result;
+   end Mount_Remote;
+
+   procedure Mount_Remote (Remote_Host : VString ; Target_To_Mount : VString ; Mount_Point : VString ; Mount_Options : in VString := +"") is
+      Dummy : Boolean;
+   begin
+      Dummy := Mount_Remote (Remote_Host, Target_To_Mount, Mount_Point, Mount_Options);
+   end Mount_Remote;
+
+   ---------------------------------------------------------------------------
+   procedure Set_Exception (Set_Unset : Boolean := True) is
+   begin
+      SSH_Exception := Set_Unset;
+   end Set_Exception;
+
+   function Set_Exception return Boolean is
+   begin
+      return SSH_Exception;
+   end Set_Exception;
+
+   ---------------------------------------------------------------------------
+   function Set_Hostname (Target : VString ; Hostname : VString) return Boolean is
+      Temp_Key_Name : constant VString := v20.Get_Tmp_Dir & Prg.Time_Stamp & "-v20-net-directory_exists-private.key";
+      Command_String : VString := +"";
+      Exec_Error : Integer;
+      Key_To_Use : VString := +"";
+      Result : Boolean := False;
+   begin
+      if not Empty (SSH_Key) then
+         Tio.Write_File (Temp_Key_Name, SSH_Key, +"0600");
+         Key_To_Use := "-i " & Temp_Key_Name & " ";
       end if;
 
-   end Send_Command;
-
-   ---------------------------------------------------------------------------
-   procedure Send_File (Target : in VString ; File_Tx : in VString; Directory_Rx : in VString) is
-      Command_String : constant VString := +"scp " & File_Tx & " " & Target & ":" & Directory_Rx & STD_ERR_OUT_REDIRECT;
-      Exec_Error : Integer;
-   begin
-
-      -- Default creation for safety
-      Send_Command (Target, +"mkdir --parents " & Directory_Rx);
+      Command_String := +"ssh" & SSH_Default_Options &
+                                 Key_To_Use & Target & " " &
+                                 DQ & "hostnamectl set-hostname " & Hostname & DQ &
+                             (if SSH_Output then "" else STD_ERR_OUT_REDIRECT);
 
       Sys.Shell_Execute (Command_String, Exec_Error);
       if (Exec_Error = 0) then
-         Log.Msg ("Distant copy " & Command_String & " on " & Target);
-      else
-         Log.Err ("Srv.Send_File: Copy error with " & Command_String & " to " & Target & " Error: " & To_VString (Exec_Error));
-         raise Error_Send_File;
+         Result := True;
       end if;
 
-   end Send_File;
+      if not Empty (SSH_Key) then
+         Fls.Delete_File (Temp_Key_Name);
+      end if;
+
+      return Result;
+   end Set_Hostname;
+
+   ---------------------------------------------------------------------------
+   function Set_Key (Key : VString := +"") return Boolean is
+      Temp_Key_Name : constant VString := v20.Get_Tmp_Dir & Prg.Time_Stamp & "-v20-net-set_key-private.key";
+      Exec_Error : Integer;
+      Result : Boolean := False;
+   begin
+      Tio.Write_File (Temp_Key_Name, Key, +"0600");
+      Sys.Shell_Execute ("ssh-keygen -l -f " & Temp_Key_Name & STD_ERR_OUT_REDIRECT, Exec_Error);
+      if (Exec_Error = 0) then
+         SSH_Key := Key;
+         Result := True;
+      else
+         Log.Err ("Net.Set_Key > Key invalid Error: " & To_VString (Exec_Error));
+      end if;
+      Fls.Delete_File (Temp_Key_Name);
+      return Result;
+   end Set_Key;
+
+   procedure Set_Key is
+   begin
+      SSH_Key := +"";
+   end Set_Key;
+
+   ---------------------------------------------------------------------------
+   procedure Set_Message (Msg : Boolean := True) is
+   begin
+      SSH_Message := Msg;
+   end Set_Message;
+
+   ---------------------------------------------------------------------------
+   procedure Set_Output (Output : Boolean := True) is
+   begin
+      SSH_Output := Output;
+   end Set_Output;
 
    ---------------------------------------------------------------------------
    procedure Unmount (Target : VString) is
-      Mount_Point : constant VString := (if Prg.Is_User_Not_Root then Sys.Get_Home else +"") & "/mnt/" & Target;
+      Mount_Point : constant VString := v20.Get_Tmp_Dir & "v20-net-mount/" & Target;
       Exec_Error : Integer;
    begin
-
       Sys.Shell_Execute (+"umount " & Mount_Point & STD_ERR_OUT_REDIRECT, Exec_Error);
       if (Exec_Error = 0) then
          Log.Msg (Target & " unmounted from " & Mount_Point);
+         Sys.Shell_Execute (+"rmdir " & Mount_Point & STD_ERR_OUT_REDIRECT, Exec_Error);
+         if (Exec_Error = 0) then
+            if  SSH_Message then
+               Log.Msg ("Delete local mount point: " & Mount_Point);
+            end if;
+         else
+            Log.Err ("Net.Unmount > Error deleting local mount point: " & Mount_Point & " Error: " & To_VString (Exec_Error));
+            if Set_Exception then
+               raise Error_Unmount;
+            end if;
+         end if;
       else
-         Log.Err ("Srv.Unmount: Error unmounting " & Target & " from " & Mount_Point & " Error: " & To_VString (Exec_Error));
-         raise Error_Unmount;
+         Log.Err ("Net.Unmount > Error unmounting: " & Target & " from " & Mount_Point & " Error: " & To_VString (Exec_Error));
+         if Set_Exception then
+            raise Error_Unmount;
+         end if;
       end if;
-
    end Unmount;
+
+   ----------------------------------------------------------------------------
+   function Unmount_Remote (Remote_Host : VString ; Mount_Point : VString) return Boolean is
+         Result : Boolean := False;
+   begin
+      if Net.Command (Remote_Host, +"umount " & Mount_Point) then
+         Net.Command (Remote_Host, +"rmdir " & Mount_Point);
+         if not Net.Directory_Exists (Remote_Host, Mount_Point) then
+            Result := True;
+         else
+            Log.Err ("Net.Mount_Remote > Mount point: " & Mount_Point & " not deleted on " & Remote_Host);
+         end if;
+      else
+         Log.Err ("Net.Mount_Remote > Mount point: " & Mount_Point & " not unmounted on " & Remote_Host);
+      end if;
+      return Result;
+   end Unmount_Remote;
+
+   procedure Unmount_Remote (Remote_Host : VString ; Mount_Point : VString) is
+      Dummy : Boolean;
+   begin
+      Dummy := Unmount_Remote (Remote_Host, Mount_Point);
+   end Unmount_Remote;
 
 ------------------------------------------------------------------------------
 --- PUBLIC VARIABLES AND CONSTANTS
@@ -744,13 +1173,14 @@ package body v20.Net is
 --  end Web_Get_Html_Value_List;
 
 
-   ---------------------------------------------------------------------------
-   procedure Exception_Termination (Message : String) is
-   begin
-      Log.Err (Message & ": exception raised, program end");
-      Log.Title ("");
-      GOL.OS_Exit (100);
-   end Exception_Termination;
+   -- See gnx-instance
+   --  ---------------------------------------------------------------------------
+   --  procedure Exception_Termination (Message : String) is
+   --  begin
+   --     Log.Err (Message & ": exception raised, program end");
+   --     Log.Title ("");
+   --     GOL.OS_Exit (100);
+   --  end Exception_Termination;
 
 -------------------------------------------------------------------------------
 end v20.Net;

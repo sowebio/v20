@@ -21,7 +21,7 @@
 -------------------------------------------------------------------------------
 
 with Ada.Calendar.Formatting;
---with Ada.Calendar.Time_Zones;
+with GNAT.Calendar.Time_IO;
 with Ada.Strings.Fixed;
 
 with v20.Log;
@@ -30,43 +30,38 @@ with v20.Sys;
 package body v20.Prg is
 
    package ACF renames Ada.Calendar.Formatting;
+   package GCT renames GNAT.Calendar.Time_IO;
 
    --  Program related --------------------------------------------------------
 
    function Current_Time_Seconds return Natural is
-      Time_Base :    constant Ada.Calendar.Time := ACF.Time_Of (1970, 1, 1, 0.0);
-      Time_Current : constant Ada.Calendar.Time := AC.Clock;
-      --type Time_Seconds is range 0 .. 100*365*24*60*60; -- 100 years of seconds...
    begin
-      -- Tio.Put_Line (Time_Seconds'Image (Time_Seconds (Time_Current - Time_Base)));
-      --return Integer (Time_Seconds (Time_Current - Time_Base));
-      return Integer (Time_Current - Time_Base);
+      return Integer (AC.Clock - ACF.Time_Of (1970, 1, 1, 0.0));
    end Current_Time_Seconds;
 
    function Duration_Stamp (Time : Ada.Calendar.Time) return VString is
-      Current_Time : constant Integer := Integer (AC.Seconds (AC.Clock));
-      Day_Secs : constant Integer := Current_Time - Integer (AC.Seconds (Time));
+      Day_Secs : Natural;
    begin
+      Day_Secs := (if AC.Seconds (AC.Clock) < AC.Seconds (Time) then 86400 else 0) +
+                      Integer (AC.Seconds (AC.Clock) - AC.Seconds (Time));
       --  Unlimited hours counter for long uptimes
-      return To_VString ((Day_Secs / 3600)) & "h" &
-            Time_Format ((Day_Secs / 60) mod 60) & "m" &
-             Time_Format (Day_Secs mod 60) & "s";
+      return To_VString  ((Day_Secs / 3600)) & "h" &
+             Time_Format ((Day_Secs / 60) mod 60) & "m" &
+             Time_Format  (Day_Secs mod 60) & "s";
    end Duration_Stamp;
 
    function Duration_Stamp_Seconds (Time : Ada.Calendar.Time) return Natural is
-      Current_Time : constant Natural := Integer (AC.Seconds (AC.Clock));
-      Day_Secs : constant Natural := Current_Time - Integer (AC.Seconds (Time));
    begin
-      --  Seconds
-      return Day_Secs;
+      return (if AC.Seconds (AC.Clock) < AC.Seconds (Time) then 86400 else 0) +
+                      Integer (AC.Seconds (AC.Clock) - AC.Seconds (Time));
    end Duration_Stamp_Seconds;
 
    function Duration_Stamp_Time (Time_Seconds : Integer) return VString is
    begin
       --  Unlimited hours counter for long uptimes
-      return To_VString ((Time_Seconds / 3600)) & "h" &
-            Time_Format ((Time_Seconds / 60) mod 60) & "m" &
-             Time_Format (Time_Seconds mod 60) & "s";
+      return To_VString  ((Time_Seconds / 3600)) & "h" &
+             Time_Format ((Time_Seconds / 60) mod 60) & "m" &
+             Time_Format  (Time_Seconds mod 60) & "s";
    end Duration_Stamp_Time;
 
    function Generate_Password return VString is
@@ -85,7 +80,7 @@ package body v20.Prg is
    begin
       Sys.Shell_Execute ("< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-14};echo;", SE_Result, SE_Output);
       if (SE_Result /= 0) then
-         Log.Err ("v20.Prg.Generate_Password - Password generation command failed");
+         Log.Err ("v20.Prg.Generate_Password > Password generation command failed");
       end if;
       return SE_Output;
    end Generate_Password;
@@ -111,7 +106,14 @@ package body v20.Prg is
 
    function Is_User_Not_Root return Boolean is
    begin
-      return (not (Sys.Get_Env ("USER") = +"root"));
+      --  Determining if the current user is root is not so simple. Indeed, USER
+      --  and USERNAME can contain a "root" user who is not named "root" (juste
+      --  declare another user with a UID of 0). Two solutions are possible:
+      --  - Use the HOME environment variable, which allows to determine if the
+      --    user's home is "root".
+      --  - Use the command "whoami" which will return "root", even if the user
+      --  "root" has another name.
+              return (not (Sys.Get_Env ("HOME") = +"/root"));
    end Is_User_Not_Root;
 
    function Name return VString is
@@ -160,18 +162,8 @@ package body v20.Prg is
    end Time_Format;
 
    function Time_Stamp return VString is
-
-      --Current_Time : constant AC.Time := AC.Clock;
-      Current_Time : constant AC.Time := AC.Clock;
-      Day_Secs : constant Integer := Integer (AC.Seconds (Current_Time));
    begin
-      return To_VString (AC.Year (Current_Time)) &
-      Time_Format (AC.Month (Current_Time)) &
-      Time_Format (AC.Day (Current_Time)) &
-      " " &
-      Time_Format (Day_Secs / 3660) &
-      Time_Format ((Day_Secs / 60) mod 60) &
-      Time_Format (Day_Secs mod 60);
+      return To_VString (GCT.Image (AC.Clock, "%Y%m%d-%H%M%S"));
    end Time_Stamp;
 
 -------------------------------------------------------------------------------

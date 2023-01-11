@@ -37,14 +37,16 @@ package v20.Log is
       
    function Get_Debug return Boolean;
    --  Return true if debug status is on.
-
-   procedure Line;
-   --  Log a blank line.
    
-   function Log_Dir return VString;
+   function Get_Dir return VString;
    --  Returns log file directory.
    
+   procedure Line;
+   --  Log a blank line.
+      
+   procedure Msg (Message : Boolean);
    procedure Msg (Message : Integer);
+   procedure Msg (Message : Long_Integer);
    procedure Msg (Message : Character);
    procedure Msg (Message : String);
    procedure Msg (Message : VString);
@@ -62,8 +64,8 @@ package v20.Log is
    procedure Set_Header (Action : Boolean);
    --  Line header on/[off].
    
-   procedure Set_Log_Dir (Dir_In : String);
-   procedure Set_Log_Dir (Dir_In : VString);
+   procedure Set_Dir (Dir_In : String);
+   procedure Set_Dir (Dir_In : VString);
    --  Set log file directory.
    
    procedure Set_Task (New_Task : String);
@@ -103,7 +105,7 @@ private
 
    Handle : Tio.File;
 
-   Log_Dir_Store : VString := Prg.Start_Dir;
+   Log_Dir_Store : VString := Prg.Start_Dir & "/";
 
    procedure Put (Line_In : String;
                   Line_Level : String;

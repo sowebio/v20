@@ -1,0 +1,122 @@
+<html><head><title>v20-prg.ads</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<link rel="stylesheet" type="text/css" href="sourcestyles.css" />
+</head><body link="blue" vlink="blue">
+<h3>File: /home/sr/Seafile/Sowebio/informatique/github/v20/src/v20-prg.ads</h3>
+<SCRIPT>
+defaultStatus = "File: /home/sr/Seafile/Sowebio/informatique/github/v20/src/v20-prg.ads";
+top.document.title  = "v20-prg.ads";
+</SCRIPT>
+<pre><span class="default"></span><a name="1"><font size=-1>1     </font></a><span class="default"></span><span class="comment">-------------------------------------------------------------------------------</span>
+<a name="2"><font size=-1>2     </font></a><span class="comment">--  ▖▖▄▖▄▖</span>
+<a name="3"><font size=-1>3     </font></a><span class="comment">--  ▌▌▄▌▛▌</span>
+<a name="4"><font size=-1>4     </font></a><span class="comment">--  ▚▘▙▖█▌</span>
+<a name="5"><font size=-1>5     </font></a><span class="comment">--</span>
+<a name="6"><font size=-1>6     </font></a><span class="comment">--  @file      v20-Prg.ads</span>
+<a name="7"><font size=-1>7     </font></a><span class="comment">--  @copyright See authors list below and v20.copyrights file</span>
+<a name="8"><font size=-1>8     </font></a><span class="comment">--  @licence   GPL v3</span>
+<a name="9"><font size=-1>9     </font></a><span class="comment">--  @encoding  UTF-8</span>
+<a name="10"><font size=-1>10     </font></a><span class="comment">------------------------------------------------------------------------------</span>
+<a name="11"><font size=-1>11     </font></a><span class="comment">--  @summary</span>
+<a name="12"><font size=-1>12     </font></a><span class="comment">--  V20 library common</span>
+<a name="13"><font size=-1>13     </font></a><span class="comment">--</span>
+<a name="14"><font size=-1>14     </font></a><span class="comment">--  @description</span>
+<a name="15"><font size=-1>15     </font></a><span class="comment">--</span>
+<a name="16"><font size=-1>16     </font></a><span class="comment">--  @authors</span>
+<a name="17"><font size=-1>17     </font></a><span class="comment">--  Stéphane Rivière - sr - sriviere@soweb.io</span>
+<a name="18"><font size=-1>18     </font></a><span class="comment">--</span>
+<a name="19"><font size=-1>19     </font></a><span class="comment">--  @versions</span>
+<a name="20"><font size=-1>20     </font></a><span class="comment">--  see v20.ads</span>
+<a name="21"><font size=-1>21     </font></a><span class="comment">------------------------------------------------------------------------------</span>
+<a name="22"><font size=-1>22     </font></a><span class="comment"></span>
+<a name="23"><font size=-1>23     </font></a><span class="comment"></span><span class="keyword">with </span><span class="default">Ada.Calendar; </span><span class="keyword">use </span><span class="default">Ada.Calendar; </span><span class="comment">-- Use for operation on Ada.Calendar.Time</span>
+<a name="24"><font size=-1>24     </font></a><span class="comment"></span><span class="keyword">with </span><span class="default">Ada.Command_Line;</span>
+<a name="25"><font size=-1>25     </font></a><span class="default"></span><span class="keyword">with </span><span class="default">Ada.Directories;</span>
+<a name="26"><font size=-1>26     </font></a><span class="default"></span>
+<a name="27"><font size=-1>27     </font></a><span class="default"></span><span class="keyword">with <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_V.html#1972">Vst</a>; </span><span class="keyword">use <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_V.html#1972">Vst</a>;</span>
+<a name="28"><font size=-1>28     </font></a><span class="default"></span>
+<a name="29"><font size=-1>29     </font></a><span class="default"></span><span class="keyword">package <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_P.html#2886">Prg</a> </span><span class="keyword">is</span>
+<a name="30"><font size=-1>30     </font></a><span class="keyword"></span>
+<a name="31"><font size=-1>31     </font></a><span class="keyword">   package <a href="dictionary_A.html#24229">AC</a> renames </span><span class="default">Ada.Calendar;</span>
+<a name="32"><font size=-1>32     </font></a><span class="default"></span>
+<a name="33"><font size=-1>33     </font></a><span class="default">   <a href="dictionary_C.html#24234">Command</a> : </span><span class="keyword">constant <a href="dictionary_V.html#1988">VString</a> </span><span class="default">:= To_VString (Ada.Command_Line.Command_Name);</span>
+<a name="34"><font size=-1>34     </font></a><span class="default">   </span><span class="comment">--  Constant storing program command (Arg 0).</span>
+<a name="35"><font size=-1>35     </font></a><span class="comment"></span>
+<a name="36"><font size=-1>36     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_C.html#24206">Current_Time_Seconds</a> return </span><span class="default">Natural;</span>
+<a name="37"><font size=-1>37     </font></a><span class="default">   </span><span class="comment">--  Returns a duration as seconds since ISO date 197001010. Conforms to</span>
+<a name="38"><font size=-1>38     </font></a><span class="comment">   --  Unix time standard. Checked with console command &quot;date +%s&quot;. Valid</span>
+<a name="39"><font size=-1>39     </font></a><span class="comment">   --  algorithm until 2070.</span>
+<a name="40"><font size=-1>40     </font></a><span class="comment"></span>
+<a name="41"><font size=-1>41     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_D.html#13599">Duration_Stamp</a> </span><span class="default">(<a href="dictionary_T.html#24207">Time</a> : Ada.Calendar.Time) </span><span class="keyword">return <a href="dictionary_V.html#1988">VString</a></span><span class="default">;</span>
+<a name="42"><font size=-1>42     </font></a><span class="default">   </span><span class="comment">--  Returns a duration as HHhMMmSSs since Time.</span>
+<a name="43"><font size=-1>43     </font></a><span class="comment"></span>
+<a name="44"><font size=-1>44     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_D.html#24209">Duration_Stamp_Seconds</a> </span><span class="default">(<a href="dictionary_T.html#24210">Time</a> : Ada.Calendar.Time) </span><span class="keyword">return </span><span class="default">Natural;</span>
+<a name="45"><font size=-1>45     </font></a><span class="default">   </span><span class="comment">--  Returns a duration as seconds since Time.</span>
+<a name="46"><font size=-1>46     </font></a><span class="comment"></span>
+<a name="47"><font size=-1>47     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_D.html#24211">Duration_Stamp_Time</a> </span><span class="default">(<a href="dictionary_T.html#24212">Time_Seconds</a> : Integer) </span><span class="keyword">return <a href="dictionary_V.html#1988">VString</a></span><span class="default">;</span>
+<a name="48"><font size=-1>48     </font></a><span class="default">   </span><span class="comment">--  Returns a formatted HHhMMmSSs VString from Time_Seconds</span>
+<a name="49"><font size=-1>49     </font></a><span class="comment"></span>
+<a name="50"><font size=-1>50     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_G.html#24213">Generate_Password</a> return <a href="dictionary_V.html#1988">VString</a></span><span class="default">;</span>
+<a name="51"><font size=-1>51     </font></a><span class="default">   </span><span class="comment">--  Sowebio standard password generation with 64 charset:</span>
+<a name="52"><font size=-1>52     </font></a><span class="comment">   --    ([A-Z] + [a-z] + [0-9] + '_' + '-')</span>
+<a name="53"><font size=-1>53     </font></a><span class="comment">   --  Search space size:</span>
+<a name="54"><font size=-1>54     </font></a><span class="comment">   --    &gt; 1,26 x 10^25</span>
+<a name="55"><font size=-1>55     </font></a><span class="comment">   --  Space exploration time:</span>
+<a name="56"><font size=-1>56     </font></a><span class="comment">   --    40000 centuries @ 100 billion tests per second.</span>
+<a name="57"><font size=-1>57     </font></a><span class="comment">   --  Command line with standard tools:</span>
+<a name="58"><font size=-1>58     </font></a><span class="comment">   --    &lt; /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-14};echo;</span>
+<a name="59"><font size=-1>59     </font></a><span class="comment">   --  Generates 14 chars long passwords like:</span>
+<a name="60"><font size=-1>60     </font></a><span class="comment">   --   5fx7_0Fubo-hNa</span>
+<a name="61"><font size=-1>61     </font></a><span class="comment"></span>
+<a name="62"><font size=-1>62     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_G.html#13048">Get_Version</a> return <a href="dictionary_V.html#1988">VString</a></span><span class="default">;</span>
+<a name="63"><font size=-1>63     </font></a><span class="default">   </span><span class="comment">--  Returns formatted program version :</span>
+<a name="64"><font size=-1>64     </font></a><span class="comment">   --  “&lt;space&gt;v.minor.major”.</span>
+<a name="65"><font size=-1>65     </font></a><span class="comment"></span>
+<a name="66"><font size=-1>66     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_G.html#24216">Get_Version_Major</a> return </span><span class="default">Natural;</span>
+<a name="67"><font size=-1>67     </font></a><span class="default">   </span><span class="comment">--  Returns major program version</span>
+<a name="68"><font size=-1>68     </font></a><span class="comment"></span>
+<a name="69"><font size=-1>69     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_G.html#24217">Get_Version_Minor</a> return </span><span class="default">Natural;</span>
+<a name="70"><font size=-1>70     </font></a><span class="default">   </span><span class="comment">--  Returns minor program version</span>
+<a name="71"><font size=-1>71     </font></a><span class="comment"></span>
+<a name="72"><font size=-1>72     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_I.html#5980">Is_User_Not_Root</a> return </span><span class="default">Boolean;</span>
+<a name="73"><font size=-1>73     </font></a><span class="default">   </span><span class="comment">--  Returns True if program user's not root.</span>
+<a name="74"><font size=-1>74     </font></a><span class="comment"></span>
+<a name="75"><font size=-1>75     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_N.html#13063">Name</a> return <a href="dictionary_V.html#1988">VString</a></span><span class="default">;</span>
+<a name="76"><font size=-1>76     </font></a><span class="default">   </span><span class="comment">--  Program name.</span>
+<a name="77"><font size=-1>77     </font></a><span class="comment"></span>
+<a name="78"><font size=-1>78     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_P.html#24219">Path</a> return </span><span class="default">String;</span>
+<a name="79"><font size=-1>79     </font></a><span class="default">   </span><span class="comment">--  Program path.</span>
+<a name="80"><font size=-1>80     </font></a><span class="comment"></span>
+<a name="81"><font size=-1>81     </font></a><span class="comment">   </span><span class="keyword">procedure <a href="dictionary_S.html#13070">Set_Exit_Status</a> </span><span class="default">(<a href="dictionary_C.html#24222">Code</a> : Natural);</span>
+<a name="82"><font size=-1>82     </font></a><span class="default">   </span><span class="comment">--  Set errorlevel return code. Each call is cumulative. Four calls with</span>
+<a name="83"><font size=-1>83     </font></a><span class="comment">   --  1, 2, 4 and 8 set 15 ie msb-00001111-lsb. Can be used everywhere in</span>
+<a name="84"><font size=-1>84     </font></a><span class="comment">   --  the program without special call at its end. Convention : 1 = no or bad</span>
+<a name="85"><font size=-1>85     </font></a><span class="comment">   --  command, 128 = runtime exception (8th bit).</span>
+<a name="86"><font size=-1>86     </font></a><span class="comment"></span>
+<a name="87"><font size=-1>87     </font></a><span class="comment">   </span><span class="keyword">procedure <a href="dictionary_S.html#13047">Set_Version</a> </span><span class="default">(<a href="dictionary_M.html#24223">Major</a> : Natural; <a href="dictionary_M.html#24224">Minor</a> : Natural);</span>
+<a name="88"><font size=-1>88     </font></a><span class="default">   </span><span class="comment">--  Set program version.</span>
+<a name="89"><font size=-1>89     </font></a><span class="comment"></span>
+<a name="90"><font size=-1>90     </font></a><span class="comment">   <a href="dictionary_S.html#2887">Start_Dir</a> </span><span class="default">: </span><span class="keyword">constant <a href="dictionary_V.html#1988">VString</a> </span><span class="default">:= To_VString (Ada.Directories.Current_Directory);</span>
+<a name="91"><font size=-1>91     </font></a><span class="default">   </span><span class="comment">--  Constant storing current directory at start.</span>
+<a name="92"><font size=-1>92     </font></a><span class="comment"></span>
+<a name="93"><font size=-1>93     </font></a><span class="comment">   <a href="dictionary_S.html#13598">Start_Time</a> </span><span class="default">: </span><span class="keyword">constant </span><span class="default">Ada.Calendar.Time := <a href="dictionary_A.html#24229">AC</a>.Clock;</span>
+<a name="94"><font size=-1>94     </font></a><span class="default">   </span><span class="comment">--  Constant storing Time at program start</span>
+<a name="95"><font size=-1>95     </font></a><span class="comment"></span>
+<a name="96"><font size=-1>96     </font></a><span class="comment">   </span><span class="keyword">function <a href="dictionary_T.html#13065">Time_Stamp</a> return <a href="dictionary_V.html#1988">VString</a></span><span class="default">;</span>
+<a name="97"><font size=-1>97     </font></a><span class="default">   </span><span class="comment">--  Returns current timestamp as YYYYMMDD-HHMMSS.</span>
+<a name="98"><font size=-1>98     </font></a><span class="comment"></span>
+<a name="99"><font size=-1>99     </font></a><span class="comment">-------------------------------------------------------------------------------</span>
+<a name="100"><font size=-1>100     </font></a><span class="comment"></span><span class="keyword">private</span>
+<a name="101"><font size=-1>101     </font></a><span class="keyword"></span>
+<a name="102"><font size=-1>102     </font></a><span class="keyword">   function <a href="dictionary_T.html#24225">Time_Format</a> </span><span class="default">(<a href="dictionary_I.html#24226">Input_To_Format</a> : Integer) </span><span class="keyword">return <a href="dictionary_V.html#1988">VString</a></span><span class="default">;</span>
+<a name="103"><font size=-1>103     </font></a><span class="default"></span>
+<a name="104"><font size=-1>104     </font></a><span class="default">   <a href="dictionary_V.html#24232">Version_Major</a> : Natural := </span><span class="number">0</span><span class="default">;</span>
+<a name="105"><font size=-1>105     </font></a><span class="default">   <a href="dictionary_V.html#24233">Version_Minor</a> : Natural := </span><span class="number">0</span><span class="default">;</span>
+<a name="106"><font size=-1>106     </font></a><span class="default"></span>
+<a name="107"><font size=-1>107     </font></a><span class="default">   <a href="dictionary_P.html#24235">Prg_Exit_Status</a> : Natural := </span><span class="number">0</span><span class="default">;</span>
+<a name="108"><font size=-1>108     </font></a><span class="default"></span>
+<a name="109"><font size=-1>109     </font></a><span class="default"></span><span class="comment">-------------------------------------------------------------------------------</span>
+<a name="110"><font size=-1>110     </font></a><span class="comment"></span><span class="keyword">end <a href="dictionary_V.html#1968">v20</a></span><span class="default">.<a href="dictionary_P.html#2886">Prg</a>;</span>
+<a name="111"><font size=-1>111     </font></a><span class="default"></span><span class="comment">-------------------------------------------------------------------------------</span>
+<a name="112"><font size=-1>112     </font></a><span class="comment"></span>
+</pre></body></html>
