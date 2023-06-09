@@ -22,7 +22,8 @@
 --  20210331 - 0.2 - sr - Add Style and GNATColl builds 
 ------------------------------------------------------------------------------
 
---with "gnatcoll";
+--with "gnatcoll"; 
+--with "gnatcoll"; 
 project v20 is
 
    --for Languages use ("Ada");
@@ -36,8 +37,9 @@ project v20 is
    
    v20_Build : v20_Build_Type := external ("v20_Build", "Debug");
 
-   -- for Source_Dirs use ("src-tests","src/**");
-   for Source_Dirs use ("src-tests","src/**","/home/sr/opt/gnat-2021/include/gnatcoll");
+   --for Source_Dirs use ("src-tests","src/**");
+   for Source_Dirs use ("src-tests","src/**","/tmp/user_root/opt/gnat-2021/include/gnatcoll");
+   -- Toute machine de dev a ln -s /home/sr /tmp/user_root
 
    case v20_Build is
       when "Style" => 

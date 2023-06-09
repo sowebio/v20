@@ -50,6 +50,7 @@ package v20.Tio is
    procedure Put (B : Boolean);
    procedure Put (I : Integer);
    procedure Put (I : Long_Integer);
+   procedure Put (I : Integer_64);
    procedure Put (C : Character) renames ATI.Put;
    procedure Put (S : String) renames ATI.Put;
    procedure Put (V : VString);
@@ -58,6 +59,7 @@ package v20.Tio is
    procedure Put_Line (B : Boolean);
    procedure Put_Line (I : Integer);
    procedure Put_Line (I : Long_Integer);
+   procedure Put_Line (I : Integer_64);
    procedure Put_Line (C : Character);
    procedure Put_Line (S : String) renames ATI.Put_Line;
    procedure Put_Line (V : VString);

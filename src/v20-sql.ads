@@ -188,7 +188,6 @@ package v20.Sql is
 
    procedure Exec (Command : String);
    procedure Exec (Command : VString);
-
    --  Execute a SQL command when no output is needed. It's a wrapper around
    --  Prepare, Step and Finalize, that allows an application to run multiple
    --  statements of SQL without having to use a lot of code. Command is UTF-8

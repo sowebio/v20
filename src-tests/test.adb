@@ -31,6 +31,7 @@ with GNAT.OS_Lib;
 with GNAT.Strings;
 
 with SQLite;       -- For Sql_Low_Level_Demo
+with Interfaces;   -- For Sql_Low_Level_Demo
 with Interfaces.C; -- For Sql_Low_Level_Demo
 
 with v20; use v20;
@@ -51,6 +52,8 @@ procedure Test is
    package GS renames GNAT.Strings;
 
    TAB : constant VString := Vst.To_VString(Character'Val (9)); -- Tab
+
+   subtype Integer_64 is Interfaces.Integer_64;
 
    type Animation is array (1 .. 7) of Character;
    Progress : constant Animation := ('/', '-', '\', '|', '/', '-', '|');
@@ -803,7 +806,7 @@ begin
    Log.Title ("SQLite high level Schema_Load and Schema_Update demo");
    Log.Line;
 
-   if Sql.Schema_Need_Update (+"sqlite_update_test.db", 0, 2) then
+   if Sql.Schema_Need_Update (+"sqlite_update_test.db", 0, 2) = Sql.Status_Need_Update then
 
       Sql.Schema_Load (Sql.Table_Name,        "Cluster");
       Sql.Schema_Load (Sql.Column_Name,       "Number",  "INTEGER");

@@ -192,6 +192,11 @@ package body v20.Tio is
       Put (To_VString (Integer (I)));
    end Put;
 
+   procedure Put (I : Integer_64) is
+   begin
+      Put (To_VString (Integer (I)));
+   end Put;
+
    procedure Put (V : VString) is
    begin
       Put (ASU.To_String (V));
@@ -215,6 +220,12 @@ package body v20.Tio is
    end Put_Line;
 
    procedure Put_Line (I : Long_Integer) is
+   begin
+      Put (To_VString (Integer (I)));
+      Line;
+   end Put_Line;
+
+   procedure Put_Line (I : Integer_64) is
    begin
       Put (To_VString (Integer (I)));
       Line;
