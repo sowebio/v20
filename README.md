@@ -1,10 +1,8 @@
 # v20 Ada Library
 
-**v20 is now deprecated by v20-alire**
-
 ## Introduction
 
-v20 is a Ada library for Linux service and console programs. See v20-doc repository for further informations.
+v20 is an Ada library for Linux service and console programs. See v20-doc repository for further informations.
 
 ## Copyright
 
